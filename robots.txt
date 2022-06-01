@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /*
+
+Sitemap: https://evestxswap.finance/sitemap.xml
+Sitemap: https://evestxswap.finance/rss.xml
