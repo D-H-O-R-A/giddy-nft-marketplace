@@ -19,7 +19,7 @@ const Toast = Swal.mixin({
 
 function contadorStart(){
     var startDate = new Date(Date.now())
-    var finalDate = new Date(Date.UTC(2022, 05, 25, 12, 00, 00))
+    var finalDate = new Date(Date.UTC(2022, 06, 02, 12, 00, 00))
     var days, hours, minutes, seconds,mili;
     var dateDiff;
     var $day = $('#daytime');
@@ -331,7 +331,7 @@ function viewAllGraphG(){
 }
 
 function googleTranslateElementInit() {
-    new google.translate.TranslateElement({pageLanguage: 'en',layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+    // new google.translate.TranslateElement({pageLanguage: 'en',layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
 }
 
 //idiomas
