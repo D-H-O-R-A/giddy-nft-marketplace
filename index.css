@@ -2681,8 +2681,16 @@ nav a[href="#Home"] p{
     color: var(--p);
     font-weight: 900;
     font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
 }
 
+nav a[href="#Home"] p span:nth-child(2){
+    display: none;
+    font-size: 14px;
+}
 
 nav a[href="#IDO"]{
     background-color: var(--p);
@@ -2769,7 +2777,7 @@ div#divflipsond{
     -webkit-box-align: center; align-items: center; background-color: rgb(238, 234, 244); border-radius: 24px; box-shadow: rgb(74 74 104 / 10%) 0px 2px 2px -1px inset; cursor: pointer; display: inline-flex; height: 32px; position: relative; transition: background-color 200ms ease 0s; width: 56px;
 }
 
-div#mflipSoun{
+div#mflipSoun, div#mflipmode{
     background-color: var(--w); border-radius: 50%; cursor: pointer; height: 26px; left: 3px; position: absolute; top: 3px; transition: left 200ms ease-in 0s; width: 26px; z-index: 1;
 }
 

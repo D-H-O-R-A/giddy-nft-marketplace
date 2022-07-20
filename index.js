@@ -19,7 +19,7 @@ const Toast = Swal.mixin({
 
 function contadorStart(){
     var startDate = new Date(Date.now())
-    var finalDate = new Date(Date.UTC(2022, 06, 18, 19, 19, 19))
+    var finalDate = new Date(Date.UTC(2022, 06, 31, 23, 59, 59))
     var days, hours, minutes, seconds,mili;
     var dateDiff;
     var $day = $('#daytime');
@@ -268,6 +268,13 @@ $(document).ready(() => {
     }else{
         $("#mflipSoun").css("left", '3px');
     }
+    var mflipMode = localStorage.getItem("flipMode") == "" || localStorage.getItem("flipMode") == null || localStorage.getItem("flipMode") == undefined || localStorage.getItem("flipMode") == "mainchain" ? false : true
+    if(mflipMode){
+        $("#mflipmode").css("left", '27px');
+        $('nav a[href="#Home"] p span:nth-child(2)').css("display", "flex")
+    }else{
+        $("#mflipmode").css("left", '3px');
+    }
     contadorStart()
     $(".smartTablets .navigation ul li").removeClass()
     switch(w){
@@ -486,11 +493,23 @@ function flipSound(){
     if(mflipSound){
         localStorage.setItem('flipSound', 'nosound')
         $("#mflipSoun").css("left", '3px')
+        $('nav a[href="#Home"] p span:nth-child(2)').css("display", "flex")
 
     }else{
         localStorage.setItem('flipSound', 'sound')
         $("#mflipSoun").css("left", '27px');
+        $('nav a[href="#Home"] p span:nth-child(2)').css("display", "none")
+    }
+}
 
+function flipMode(){
+    var mflipMode = localStorage.getItem("flipMode") == "" || localStorage.getItem("flipMode") == null || localStorage.getItem("flipMode") == undefined || localStorage.getItem("flipMode") == "mainchain" ? false : true
+    if(mflipMode){
+        localStorage.setItem('flipMode', 'mainchain')
+        $("#mflipmode").css("left", '3px');
+    }else{
+        localStorage.setItem('flipMode', 'sidechain')
+        $("#mflipmode").css("left", '27px');
     }
 }
 
