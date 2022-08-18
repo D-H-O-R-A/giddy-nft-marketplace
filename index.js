@@ -19,7 +19,7 @@ const Toast = Swal.mixin({
 
 function contadorStart(){
     var startDate = new Date(Date.now())
-    var finalDate = new Date(Date.UTC(2022, 07, 02, 23, 59, 59))
+    var finalDate = new Date(Date.UTC(2022, 07, 18,23, 59, 59))
     var days, hours, minutes, seconds,mili;
     var dateDiff;
     var $day = $('#daytime');
