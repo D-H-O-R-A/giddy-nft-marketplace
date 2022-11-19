@@ -5,6 +5,8 @@ console.log("%cDon't paste anything here!", "color: black;font-size:22px");
 console.log("%cIf someone told you to copy/paste something here you have an 11/10 chance you are being scammed.", "font-size:16px")
 console.log("%cPasting anything in here could give attackers access to your accounts.", "color: #bf3654; font-size: 16px");
 
+var evestx = new eVESTXAPI.create(eVESTXAPI.MAINNET_CONFIG)
+
 const Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
@@ -17,9 +19,53 @@ const Toast = Swal.mixin({
     }
 })
 
+function createAddress(){
+    var newAddress = evestx.Seed.create()
+    Swal.fire({
+        title: "Your eVESTX address",
+        text: "Congratulations, this is your eVESTX address! Save it very well and get ready for the official release of DEX.",
+        html:`<div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-content: center; align-items: center; font-size: 14.6px; "><p>Address: ${newAddress.address}</p><span>PublicKey: ${newAddress.keyPair.publicKey}</span><p>PrivateKey: ${newAddress.keyPair.privateKey}</p><span>Seed Phrase: ${newAddress.phrase}</span><p style="margin-top: 10px"> Warning: DO NOT SHARE THIS DATA (PrivateKey and Seed Phrase) WITH ANYONE. NO ONE AT eVESTX TEAM WILL REQUEST THIS DATA FROM YOU!</p></div>`,
+        showConfirmButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Save Address",
+        cancelButtonText: "Exit"
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          Swal.fire('Saved!', 'A file with your address data is being downloaded in your device.', 'success')
+          var content = `
+          Address: ${newAddress.address}
+          PublicKey: ${newAddress.keyPair.publicKey}
+          PrivateKey: ${newAddress.keyPair.privateKey}
+          Seed Phrase: ${newAddress.phrase}
+          
+          Warning: DO NOT SHARE THIS DATA (PrivateKey and Seed Phrase) WITH ANYONE. NO ONE AT eVESTX WILL REQUEST THIS DATA FROM YOU!`
+          let blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+          saveAs(blob, "Seed Phrase - eVESTX Address.txt")
+        }
+      })
+}
+
+
+function addFarms(){
+
+}
+
+function addPools(){
+
+}
+
+function selectToken(s) {
+    Swal.fire({
+        html: `<div id='selectToken' alt="${s}"><div><p></p><button></button></div><div><input on placeholder="Search name or paste token Id"></div><div><span>Common tokens</span></div><div><button><img src=""><span>eVESTX</span></button><button><img src=""><span>Bitcoin</span></button><button><img src=""><span>Ethereum</span></button><button><img src=""><span>USDT</span></button></div></div>`,
+        showCancelButton: false,
+        showConfirmButton: false
+    })
+}
+
 function contadorStart(){
     var startDate = new Date(Date.now())
-    var finalDate = new Date(Date.UTC(2022, 08,22,23, 59, 59))
+    var finalDate = new Date(Date.UTC(2022, 10,20,23, 59, 59))
     var days, hours, minutes, seconds,mili;
     var dateDiff;
     var $day = $('#daytime');
@@ -248,10 +294,10 @@ function ach(k,kk, xy){
             window.location.search = "";
     }
 }
+var r = document.querySelector(':root');
 
 //page launch
 $(document).ready(() => {
-    var r = document.querySelector(':root');
     console.log("Initializing...");
     const w = window.location.hash.replace("#","") == "" ? "Home" : window.location.hash.replace("#","");
     const s = window.location.search.replace("?", "") == "" ? "" : window.location.search.replace("?", "");
@@ -259,8 +305,8 @@ $(document).ready(() => {
     // $("#date").text(date())
     var mflipSound = localStorage.getItem("flipSound") == '' || localStorage.getItem('flipSound') == null || localStorage.getItem('flipSound') == undefined || localStorage.getItem('flipSound') == 'nosound' ? false : true;
     console.log(mflipSound)
+    isHidden()
     verifiDarkMode(localStorage.getItem("dark"))
-    gWeiSpeed()
     verifiSlipp()
     if(mflipSound){
         $("#mflipSoun").css("left", '27px');
@@ -303,6 +349,10 @@ $(document).ready(() => {
         default:
             console.log(w)
     }
+})
+
+function move()
+{
     setInterval(() => {
         var w = window.screen.width;
         if(w == 765){
@@ -313,7 +363,7 @@ $(document).ready(() => {
         }
         
     }, 500);
-})
+}
 
 /****************** - OLD VERSION OF THE SITE - ******************/
 
@@ -347,7 +397,11 @@ function viewAllGraphG(){
 }
 
 function googleTranslateElementInit() {
-    new google.translate.TranslateElement({pageLanguage: 'en',layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+    try{
+        new google.translate.TranslateElement({pageLanguage: 'en',layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+    }catch(e){
+        console.log(e)
+    }
 }
 
 //idiomas
@@ -467,6 +521,16 @@ function verifiDarkMode(mdark){
         ach("", w, s);
         googleTranslateElementInit()
     }
+    $('[onclick="selectMBar(this)"]li').attr("class", "list")
+    $(`[onclick="ach(this, 'IDO')"]li`).attr("class", "list")
+    move()
+}
+
+function isHidden(){
+    if(localStorage.getItem("warning_phishing") != null)
+    {
+        $("#top_nav").css("display", "none")
+    }
 }
 
 function rootC(key,color){
@@ -541,16 +605,6 @@ function flipMode(){
 //     // angle += 0.03
 // }
 
-function gWeiSpeed(l){
-    if(l){
-        localStorage.setItem("gweispeed", l)
-        $("button[aav]").attr("style", "-webkit-box-align: center; align-items: center; border: 0px; border-radius: 16px; cursor: pointer; display: inline-flex; font-family: inherit; font-size: 16px; font-weight: 600; -webkit-box-pack: center; justify-content: center; letter-spacing: 0.03em; line-height: 1; opacity: 1; outline: 0px; transition: background-color 0.2s ease 0s, opacity 0.2s ease 0s; height: 32px; padding: 0px 16px; background-color: rgb(239, 244, 245); box-shadow: none; color: #bf3654; margin-top: 4px; margin-right: 4px;")
-        $("button[a='" + localStorage.getItem("gweispeed") + "']").attr("style", "-webkit-box-align: center; align-items: center; border: 0px; border-radius: 16px; box-shadow: rgb(14 14 44 / 40%) 0px -1px 0px 0px inset; cursor: pointer; display: inline-flex; font-family: inherit; font-size: 16px; font-weight: 600; -webkit-box-pack: center; justify-content: center; letter-spacing: 0.03em; line-height: 1; opacity: 1; outline: 0px; transition: background-color 0.2s ease 0s, opacity 0.2s ease 0s; height: 32px; padding: 0px 16px; background-color: #bf3654; color: white; margin-top: 4px; margin-right: 4px;");
-    }else{
-        $("button[aav]").attr("style", "-webkit-box-align: center; align-items: center; border: 0px; border-radius: 16px; cursor: pointer; display: inline-flex; font-family: inherit; font-size: 16px; font-weight: 600; -webkit-box-pack: center; justify-content: center; letter-spacing: 0.03em; line-height: 1; opacity: 1; outline: 0px; transition: background-color 0.2s ease 0s, opacity 0.2s ease 0s; height: 32px; padding: 0px 16px; background-color: rgb(239, 244, 245); box-shadow: none; color: #bf3654; margin-top: 4px; margin-right: 4px;")
-        $("button[a='" + localStorage.getItem("gweispeed") + "']").attr("style", "-webkit-box-align: center; align-items: center; border: 0px; border-radius: 16px; box-shadow: rgb(14 14 44 / 40%) 0px -1px 0px 0px inset; cursor: pointer; display: inline-flex; font-family: inherit; font-size: 16px; font-weight: 600; -webkit-box-pack: center; justify-content: center; letter-spacing: 0.03em; line-height: 1; opacity: 1; outline: 0px; transition: background-color 0.2s ease 0s, opacity 0.2s ease 0s; height: 32px; padding: 0px 16px; background-color: #bf3654; color: white; margin-top: 4px; margin-right: 4px;");
-    }
-}
 
 function selectCoinForAirdrop(){
     if($(".selectCoin").css("display") == "none"){

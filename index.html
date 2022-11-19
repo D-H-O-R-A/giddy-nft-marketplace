@@ -17,12 +17,10 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
-    <script src="https://cdn.jsdelivr.net/combine/npm/chart.js@3.6.1,npm/@metamask/detect-provider@1.2.0"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js" integrity="sha512-N4kV7GkNv7QR7RX9YF/olywyIgIwNvfEe2nZtfyj73HdjCUkAfOBDbcuJ/cTaN04JKRnw1YG1wnUyNKMsNgg3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r126/three.min.js" integrity="sha512-n8IpKWzDnBOcBhRlHirMZOUvEq2bLRMuJGjuVqbzUJwtTsgwOgK5aS0c1JA647XWYfqvXve8k3PtZdzpipFjgg==" crossorigin="anonymous"></script>
+    <script src="/src/evestx/index.js"></script>
     <script src="/src/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="/src/filesaver/filesave.js"></script>
     <script src="/index.js" defer></script>
 
     <!--meta social network-->
@@ -55,9 +53,30 @@
 
     <!--manutenção do website-->
     <div id="maintenance">
-        <div class="css-1zef0"><div class="css-1827r8v"><div id="close-warn-notification-btn" onclick='if($("#maintenance").css("display") != "none"){ $("#maintenance").css("display", "none") }' onselect='if($("#maintenance").css("display") != "none"){ $("#maintenance").css("display", "none") }' cursor="pointer" class="notification-close-button css-zu5qvl"></div><div class="css-zggr44"><div class="css-np91oi"><span class="css-13w8lcq" id="messageMaintenance">
-            Notice:We are undergoing maintenance to complete the chain performance tests and resolve anonymous transactions. Follow VestXHybrid on the Social Network for updates!
-        </span></div></div></div></div>
+        <div class="css-1zef0">
+            <div class="css-1827r8v">
+                <div id="close-warn-notification-btn" onclick='if($("#maintenance").css("display") != "none"){ $("#maintenance").css("display", "none") }' onselect='if($("#maintenance").css("display") != "none"){ $("#maintenance").css("display", "none") }' cursor="pointer" class="notification-close-button css-zu5qvl"></div>
+                <div class="css-zggr44">
+                    <div class="css-np91oi">
+                        <span class="css-13w8lcq" id="messageMaintenance">
+                        Notice: We are about to start eVESTX nodes. Create an address by going to the bottom of the website and be ready to launch. Don't forget to follow eVESTX on all social networks!
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="top_nav">
+        <div a>
+          <div>
+            <span class="color_warning" lang-trad>PHISHING WARNING:</span>
+            <span lang-trad>please make sure you're visiting</span>
+            <span class="color_destaque">https://evestxswap.finance/</span>
+            <span lang-trad>- check the URL carefully.</span>
+          </div>
+        </div>
+        <button onclick='localStorage.setItem("warning_phishing", true),isHidden()' onselect='localStorage.setItem("warning_phishing", true)' class="close_nav"><svg viewBox="0 0 24 24" color="#FFFFFF" width="20px" xmlns="http://www.w3.org/2000/svg" class="sc-8a800401-0 kukNmq"><path fill="currentColor" d="M18.3 5.70997C17.91 5.31997 17.28 5.31997 16.89 5.70997L12 10.59L7.10997 5.69997C6.71997 5.30997 6.08997 5.30997 5.69997 5.69997C5.30997 6.08997 5.30997 6.71997 5.69997 7.10997L10.59 12L5.69997 16.89C5.30997 17.28 5.30997 17.91 5.69997 18.3C6.08997 18.69 6.71997 18.69 7.10997 18.3L12 13.41L16.89 18.3C17.28 18.69 17.91 18.69 18.3 18.3C18.69 17.91 18.69 17.28 18.3 16.89L13.41 12L18.3 7.10997C18.68 6.72997 18.68 6.08997 18.3 5.70997Z"></path></svg></button>
     </div>
 
     <!--carregamento da página-->
@@ -237,12 +256,12 @@
                         </div>
                     </div>    
                         </div>
-                        <div style="color: rgb(40, 13, 95); font-size: 16px; line-height: 1.5;" color="text" class="sc-gtsrHT MlLjM">Default Transaction Speed (GWEI)</div>
+                        <!-- <div style="color: rgb(40, 13, 95); font-size: 16px; line-height: 1.5;" color="text" class="sc-gtsrHT MlLjM">Default Transaction Speed (GWEI)</div>
                         <div class="sc-jSFjdj sc-gKAaRy kJmatq hEWlCd" style="display: flex; flex-wrap: wrap;">
                             <button aav class="sc-hKFxyN jXwHrW" select scale="sm" a='5' onclick="gWeiSpeed(5)" onselect="gWeiSpeed(5)">Standard (5)</button>
                             <button aav class="sc-hKFxyN lbWfZB" a='6' onclick="gWeiSpeed(6)" onselect="gWeiSpeed(6)" scale="sm">Fast (6)</button>
                             <button aav class="sc-hKFxyN cLshbJ" a='7' onclick="gWeiSpeed(7)" onselect="gWeiSpeed(7)" scale="sm">Instant (7)</button>
-                        </div>
+                        </div> -->
                     </div>
                     <div style="    margin-bottom: 24px;border-top: 1px solid rgb(231, 227, 235); padding-top: 24px;display: flex; flex-direction: column;">
                         <div style="color: rgb(118, 69, 217); font-weight: 600; line-height: 1.5; text-transform: uppercase; margin-bottom: 24px; font-size: 14px;" font-size="12px" color="secondary" class="sc-gtsrHT eSqMWv">Swaps &amp; Liquidity</div>
@@ -280,18 +299,6 @@
                         </div>
                     </div>
 
-
-                    <div style="padding-bottom: 20px; display: flex; -webkit-box-pack: justify; justify-content: space-between; -webkit-box-align: center; align-items: center;">
-                        <div style="width: 100%; display: flex; -webkit-box-pack: justify; justify-content: space-between; -webkit-box-align: center; align-items: center;" class="sc-jSFjdj sc-gKAaRy kJmatq kCREZG">
-                            <div class="sc-jSFjdj sc-gKAaRy kJmatq togOu" style="flex: 1;">
-                                <div color="text" style="color: rgb(40, 13, 95); font-size: 16px; line-height: 1.5;" class="sc-gtsrHT MlLjM">Sidechain mode</div>
-                            </div>
-                            <div id="divflipsond" scale="md" class="sc-bsatvv bQoIMD">
-                                <input onclick="flipMode()" onselect="flipMode()" style="cursor: pointer; opacity: 0; height: 100%; position: absolute; width: 100%; z-index: 3;" scale="md" id="toggle-disable-multihop-button" type="checkbox" class="sc-dFRpbK dlipYf">
-                                <div id="mflipmode" scale="md" class="sc-csTbgd iEuPWb"></div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -540,13 +547,13 @@
                                 <div class="css-16zkae7">Network: VRP</div>
                             </div>
                         </div>
-                        <div style="border-color: #e0e0e0" cursor="pointer" class="css-1xd8nfj">
+                        <div cursor="pointer" class="css-1xd8nfj">
                             <div class="css-k1758r">
                                 <img src="/img/eVESTX.png" width="30" height="30">
                             </div>
                             <div class="css-xy4zc9">
                                 <div class="css-1d3b7oz">eVESTX</div>
-                                <div class="css-16zkae7">Network: VRP20</div>
+                                <div class="css-16zkae7">Network: eVVM</div>
                             </div>
                         </div>
                         <div style="border-color: #e0e0e0" cursor="pointer" class="css-1xd8nfj">
@@ -674,7 +681,7 @@
                         <canvas id="graph" width="100%" height="400" style="flex: 1;"></canvas>
                         <div style="padding-top: 10px;"><div></div><p style="color: #bf3654; font-size: 14px;" id="date"></p></div>
                     </div>
-                    <p onclick="window.location.href = window.location.origin + '/?deposit_withdraw#Account'" onselect="window.location.href = window.location.origin + '/?deposit_withdraw#Account'" style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;color: #333;padding-top: 10px;font-size: 16px;">Convert ERC20 to VRP20 <svg style="margin-left: 5px;" viewBox="0 0 24 24" color="primary" width="20px" xmlns="http://www.w3.org/2000/svg" class="sc-bdnxRM iXahuZ"><path d="M18 19H6C5.45 19 5 18.55 5 18V6C5 5.45 5.45 5 6 5H11C11.55 5 12 4.55 12 4C12 3.45 11.55 3 11 3H5C3.89 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V13C21 12.45 20.55 12 20 12C19.45 12 19 12.45 19 13V18C19 18.55 18.55 19 18 19ZM14 4C14 4.55 14.45 5 15 5H17.59L8.46 14.13C8.07 14.52 8.07 15.15 8.46 15.54C8.85 15.93 9.48 15.93 9.87 15.54L19 6.41V9C19 9.55 19.45 10 20 10C20.55 10 21 9.55 21 9V4C21 3.45 20.55 3 20 3H15C14.45 3 14 3.45 14 4Z"></path></svg></p>
+                    <p onclick="window.location.href = window.location.origin + '/?deposit_withdraw#Account'" onselect="window.location.href = window.location.origin + '/?deposit_withdraw#Account'" style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;color: #333;padding-top: 10px;font-size: 16px;">Convert ERC20 to VRP <svg style="margin-left: 5px;" viewBox="0 0 24 24" color="primary" width="20px" xmlns="http://www.w3.org/2000/svg" class="sc-bdnxRM iXahuZ"><path d="M18 19H6C5.45 19 5 18.55 5 18V6C5 5.45 5.45 5 6 5H11C11.55 5 12 4.55 12 4C12 3.45 11.55 3 11 3H5C3.89 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V13C21 12.45 20.55 12 20 12C19.45 12 19 12.45 19 13V18C19 18.55 18.55 19 18 19ZM14 4C14 4.55 14.45 5 15 5H17.59L8.46 14.13C8.07 14.52 8.07 15.15 8.46 15.54C8.85 15.93 9.48 15.93 9.87 15.54L19 6.41V9C19 9.55 19.45 10 20 10C20.55 10 21 9.55 21 9V4C21 3.45 20.55 3 20 3H15C14.45 3 14 3.45 14 4Z"></path></svg></p>
                 </div>
                 <div s>
                     <div>
@@ -693,7 +700,7 @@
                             <span style="margin-top: 5px; text-align: center; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: center; color: #333;">Trade tokens in an instant</span>
                         </div>
                         <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; align-content: space-between;">
-                            <div onclick="warning(true)" onselect="warning(true)" style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
+                            <div onclick="selectToken(true)" onselect="selectToken(true)" style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
                                 <img id="av1i" src="/img/eVESTX.jpg" style="height: 24px;width:24px;margin-right: 3px" alt="">
                                 <p style="font-size: 16px; font-weight: 600; line-height: 1.5;" id="av1">eVESTX</p>
                                 <span style="transform: rotate( 90deg); margin-left: 5px;">></span>
@@ -701,7 +708,7 @@
                             <input onkeydown="warning(true)" type="number" placeholder="0.00000000" id="n1">
                             <span style="stroke: #bf3654; color: #bf3654; fill: #bf3654;flex-direction: row; flex-wrap: nowrap; justify-content: center; align-items: center; align-content: center; padding: 5px 0px; display: flex;">
                                 <div as onclick="invertValue()" onselect="invertValue()"><svg viewBox="0 0 24 24" width="18px" height="18px" color="primary" xmlns="http://www.w3.org/2000/svg" class="sc-bdnxRM ACFFk"><path d="M11 5V16.17L6.11997 11.29C5.72997 10.9 5.08997 10.9 4.69997 11.29C4.30997 11.68 4.30997 12.31 4.69997 12.7L11.29 19.29C11.68 19.68 12.31 19.68 12.7 19.29L19.29 12.7C19.68 12.31 19.68 11.68 19.29 11.29C18.9 10.9 18.27 10.9 17.88 11.29L13 16.17V5C13 4.45 12.55 4 12 4C11.45 4 11 4.45 11 5Z"></path></svg></div></span>
-                            <div  onclick="warning(true)" onselect="warning(true)" style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
+                            <div  onclick="selectToken(false)" onselect="selectToken(false)" style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
                                 <img id="av2i" src="/img/usdt.png" style="height: 24px;width:24px;margin-right: 3px" alt="">
                                 <p style="font-size: 16px; font-weight: 600; line-height: 1.5;" id="av2">USDT</p>
                                 <span style="transform: rotate( 90deg); margin-left: 5px;">></span>
@@ -809,6 +816,10 @@
                                         </div>
                                     </div>
                                 </div> -->
+                                <div style="margin: 0px; padding: 0px; border: 0px; font-size: 100%; vertical-align: baseline;margin-left: 16px;">
+                                    <div color="text" class="sc-gtsrHT cJskRL" style="font-size: 12px;font-weight: 400; line-height: 1.5; text-transform: uppercase;color: var(--w)">Search</div>
+                                    <button onclick="addFarms()" onselect="addFarms()" style="height: 40px;background-color: #bf3654;color: #fff;border: none;border-radius: 15px;padding: 0px 18px;">Add</button>
+                                </div>
                                 <div style="margin: 0px; padding: 0px; border: 0px; font-size: 100%; vertical-align: baseline;margin-left: 16px;">
                                     <div color="text" class="sc-gtsrHT cJskRL" style="font-size: 12px;font-weight: 400; line-height: 1.5; text-transform: uppercase;color: #bf3654">Search</div>
                                     <input type="text" id="searchFarms" placeholder="Search Farms" onkeyup="searchPoolOrFarm(this, 'farms', '.sc-hHEiqL.jyNvZq.sc-TXRkg.fXFgHO')">
@@ -1564,6 +1575,10 @@
                                         </div>
                                     </div>
                                 </div> -->
+                                <div style="margin: 0px; padding: 0px; border: 0px; font-size: 100%; vertical-align: baseline;margin-left: 16px;">
+                                    <div color="text" class="sc-gtsrHT cJskRL" style="font-size: 12px;font-weight: 400; line-height: 1.5; text-transform: uppercase;color: var(--w)">Search</div>
+                                    <button onclick="addPools()" onselect="addPools()" style="height: 40px;background-color: #bf3654;color: #fff;border: none;border-radius: 15px;padding: 0px 18px;">Add</button>
+                                </div>
                                 <div style="margin: 0px; padding: 0px; border: 0px; font-size: 100%; vertical-align: baseline;margin-left: 16px;">
                                     <div color="text" class="sc-gtsrHT cJskRL" style="font-size: 12px;font-weight: 400; line-height: 1.5; text-transform: uppercase;color: #bf3654">Search</div>
                                     <input type="text" id="searchFarms" placeholder="Search Pools" onkeyup="searchPoolOrFarm(this, 'pool', '.sc-hHEiqL.jyNvZq.sc-dwxYdI.ryrre')">
@@ -2937,9 +2952,9 @@
             <article id="phasesIdoxs">
                 <div s style=" padding: 0px 20px;">
                     <h1 style="color:#bf3654;font-size: 32px;">Phases IDO</h1>
-                    <h3 style="color: #333;font-size: 22px;">Pre IDO 07/22/2022 - 08/01/2022</h3>
+                    <h3 style="color: #333;font-size: 22px;">Pre IDO 09/31/2022 - 11/20/2022</h3>
                     <h4 style="color: #333;font-size: 18px;font-weight: 500;">The Pre IDO is the preparation stage for the start of pre-sales and distribution of eVESTX that will start at the end of the above counter. 08/01/2022 eVESTX will be distributed within 1 year after the end of the IDO.</h4>
-                    <h3 style="color: #333;font-size: 22px;">IDO 08/01/2022 - 09/01/2022</h3>
+                    <h3 style="color: #333;font-size: 22px;">IDO 11/20/2022 - 12/20/2022</h3>
                     <h4 style="color: #333;font-size: 18px;font-weight: 500;">Hurry up to buy eVESTX with USDT, USDC, BUSD, BNB at a starting price of $0.0065 (USDT)</h4>
                 </div>
                 <div s style="padding:20px;">
@@ -3611,12 +3626,12 @@ Launch of VestXHybrid DEX
                             <div style="display: flex; width: 300px; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between; margin-right: 50px;">
                                 <p>Start</p>
                                 <div style="flex: 1; border: 0px; border-bottom: 3px solid #333333; border-style: dotted; height: 19px; margin: 0px 5px;"></div>
-                                <p>07/31/2022</p>
+                                <p>11/20/2022</p>
                             </div>
                             <div style="display: flex; width: 300px; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between; margin-right: 50px;">
                                 <p>End</p>
                                 <div style="flex: 1; border: 0px; border-bottom: 3px solid #333333; border-style: dotted; height: 19px; margin: 0px 5px;"></div>
-                                <p>08/31/2022</p>
+                                <p>12/20/2022</p>
                             </div>
                         </div>
                     </div>
@@ -3786,6 +3801,7 @@ Launch of VestXHybrid DEX
                 <li><a style="color: rgb(244, 238, 255); font-size: 16px; line-height: 1.5;display: flex; -webkit-box-align: center; align-items: center; width: fit-content;font-size: 18px;color: #333;" href="https://vestxhybrid.com/#Contact" target="_blank">Contact</a></li>
                 <li><a style="color: rgb(244, 238, 255); font-size: 16px; line-height: 1.5;display: flex; -webkit-box-align: center; align-items: center; width: fit-content;font-size: 18px;color: #333;" href="https://vxhexplorer.com/" target="_blank">Explorer</a></li>
                 <li><a style="color: rgb(244, 238, 255); font-size: 16px; line-height: 1.5;display: flex; -webkit-box-align: center; align-items: center; width: fit-content;font-size: 18px;color: #333;" href="https://docs.vestxhybrid.com/Disclaimer" target="_blank">Disclaimer</a></li>
+                <li><a style="color: rgb(244, 238, 255); font-size: 16px; line-height: 1.5;display: flex; -webkit-box-align: center; align-items: center; width: fit-content;font-size: 18px;color: #333;" href="https://github.com/eVESTXCOIN/smart-contract" target="_blank">Smart Contract</a></li>
                 <!-- <li><a href=""><p>-</p></a></li>
                 <li><a href=""><p>Online Store</p></a></li> -->
             </ul>
@@ -3810,7 +3826,7 @@ Launch of VestXHybrid DEX
                 <li><a style="color: rgb(244, 238, 255); font-size: 16px; line-height: 1.5;display: flex; -webkit-box-align: center; align-items: center; width: fit-content;font-size: 18px;color: #333;" href="#Earn" onclick="ach(this,'Earn', 'pools')" onselect="ach(this,'Earn', 'pools')">Pools</a></li>
                 <li><a style="color: rgb(244, 238, 255); font-size: 16px; line-height: 1.5;display: flex; -webkit-box-align: center; align-items: center; width: fit-content;font-size: 18px;color: #333;" href="#Earn" onclick="ach(this,'Earn', 'farms')">Farms</a></li>
                 <li><a style="color: rgb(244, 238, 255); font-size: 16px; line-height: 1.5;display: flex; -webkit-box-align: center; align-items: center; width: fit-content;font-size: 18px;color: #333;" href="#Account" onclick="ach(this,'Account', 'deposit_withdraw')" onselect="ach(this,'Account', 'deposit_withdraw')">Bridges</a></li>
-                <!-- <li><a style="color: rgb(244, 238, 255); font-size: 16px; line-height: 1.5;display: flex; -webkit-box-align: center; align-items: center; width: fit-content;font-size: 18px;color: #333;" href="">Liquidity</a></li> -->
+                <li><a style="color: rgb(244, 238, 255); font-size: 16px; line-height: 1.5;display: flex; -webkit-box-align: center; align-items: center; width: fit-content;font-size: 18px;color: #333;" onclick="createAddress()" onselect="createAddress()">Create an Address</a></li>
             </ul>
         </div>
     </footer>
@@ -3849,8 +3865,20 @@ Launch of VestXHybrid DEX
         <!--manutenção do website - dark mode ok-->
         <div darkModeLayout id="maintenance">
             <div class="css-1zef0"><div class="css-1827r8v"><div id="close-warn-notification-btn" onclick='if($("#maintenance").css("display") != "none"){ $("#maintenance").css("display", "none") }' onselect='if($("#maintenance").css("display") != "none"){ $("#maintenance").css("display", "none") }' cursor="pointer" class="notification-close-button css-zu5qvl"></div><div class="css-zggr44"><div class="css-np91oi"><span class="css-13w8lcq" id="messageMaintenance">
-                Notice: We are undergoing maintenance to complete the chain performance tests and resolve anonymous transactions. Follow VestXHybrid on the Social Network for updates!
+                Notice: We are about to start eVESTX nodes. Create an address by going to the bottom of the website and be ready to launch. Don't forget to follow eVESTX on all social networks!
             </span></div></div></div></div>
+        </div>
+
+        <div id="top_nav">
+            <div a>
+              <div>
+                <span class="color_warning" lang-trad>PHISHING WARNING:</span>
+                <span lang-trad>please make sure you're visiting</span>
+                <span class="color_destaque">https://evestxswap.finance/</span>
+                <span lang-trad>- check the URL carefully.</span>
+              </div>
+            </div>
+            <button onclick='localStorage.setItem("warning_phishing", true),isHidden()' onselect='localStorage.setItem("warning_phishing", true)' class="close_nav"><svg viewBox="0 0 24 24" color="#FFFFFF" width="20px" xmlns="http://www.w3.org/2000/svg" class="sc-8a800401-0 kukNmq"><path fill="currentColor" d="M18.3 5.70997C17.91 5.31997 17.28 5.31997 16.89 5.70997L12 10.59L7.10997 5.69997C6.71997 5.30997 6.08997 5.30997 5.69997 5.69997C5.30997 6.08997 5.30997 6.71997 5.69997 7.10997L10.59 12L5.69997 16.89C5.30997 17.28 5.30997 17.91 5.69997 18.3C6.08997 18.69 6.71997 18.69 7.10997 18.3L12 13.41L16.89 18.3C17.28 18.69 17.91 18.69 18.3 18.3C18.69 17.91 18.69 17.28 18.3 16.89L13.41 12L18.3 7.10997C18.68 6.72997 18.68 6.08997 18.3 5.70997Z"></path></svg></button>
         </div>
     
         <!--carregamento da página - dark mode ok-->
@@ -4030,12 +4058,12 @@ Launch of VestXHybrid DEX
                             </div>
                         </div>    
                             </div>
-                            <div style="color: #fff; font-size: 16px; line-height: 1.5;" color="text" class="sc-gtsrHT MlLjM">Default Transaction Speed (GWEI)</div>
+                            <!-- <div style="color: #fff; font-size: 16px; line-height: 1.5;" color="text" class="sc-gtsrHT MlLjM">Default Transaction Speed (GWEI)</div>
                             <div class="sc-jSFjdj sc-gKAaRy kJmatq hEWlCd" style="display: flex; flex-wrap: wrap;">
                                 <button aav class="sc-hKFxyN jXwHrW" select scale="sm" a='5' onclick="gWeiSpeed(5)" onselect="gWeiSpeed(5)">Standard (5)</button>
                                 <button aav class="sc-hKFxyN lbWfZB" a='6' onclick="gWeiSpeed(6)" onselect="gWeiSpeed(6)" scale="sm">Fast (6)</button>
                                 <button aav class="sc-hKFxyN cLshbJ" a='7' onclick="gWeiSpeed(7)" onselect="gWeiSpeed(7)" scale="sm">Instant (7)</button>
-                            </div>
+                            </div> -->
                         </div>
                         <div style="    margin-bottom: 24px;border-top: 1px solid rgb(231, 227, 235); padding-top: 24px;display: flex; flex-direction: column;">
                             <div style="color: #fff; font-weight: 600; line-height: 1.5; text-transform: uppercase; margin-bottom: 24px; font-size: 14px;" font-size="12px" color="secondary" class="sc-gtsrHT eSqMWv">Swaps &amp; Liquidity</div>
@@ -4069,18 +4097,6 @@ Launch of VestXHybrid DEX
                                 <div id="divflipsond" scale="md" class="sc-bsatvv bQoIMD">
                                     <input onclick="flipSound()" onselect="flipSound()" style="cursor: pointer; opacity: 0; height: 100%; position: absolute; width: 100%; z-index: 3;" scale="md" id="toggle-disable-multihop-button" type="checkbox" class="sc-dFRpbK dlipYf">
                                     <div id="mflipSoun" scale="md" class="sc-csTbgd iEuPWb"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div style="padding-bottom: 20px; display: flex; -webkit-box-pack: justify; justify-content: space-between; -webkit-box-align: center; align-items: center;">
-                            <div style="width: 100%; display: flex; -webkit-box-pack: justify; justify-content: space-between; -webkit-box-align: center; align-items: center;" class="sc-jSFjdj sc-gKAaRy kJmatq kCREZG">
-                                <div class="sc-jSFjdj sc-gKAaRy kJmatq togOu" style="flex: 1;">
-                                    <div color="text" style="color: #fff; font-size: 16px; line-height: 1.5;" class="sc-gtsrHT MlLjM">Sidechain mode</div>
-                                </div>
-                                <div id="divflipsond" scale="md" class="sc-bsatvv bQoIMD">
-                                    <input onclick="flipMode()" onselect="flipMode()" style="cursor: pointer; opacity: 0; height: 100%; position: absolute; width: 100%; z-index: 3;" scale="md" id="toggle-disable-multihop-button" type="checkbox" class="sc-dFRpbK dlipYf">
-                                    <div id="mflipmode" scale="md" class="sc-csTbgd iEuPWb"></div>
                                 </div>
                             </div>
                         </div>
@@ -4333,13 +4349,13 @@ Launch of VestXHybrid DEX
                                     <div class="css-16zkae7">Network: VRP</div>
                                 </div>
                             </div>
-                            <div style="border-color: #e0e0e0" cursor="pointer" class="css-1xd8nfj">
+                            <div cursor="pointer" class="css-1xd8nfj">
                                 <div class="css-k1758r">
                                     <img src="/img/eVESTX.png" width="30" height="30">
                                 </div>
                                 <div class="css-xy4zc9">
                                     <div class="css-1d3b7oz">eVESTX</div>
-                                    <div class="css-16zkae7">Network: VRP20</div>
+                                    <div class="css-16zkae7">Network: eVVM</div>
                                 </div>
                             </div>
                             <div style="border-color: #e0e0e0" cursor="pointer" class="css-1xd8nfj">
@@ -4467,7 +4483,7 @@ Launch of VestXHybrid DEX
                             <canvas id="graph" width="100%" height="400" style="flex: 1;"></canvas>
                             <div style="padding-top: 10px;"><div></div><p style="color: #bf3654; font-size: 14px;" id="date"></p></div>
                         </div>
-                        <p onclick="window.location.href = window.location.origin + '/?deposit_withdraw#Account'" onselect="window.location.href = window.location.origin + '/?deposit_withdraw#Account'" style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;color: #ffff;padding-top: 10px;font-size: 16px;">Convert ERC20 to VRP20 <svg style="margin-left: 5px; color: #fff; stroke: #fff;" viewBox="0 0 24 24" color="#fff" width="20px" xmlns="http://www.w3.org/2000/svg" class="sc-bdnxRM iXahuZ"><path d="M18 19H6C5.45 19 5 18.55 5 18V6C5 5.45 5.45 5 6 5H11C11.55 5 12 4.55 12 4C12 3.45 11.55 3 11 3H5C3.89 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V13C21 12.45 20.55 12 20 12C19.45 12 19 12.45 19 13V18C19 18.55 18.55 19 18 19ZM14 4C14 4.55 14.45 5 15 5H17.59L8.46 14.13C8.07 14.52 8.07 15.15 8.46 15.54C8.85 15.93 9.48 15.93 9.87 15.54L19 6.41V9C19 9.55 19.45 10 20 10C20.55 10 21 9.55 21 9V4C21 3.45 20.55 3 20 3H15C14.45 3 14 3.45 14 4Z"></path></svg></p>
+                        <p onclick="window.location.href = window.location.origin + '/?deposit_withdraw#Account'" onselect="window.location.href = window.location.origin + '/?deposit_withdraw#Account'" style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;color: #ffff;padding-top: 10px;font-size: 16px;">Convert ERC20 to VRP <svg style="margin-left: 5px; color: #fff; stroke: #fff;" viewBox="0 0 24 24" color="#fff" width="20px" xmlns="http://www.w3.org/2000/svg" class="sc-bdnxRM iXahuZ"><path d="M18 19H6C5.45 19 5 18.55 5 18V6C5 5.45 5.45 5 6 5H11C11.55 5 12 4.55 12 4C12 3.45 11.55 3 11 3H5C3.89 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V13C21 12.45 20.55 12 20 12C19.45 12 19 12.45 19 13V18C19 18.55 18.55 19 18 19ZM14 4C14 4.55 14.45 5 15 5H17.59L8.46 14.13C8.07 14.52 8.07 15.15 8.46 15.54C8.85 15.93 9.48 15.93 9.87 15.54L19 6.41V9C19 9.55 19.45 10 20 10C20.55 10 21 9.55 21 9V4C21 3.45 20.55 3 20 3H15C14.45 3 14 3.45 14 4Z"></path></svg></p>
                     </div>
                     <div s style="box-shadow: 5px 5px 5px 0px #181a1e;">
                         <div>
@@ -4486,7 +4502,7 @@ Launch of VestXHybrid DEX
                                 <span style="margin-top: 5px; text-align: center; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: center; color: #fff;">Trade tokens in an instant</span>
                             </div>
                             <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; align-content: space-between;">
-                                <div onclick="warning(true)" onselect="warning(true)" style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
+                                <div onclick="selectToken(true)" onselect="selectToken(true)" style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
                                     <img id="av1i" src="/img/eVESTX.png" style="height: 24px;width:24px;margin-right: 3px" alt="">
                                     <p style="font-size: 16px; font-weight: 600; line-height: 1.5;" id="av1">eVESTX</p>
                                     <span style="transform: rotate( 90deg); margin-left: 5px;">></span>
@@ -4494,7 +4510,7 @@ Launch of VestXHybrid DEX
                                 <input onkeydown="warning(true)" type="number" placeholder="0.00000000" id="n1">
                                 <span style="stroke: #bf3654; color: #bf3654; fill: #bf3654;flex-direction: row; flex-wrap: nowrap; justify-content: center; align-items: center; align-content: center; padding: 5px 0px; display: flex;">
                                     <div as onclick="invertValue()" onselect="invertValue()"><svg viewBox="0 0 24 24" width="18px" height="18px" color="primary" xmlns="http://www.w3.org/2000/svg" class="sc-bdnxRM ACFFk"><path d="M11 5V16.17L6.11997 11.29C5.72997 10.9 5.08997 10.9 4.69997 11.29C4.30997 11.68 4.30997 12.31 4.69997 12.7L11.29 19.29C11.68 19.68 12.31 19.68 12.7 19.29L19.29 12.7C19.68 12.31 19.68 11.68 19.29 11.29C18.9 10.9 18.27 10.9 17.88 11.29L13 16.17V5C13 4.45 12.55 4 12 4C11.45 4 11 4.45 11 5Z"></path></svg></div></span>
-                                <div  onclick="warning(true)" onselect="warning(true)" style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
+                                <div  onclick="selectToken(false)" onselect="selectToken(false)" style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;">
                                     <img id="av2i" src="/img/usdt.png" style="height: 24px;width:24px;margin-right: 3px" alt="">
                                     <p style="font-size: 16px; font-weight: 600; line-height: 1.5;" id="av2">USDT</p>
                                     <span style="transform: rotate( 90deg); margin-left: 5px;">></span>
@@ -4603,6 +4619,10 @@ Launch of VestXHybrid DEX
                                             </div>
                                         </div>
                                     </div> -->
+                                    <div style="margin: 0px; padding: 0px; border: 0px; font-size: 100%; vertical-align: baseline;margin-left: 16px;">
+                                        <div color="text" class="sc-gtsrHT cJskRL" style="font-size: 12px;font-weight: 400; line-height: 1.5; text-transform: uppercase;color: var(--w)">Search</div>
+                                        <button onclick="addFarms()" onselect="addFarms()" style="height: 40px;background-color: #bf3654;color: #fff;border: none;border-radius: 15px;padding: 0px 18px;">Add</button>
+                                    </div>
                                     <div style="margin: 0px; padding: 0px; border: 0px; font-size: 100%; vertical-align: baseline;margin-left: 16px;">
                                         <div color="text" class="sc-gtsrHT cJskRL" style="font-size: 12px;font-weight: 400; line-height: 1.5; text-transform: uppercase;color: #bf3654">Search</div>
                                         <input type="text" id="searchFarms" placeholder="Search Farms" onkeyup="searchPoolOrFarm(this, 'farms', '.sc-hHEiqL.jyNvZq.sc-TXRkg.fXFgHO')">
@@ -5358,6 +5378,10 @@ Launch of VestXHybrid DEX
                                             </div>
                                         </div>
                                     </div> -->
+                                    <div style="margin: 0px; padding: 0px; border: 0px; font-size: 100%; vertical-align: baseline;margin-left: 16px;">
+                                        <div color="text" class="sc-gtsrHT cJskRL" style="font-size: 12px;font-weight: 400; line-height: 1.5; text-transform: uppercase;color: var(--w)">Search</div>
+                                        <button onclick="addPools()" onselect="addPools()" style="height: 40px;background-color: #bf3654;color: #fff;border: none;border-radius: 15px;padding: 0px 18px;">Add</button>
+                                    </div>
                                     <div style="margin: 0px; padding: 0px; border: 0px; font-size: 100%; vertical-align: baseline;margin-left: 16px;">
                                         <div color="text" class="sc-gtsrHT cJskRL" style="font-size: 12px;font-weight: 400; line-height: 1.5; text-transform: uppercase;color: #bf3654">Search</div>
                                         <input type="text" id="searchFarms" placeholder="Search Pools" onkeyup="searchPoolOrFarm(this, 'pool', '.sc-hHEiqL.jyNvZq.sc-dwxYdI.ryrre')">
@@ -6732,9 +6756,9 @@ Launch of VestXHybrid DEX
                 <article id="phasesIdoxs">
                     <div s style=" padding: 0px 20px;">
                         <h1 style="color:#bf3654;font-size: 32px;">Phases IDO</h1>
-                        <h3 style="color: #fff;font-size: 22px;">Pre IDO 07/22/2022 - 08/01/2022</h3>
+                        <h3 style="color: #fff;font-size: 22px;">Pre IDO 09/31/2022 - 11/20/2022</h3>
                         <h4 style="color: #fff;font-size: 18px;font-weight: 500;">The Pre IDO is the preparation stage for the start of pre-sales and distribution of eVESTX that will start at the end of the above counter. 08/01/2022 eVESTX will be distributed within 1 year after the end of the IDO.</h4>
-                        <h3 style="color: #fff;font-size: 22px;">IDO 08/01/2022 - 09/01/2022</h3>
+                        <h3 style="color: #fff;font-size: 22px;">IDO 11/20/2022 - 12/20/2022</h3>
                         <h4 style="color: #fff;font-size: 18px;font-weight: 500;">Hurry up to buy eVESTX with USDT, USDC, BUSD, BNB at a starting price of $0.0065 (USDT)</h4>
                     </div>
                     <div s style="padding:20px;">
@@ -7581,6 +7605,7 @@ Launch of VestXHybrid DEX
                     <li><a style="color: rgb(244, 238, 255); font-size: 16px; line-height: 1.5;display: flex; -webkit-box-align: center; align-items: center; width: fit-content;font-size: 18px;color: #fff;" href="https://vestxhybrid.com/#Contact" target="_blank">Contact</a></li>
                     <li><a style="color: rgb(244, 238, 255); font-size: 16px; line-height: 1.5;display: flex; -webkit-box-align: center; align-items: center; width: fit-content;font-size: 18px;color: #fff;" href="https://vxhexplorer.com/" target="_blank">Explorer</a></li>
                     <li><a style="color: rgb(244, 238, 255); font-size: 16px; line-height: 1.5;display: flex; -webkit-box-align: center; align-items: center; width: fit-content;font-size: 18px;color: #fff;" href="https://docs.vestxhybrid.com/Disclaimer" target="_blank">Disclaimer</a></li>
+                    <li><a style="color: rgb(244, 238, 255); font-size: 16px; line-height: 1.5;display: flex; -webkit-box-align: center; align-items: center; width: fit-content;font-size: 18px;color: #fff;" href="https://github.com/eVESTXCOIN/smart-contract" target="_blank">Smart Contract</a></li>
                     <!-- <li><a href=""><p>-</p></a></li>
                     <li><a href=""><p>Online Store</p></a></li> -->
                 </ul>
@@ -7605,7 +7630,7 @@ Launch of VestXHybrid DEX
                     <li><a style="color: rgb(244, 238, 255); font-size: 16px; line-height: 1.5;display: flex; -webkit-box-align: center; align-items: center; width: fit-content;font-size: 18px;color: #fff;" href="#Earn" onclick="ach(this,'Earn', 'pools')" onselect="ach(this,'Earn', 'pools')">Pools</a></li>
                     <li><a style="color: rgb(244, 238, 255); font-size: 16px; line-height: 1.5;display: flex; -webkit-box-align: center; align-items: center; width: fit-content;font-size: 18px;color: #fff;" href="#Earn" onclick="ach(this,'Earn', 'farms')">Farms</a></li>
                     <li><a style="color: rgb(244, 238, 255); font-size: 16px; line-height: 1.5;display: flex; -webkit-box-align: center; align-items: center; width: fit-content;font-size: 18px;color: #fff;" href="#Account" onclick="ach(this,'Account', 'deposit_withdraw')" onselect="ach(this,'Account', 'deposit_withdraw')">Bridges</a></li>
-                    <!-- <li><a style="color: rgb(244, 238, 255); font-size: 16px; line-height: 1.5;display: flex; -webkit-box-align: center; align-items: center; width: fit-content;font-size: 18px;color: #fff;" href="">Liquidity</a></li> -->
+                    <li><a style="color: rgb(244, 238, 255); font-size: 16px; line-height: 1.5;display: flex; -webkit-box-align: center; align-items: center; width: fit-content;font-size: 18px;color: #fff;" onclick="createAddress()" onselect="createAddress()">Create an Address</a></li>
                 </ul>
             </div>
         </footer>

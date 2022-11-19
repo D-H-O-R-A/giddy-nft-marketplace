@@ -19,8 +19,18 @@
     --clr: #333;
     --vh: 173.75px;
     --delay:2s;
+    --color_warning: #ffb237;
+    --color_destaque: #fff;
+    --color_background_hidden: #fff0;
     --bf: #bf3654;
+    --color_text_hidden: rgb(209, 214, 216);
+    --color_base_warning_maintence2: #9c2f47;
+    --color_base: #832136;
+    --color_base_warning_maintence1: #dd617b;
+    --color_bakcground_warning_maintence: linear-gradient(var(--color_base_warning_maintence1) 0%, var(--color_base_warning_maintence2) 100%);
 }
+
+
 
 body{
     background-color: var(--w);
@@ -3567,7 +3577,6 @@ button[onclick="histt()"]{
     opacity: 0.5;
     top: 0px;
     right: 0px;
-    background-image: url(/img/close-white.svg);
     background-repeat: no-repeat;
     background-position: center center;
     cursor: pointer;
@@ -3752,6 +3761,67 @@ button[onclick="histt()"]{
 }
 .carregamento div .maincircular .circular,  .carregamento div .maincircular .circular:after {
     border-radius: 50%;
+}
+
+#top_nav{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    background: var(--color_bakcground_warning_maintence);
+}
+
+#top_nav div[a]{
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: center;
+    padding: 5px;
+    height: 70px;
+}
+
+#top_nav div[a] div{
+    max-width: max-content;
+    width: 100%;
+    flex: 1;
+    background-color: var(--color_base);
+    padding: 10px 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+#top_nav div[a] div span{
+    color: var(--color_text_hidden);
+    margin-right: 4px;
+    font-weight: 600;
+    line-height: 1.5;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+#top_nav div[a] div span.color_warning{
+    color: var(--color_warning);
+}
+
+#top_nav div[a] div span.color_destaque{
+    color: var(--color_destaque)
+}
+
+#top_nav button.close_nav{
+    color: #fff;
+    background-color: var(--color_background_hidden);
+    border: none;
+    width: 48px;
+    padding: 0px;
 }
 
 
@@ -4072,6 +4142,9 @@ button[onclick="histt()"]{
 }
 
 @media screen and (max-width: 470px){
+    #top_nav div[a] div span{
+        font-size: 13px;
+    }
     nav button.priceNavv{
         display: none;
     }
@@ -4103,6 +4176,9 @@ button[onclick="histt()"]{
     }
 }
 @media screen and (max-width: 420px){
+    #top_nav div[a]{
+        height: 95px
+    }
     #idodetails center div[a3] div[aa3] div[i2] img{
         display: none
     }
