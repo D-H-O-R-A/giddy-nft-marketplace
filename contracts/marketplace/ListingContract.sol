@@ -15,13 +15,13 @@ contract Listing {
     event UpdatedPrice(uint indexed tokenId, address indexed nftAddress, address indexed owner, uint newPrice);
 
     MyNFTStorage vault;
-    Monion1155 monionMinter;
+    Giddy1155 monionMinter;
     
     mapping(address => address[]) private userToUserDefinedNFTs;
 
     constructor(address _storageAddress, address _monionMinter){
         vault = MyNFTStorage(_storageAddress);
-        monionMinter = Monion1155(_monionMinter);
+        monionMinter = Giddy1155(_monionMinter);
     }
 
     function mintMonionNFT(uint quantity, uint96 royaltyFee) external {

@@ -18,7 +18,7 @@ import "@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol";
 */
 
 
-contract Monion1155 is ERC1155, Ownable, Pausable, ERC2981, ERC1155Supply, ERC1155Holder {
+contract Giddy1155 is ERC1155, Ownable, Pausable, ERC2981, ERC1155Supply, ERC1155Holder {
 
     
     event Minted (uint indexed tokenId,address indexed owner, uint quantity);

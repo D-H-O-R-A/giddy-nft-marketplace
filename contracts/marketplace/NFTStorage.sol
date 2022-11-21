@@ -12,7 +12,7 @@ contract MyNFTStorage is ERC1155Holder {
 
     UserDefined1155 minter;
     AdminConsole admin;
-    Monion1155 monionMinter;
+    Giddy1155 monionMinter;
 
     uint feePercent; //Marketplace fee
 
@@ -68,7 +68,7 @@ contract MyNFTStorage is ERC1155Holder {
 
     function _listMonionNFTForSale(address nftAddress,uint tokenId, uint tokenPrice, address account, uint quantity) public { //please ensure that this remains internal
         require(admin.isAdmin(msg.sender) == true, "You do not have permission to access this contract!");
-        monionMinter = Monion1155(nftAddress);
+        monionMinter = Giddy1155(nftAddress);
         uint tokensHeld = monionMinter.balanceOf(account, tokenId);
         require(tokensHeld > 0, "NFT Storage: This user does not have any units of this token available for listing!");
         require(quantity <= tokensHeld, "You cannot list this units of this token, try reducing the quantity!");
