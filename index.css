@@ -725,7 +725,7 @@ ol, ul {
 }
 
 
-#connectWallet{
+#connectWallet,#otherTecnologies,#loginotherTecnologies{
     display: none;
     position: fixed;
     top: 0px;
@@ -741,7 +741,7 @@ ol, ul {
     z-index: 10000;
 }
 
-#connectWallet article{
+#connectWallet article,#otherTecnologies article,#loginotherTecnologies article{
     display: inline-block;
     position: relative;
     max-width: 400px;
@@ -758,7 +758,7 @@ ol, ul {
     padding: 0;
 }
 
-#connectWallet article img, #connectWallet article svg{
+#connectWallet article img, #connectWallet article svg,#otherTecnologies article img, #otherTecnologies article svg, #loginotherTecnologies article svg, #loginotherTecnologies article img{
     height: 70%;
     animation: floatIconWallet 3s ease-in-out infinite;
 }
@@ -2799,7 +2799,7 @@ div#Home.all article[a]{
     background: var(--w); margin: 0px; max-width: 100%;
 }
 
-div#Home.all article[a] button#connectwn[onclick="connectWalletChamada()"]{
+div#Home.all article[a] button#connectwn[onclick="connectWalletChamada()"],div#Home.all article[a] button#connectwn[onclick="otherTecnologiesChamada()"], div#Home.all article[a] button#connectwn[onclick="connectSeedOrPrivate()"]{
     height: 100%; border-radius: 10px; border: 0px solid var(--w); padding: 12px 16px; width: fit-content; min-width: 0px; font-size: 17px; color: var(--w); background-color: var(--p); margin-right: 10px; font-size: 1.125rem
 }
 
@@ -2883,7 +2883,7 @@ div#Trading.all #esc #a1 div[s] button[onclick="histt()"]{
     display: flex; flex-direction: row; flex-wrap: nowrap; align-content: center; justify-content: center; background: var(--w); align-items: center; border: none; stroke: var(--p); color: var(--p); fill: var(--p);
 }
 
-div#Trading.all #esc #a1 div[s] input[onkeydown="warning(true)"]#n1{
+div#Trading.all #esc #a1 div[s] input[onkeydown="convertAssetS(this)"]#n1{
     font-size: 18px; color: var(--clr); margin: 10px 0px; padding: 10px; border: 1px solid var(--e); border-radius: 10px;background-color: #fdede8;border: 1px solid #fdede8;
 }
 
@@ -2891,11 +2891,11 @@ div#Trading.all #esc #a1 div[s] div[onclick="invertValue()"][as]{
     background-color: #fdede8;border-radius: 50%;height: 32px;width: 32px;display: flex; flex-direction: row; flex-wrap: nowrap; align-content: center; justify-content: center; align-items: center;
 }
 
-div#Trading.all #esc #a1 div[s] input[onkeydown="warning(true)"]#n2{
+div#Trading.all #esc #a1 div[s] input[onkeydown="convertAssetS(this)"]#n2{
     font-size: 18px; color: var(--clr); margin: 10px 0px; padding: 10px; border: 1px solid var(--e); border-radius: 10px;background-color: #fdede8;border: 1px solid #fdede8;
 }
 
-div#Trading.all #esc #a1 div[s] button[onclick="connectWalletChamada()"]{
+div#Trading.all #esc #a1 div[s] button[onclick="connectWalletChamada()"],div#Trading.all #esc #a1 div[s] button[onclick="SwapInvest()"],div#Trading.all #esc #a1 div[s] button[onclick="otherTecnologiesChamada()"],div#Trading.all #esc #a1 div[s] button[onclick="connectSeedOrPrivate()"]{
     margin-top: 10px;color: var(--w);background-color: var(--p);border-radius: 10px; border: 0px solid var(--w); padding: 12px 16px;font-size: 17px;
 }
 
@@ -2903,7 +2903,7 @@ div#Trading.all #esc #a2 div[sx1s]{
     padding: 25.5px 20px; display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: center; align-items: center; border: 1px solid #fdede8; background: #fdede8; color: var(--p); margin: 20px 0px;box-shadow: 1px 1px 10px 0px #fdede8;
 }
 
-div#Trading.all #esc #a2 button[onselect="connectWalletChamada()"]{
+div#Trading.all #esc #a2 button[onselect="connectWalletChamada()"],div#Trading.all #esc #a2 button[onselect="otherTecnologiesChamada()"],div#Trading.all #esc #a2 button[onselect="connectSeedOrPrivate()"]{
     -webkit-box-align: center; align-items: center; border: 0px; border-radius: 10px; box-shadow: rgb(14 14 44 / 40%) 0px -1px 0px 0px inset; cursor: pointer; display: inline-flex; font-family: inherit; font-size: 16px; font-weight: 600; -webkit-box-pack: center; justify-content: center; letter-spacing: 0.03em; line-height: 1; opacity: 1; outline: 0px; transition: background-color 0.2s ease 0s, opacity 0.2s ease 0s; height: 48px; padding: 0px 24px; background-color: var(--p); color: var(--w); width: 100%;
 }
 
@@ -3999,7 +3999,7 @@ button[onclick="histt()"]{
         flex-wrap: nowrap;
         align-items: stretch;
     }
-    div#Home.all article[a] button#connectwn[onclick="connectWalletChamada()"]{
+    div#Home.all article[a] button#connectwn[onclick="connectWalletChamada()"],div#Home.all article[a] button#connectwn[onclick="otherTecnologiesChamada()"],div#Home.all article[a] button#connectwn[onclick="connectSeedOrPrivate()"]{
         width: 100%;
         margin-bottom: 10px;
     }
@@ -4238,7 +4238,7 @@ button[onclick="histt()"]{
     div.all#Home #desccc,div#Home.all article[a3] article[aa3] div[aaa1] h3[ta], #ttdesc{
         font-size: 17px;
     }
-    div#Home.all article[a] button#connectwn[onclick="connectWalletChamada()"],div#Home.all article[a] button[href='Trading'],div#Home.all article[a3] article[aa3] div[aaa1] div[xas] button,div#Home.all article[a4] article div div button{
+    div#Home.all article[a] button#connectwn[onclick="connectWalletChamada()"],div#Home.all article[a] button#connectwn[onclick="otherTecnologiesChamada()"],div#Home.all article[a] button#connectwn[onclick="connectSeedOrPrivate()"],div#Home.all article[a] button[href='Trading'],div#Home.all article[a3] article[aa3] div[aaa1] div[xas] button,div#Home.all article[a4] article div div button{
         font-size: 1.1rem;
     }
     .navigation ul li{
@@ -4315,4 +4315,193 @@ a[token]:hover{
 section{
     display:none;
     
+}
+.menuAccount button[s]:hover{
+    box-shadow: -5px 5px 5px 0px #e0e0e0;
+}
+
+.menuAccount button[s] p{
+    flex: 1;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    text-align: left;
+}
+.menuAccount button[s] svg{
+    width: 20px;
+    height: 20px;
+}
+.menuAccount{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: space-between;
+    position: relative;
+}
+
+.menuAccount button[close]{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: #fff;
+    border: none;
+}
+
+.menuAccount div[acc]{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    margin-top: 15px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.menuAccount div[acc] img{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+
+.menuAccount div[acc] div:nth-child(2){
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0px 20px;
+}
+
+.menuAccount div[acc] div:nth-child(2) p{
+    margin-bottom: 5px;
+}
+
+.menuAccount div[acc] div:nth-child(2) a{
+    color: #018c77;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.menuAccount div[sald]{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px 0px;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 15px;
+}
+
+.menuAccount div[sald] img{
+    height: 40px;
+    border-radius: 50%;
+}
+
+.menuAccount div[sald] div:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    margin-left: 10px;
+}
+
+.menuAccount div[sald] div:nth-child(2) p{
+    font-size: 16px;
+}
+
+.menuAccount button[s]{
+    margin: 5px 5px;
+    height: 56px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    background-color: #fff;
+    text-align: center;
+}
+
+.menuAccount button[s] p{
+    font-size: 16px;
+}
+
+.menuAccount button[s] svg{
+    margin: 0px 10px;
+}
+
+#selectToken{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 30px 0px;
+}
+
+#selectToken div input{
+    width: 80%;
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    font-size: 16px;
+}
+
+
+#selectToken div:nth-child(1) {
+    display: flex;
+    width: 80%;
+    margin: auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+#selectToken div:nth-child(1) p {
+    flex: 1;
+    font-size: 18px;
+    color: #333;
+}
+
+#selectToken div:nth-child(1) button {
+    background-color: #fff;
+    width: 23px;
+    height: 23px;
+    border: none;
+    color: #bf3654;
+}
+
+#selectToken div:nth-child(3) {
+    color: #333;
+    margin-top: 20px;
+    font-size: 17px;
+}
+
+
+#selectToken div:nth-child(4) {
+    width: 80%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: space-between;
+    margin: 10px auto;
+}
+
+#selectToken div:nth-child(4) button:nth-child(2),#selectToken div:nth-child(4) button:nth-child(3){
+    margin: 0px 5px;
+}
+
+#selectToken div:nth-child(4) button {
+    flex: 1;
+    border: 1px solid #bf3654;
+    background: #bf3654;
+    color: #fff;
+    padding: 10px 0px;
+    border-radius: 10px;
 }

@@ -19,8 +19,24 @@ const Toast = Swal.mixin({
     }
 })
 
+function invalidA(address, seed){
+    for(let i =0;address.length>i;i++){
+        if(address.substring(0,2) != "7J")
+        {
+            var newAddress = evestx.Seed.create()
+            invalidA(newAddress.address, newAddress.phrase)
+        }
+        else
+        {
+            return seed
+        }
+    }
+}
+
 function createAddress(){
-    var newAddress = evestx.Seed.create()
+    var newC = evestx.Seed.create()
+    var newAddress = evestx.Seed.fromExistingPhrase(invalidA(newC.address,newC.phrase))
+
     Swal.fire({
         title: "Your eVESTX address",
         text: "Congratulations, this is your eVESTX address! Save it very well and get ready for the official release of DEX.",
@@ -48,24 +64,40 @@ function createAddress(){
 
 
 function addFarms(){
-
+    var content = `<div class='contentAddFP'><div><button></button></div><p></p><span></span><div><span>Pair 1:</span><input placeholder='Asset ID'></div><div><span>Pair 2:</span><input placeholder='Asset ID'></div><span></span><button></button></div>`
+    Swal.fire({
+        html: content,
+        showConfirmButton: false,
+        showCancelButton: false
+    })
+    $(`div[aria-describedby="swal2-html-container"]`).css({"display": "grid", "overflow": "hidden", "background": "rgb(255, 255, 255)", "box-shadow": "rgb(14 14 44 / 10%) 0px 20px 36px -8px, rgb(0 0 0 / 5%) 0px 1px 1px", "border": "1px solid rgb(231, 227, 235)", "border-radius": "25px", "width": "100%", "max-height": "100vh", "z-index": "100", "width": "auto", "min-width": "320px", "max-width": "100%", "padding": "0px"})
+    $(".swal2-html-container").css("margin", "0px")
 }
 
 function addPools(){
-
+    var content = `<div class='contentAddFP'><div><button></button></div><p></p><span></span><div><span>Pair 1:</span><input placeholder='Asset ID'></div><div><span>Pair 2:</span><input placeholder='Asset ID'></div><span></span><button></button></div>`
+    Swal.fire({
+        html: content,
+        showConfirmButton: false,
+        showCancelButton: false
+    })
+    $(`div[aria-describedby="swal2-html-container"]`).css({"display": "grid", "overflow": "hidden", "background": "rgb(255, 255, 255)", "box-shadow": "rgb(14 14 44 / 10%) 0px 20px 36px -8px, rgb(0 0 0 / 5%) 0px 1px 1px", "border": "1px solid rgb(231, 227, 235)", "border-radius": "25px", "width": "100%", "max-height": "100vh", "z-index": "100", "width": "auto", "min-width": "320px", "max-width": "100%", "padding": "0px"})
+    $(".swal2-html-container").css("margin", "0px")
 }
 
 function selectToken(s) {
     Swal.fire({
-        html: `<div id='selectToken' alt="${s}"><div><p></p><button></button></div><div><input on placeholder="Search name or paste token Id"></div><div><span>Common tokens</span></div><div><button><img src=""><span>eVESTX</span></button><button><img src=""><span>Bitcoin</span></button><button><img src=""><span>Ethereum</span></button><button><img src=""><span>USDT</span></button></div></div>`,
+        html: `<div id='selectToken' alt="${s}"><div><p>Select a Token</p><button onclick="Swal.close()" onselect="Swal.close()"><svg viewBox="0 0 24 24" color="#bf3654" width="20px" xmlns="http://www.w3.org/2000/svg" class="sc-8a800401-0 kukNmq"><path fill="currentColor" d="M18.3 5.70997C17.91 5.31997 17.28 5.31997 16.89 5.70997L12 10.59L7.10997 5.69997C6.71997 5.30997 6.08997 5.30997 5.69997 5.69997C5.30997 6.08997 5.30997 6.71997 5.69997 7.10997L10.59 12L5.69997 16.89C5.30997 17.28 5.30997 17.91 5.69997 18.3C6.08997 18.69 6.71997 18.69 7.10997 18.3L12 13.41L16.89 18.3C17.28 18.69 17.91 18.69 18.3 18.3C18.69 17.91 18.69 17.28 18.3 16.89L13.41 12L18.3 7.10997C18.68 6.72997 18.68 6.08997 18.3 5.70997Z"></path></svg></button></div><div><input on placeholder="Search name or paste token Id"></div><div><span>Common tokens</span></div><div><button><img src=""><span>eVESTX</span></button><button><img src=""><span>Bitcoin</span></button><button><img src=""><span>Ethereum</span></button><button><img src=""><span>USDT</span></button></div></div>`,
         showCancelButton: false,
         showConfirmButton: false
     })
+    $(`div[aria-describedby="swal2-html-container"]`).css({"display": "grid", "overflow": "hidden", "background": "rgb(255, 255, 255)", "box-shadow": "rgb(14 14 44 / 10%) 0px 20px 36px -8px, rgb(0 0 0 / 5%) 0px 1px 1px", "border": "1px solid rgb(231, 227, 235)", "border-radius": "25px", "width": "100% !important", "max-height": "100vh", "z-index": "100", "max-width": "420px", "padding": "0px"})
+    $(".swal2-html-container").css("margin", "0px")
 }
 
 function contadorStart(){
     var startDate = new Date(Date.now())
-    var finalDate = new Date(Date.UTC(2022, 10,20,23, 59, 59))
+    var finalDate = new Date(Date.UTC(2022, 10,30,23, 59, 59))
     var days, hours, minutes, seconds,mili;
     var dateDiff;
     var $day = $('#daytime');
@@ -349,7 +381,117 @@ $(document).ready(() => {
         default:
             console.log(w)
     }
+
+    if(isConnected()){
+        var addr = localStorage.getItem("address")
+        if(!(localStorage.getItem("dark") == "true")){
+            $('nav button:nth-child(5)[onclick="connectWalletChamada()"]').attr("style", "display: flex; background: rgb(255, 255, 255); border: 1px solid rgb(224, 224, 224); color: rgb(51, 51, 51); flex-direction: row; flex-wrap: nowrap; align-items: center;")    
+        }else{
+            $('nav button:nth-child(5)[onclick="connectWalletChamada()"]').attr("style", "display: flex; background: var(--w); color: #fff; flex-direction: row; flex-wrap: nowrap; align-items: center;box-shadow: #181a1e 0px 2px 10px;border: 1px solid #bf3654")
+        }
+        $("#connectwn,div#Home.all article[a4] article div div button").css("display", "none")
+        $('nav button:nth-child(5)[onclick="connectWalletChamada()"]').html("<img src='https://avatars.dicebear.com/api/jdenticon/default.svg' style='margin-right:10px;height:100%'>"+addr.substring(0,7)+"..."+addr.substring(addr.length,addr.length-7))
+        $('nav button:nth-child(5)[onclick="connectWalletChamada()"]').attr("onselect","viewInfoAccount()")
+        $('nav button:nth-child(5)[onclick="connectWalletChamada()"]').attr("onclick","viewInfoAccount()")
+        $("#mudbutton").attr("style", "margin-left: 10px;border: 1px solid #e0e0e0;height: 50px;border-radius: 10px; color: #fff;background-color: #26a17b;border: none;padding: 0px 18px;font-size: 16px;")
+        $("#mudbutton").html("Invest")
+        $("#mudbutton").attr("onclick", "investPresale()")
+        $("#mudbutton").attr("onselect", "investPresale()")
+        $('.sc-hKFxyN.cummnL,.sc-hKFxyN.eiRTmt,div#Trading.all #esc #a1 div[s] button[onclick="connectWalletChamada()"]').text("Invest")
+        $(".sc-hKFxyN.cummnL").attr("onclick", "investFarms()")
+        $(".sc-hKFxyN.cummnL").attr("onselect", "investFarms()")
+        $(".sc-hKFxyN.eiRTmt").attr("onclick", "investPools()")
+        $(".sc-hKFxyN.eiRTmt").attr("onselect", "investPools()")
+        $('div#Trading.all #esc #a1 div[s] button[onclick="connectWalletChamada()"]').attr("onselect", "SwapInvest()")
+        $('div#Trading.all #esc #a1 div[s] button[onclick="connectWalletChamada()"]').attr("onclick", "SwapInvest()")
+    }
 })
+
+function SwapInvest(){
+    var v1 = $("#n1").val()
+    var v2 = $("#n2").val()
+    var asset1 = $("#n1").attr("asset")
+    var asset2 = $("#n2").attr("asset")
+    if(v1 == "" || v2 == "" || v1==0||v2==0){
+        Swal.fire(
+            "Error",
+            "Please fill in all required fields to Swap.",
+            "error"
+        )
+    }else{
+        if(typeof asset1 !== 'string' || typeof asset2 !== 'string'){
+            Swal.fire(
+                "Error",
+                "Choose an asset/token to swap",
+                "error"
+            )
+        }else{
+            //....
+        }
+    }
+}
+
+function convertAssetS(i){
+
+}
+
+function addliquidity(){
+    Swal.fire({
+        html: "",
+        showCancelButton:false,
+        showConfirmButton:false
+    })
+}
+
+function viewInfoAccount(){
+    if(localStorage.getItem("address") != undefined){
+        var accounts =[localStorage.getItem("address")]
+        var cont = `
+        <div class="menuAccount">
+        <button close onclick="Swal.close()" onselect="Swal.close()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+               <rect x="11.9497" y="0.635986" width="2" height="16" transform="rotate(45 11.9497 0.635986)" fill="#bf3654"/>
+               <rect x="13.3638" y="11.9497" width="2" height="16" transform="rotate(135 13.3638 11.9497)" fill="#bf3654"/>
+            </svg>
+        </button>
+        <div acc>
+            <div>
+                <img src="https://avatars.dicebear.com/api/jdenticon/default.svg" alt="">
+            </div>
+            <div>
+                <p>${accounts[0].substr(0,7)}...${accounts[0].substr(accounts[0].length-7,accounts[0].length)}</p>
+                <a href="?#Account" sytle="color:#bf3654">View Profile</a>
+            </div>
+        </div>
+        <div sald>
+            <div>
+                <img src="/img/eVESTX.png" alt="">
+            </div>
+            <div>
+                <p>Main Wallet</p>
+                <p>0.000000</p>
+            </div>
+        </div>
+        <button s onclick="signOut()" onselect="signOut()">
+            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" color="#333" height="16" width="16" xmlns="http://www.w3.org/2000/svg" style="color: #333"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
+            <p>Sign Out</p>
+        </button>
+            </div>`
+        Swal.fire({
+            html: cont,
+            showConfirmButton: false,
+            showCancelButton: false,
+        })
+    }
+}
+
+function signOut(){
+    localStorage.removeItem("address")
+    localStorage.removeItem("connected")
+    localStorage.removeItem("key")
+    localStorage.removeItem("login")
+    document.location.reload(true)
+}
 
 function move()
 {
@@ -484,10 +626,53 @@ function info00(i){
 }
 
 function connectWalletChamada(){
+    if(!isConnected()){
     if($("#connectWallet").css("display") == "none"){
         $("#connectWallet").css("display", 'flex')
     }else{
         $("#connectWallet").css("display", "none")
+    }
+    }
+}
+
+function isConnected(){
+    return typeof localStorage.getItem("connected") == 'string' || typeof localStorage.getItem("address") == 'string' || typeof localStorage.getItem("login") == 'string' || typeof localStorage.getItem("key") == 'string'
+}
+
+function getAddress(i){
+    if($(i).attr("placeholder") == "Seed Phrase"){
+        let addr = evestx.Seed.fromExistingPhrase($(i).val()).address
+        $("#convertedAddressSeed").text(addr.substring(0,10)+"..."+addr.substring(addr.length,addr.length-10))
+    }
+    // }else{
+
+    // }
+}
+
+function connectSeedOrPrivate(i){
+    // if($("#loginotherTecnologies").css("display") == "none"){
+    if($("#loginotherTecnologies").css("display") == "none" && i){
+        $("#otherTecnologies").css("display", "none")
+        $("#loginotherTecnologies").css("display", 'flex')
+    }else{
+        $("#loginotherTecnologies").css("display", "none")
+    }
+    if(i){
+        //seed phrase
+        $("#seedandkey").attr("placeholder", "Seed Phrase")
+    }
+    // }else{
+    //     //private key
+    //     $("#seedandkey").attr("placeholder", "Private Key")
+    // }
+}
+
+function otherTecnologiesChamada(){
+    if($("#otherTecnologies").css("display") == "none"){
+        connectWalletChamada()
+        $("#otherTecnologies").css("display", 'flex')
+    }else{
+        $("#otherTecnologies").css("display", "none")
     }
 }
 
@@ -700,6 +885,7 @@ function warning(t,k){
           })
     }else{
         connectWalletChamada()
+        // otherTecnologiesChamada()
         Swal.fire({
             showConfirmButton: false,
             html: "<p style='padding-bottom:10px'>All operations on the eVESTX Swap are unavailable until the start date of the eVESTX distribution. To learn more, contact the VesXHybrid team.</p>",
@@ -923,6 +1109,50 @@ function liveorfinished(k,l,b,c){
     }
 }
 
+function login(a){
+    switch(a){
+        case "seed":
+            let seed = $("#seedandkey").val()
+            let pass = $("#passW").val()
+            let confirmPass = $("#confirmPassW").val()
+            if(seed != "" || pass != "" || confirmPass != ""){
+                if(pass==confirmPass){
+                    $("#loginotherTecnologies").css("z-index", "999")
+                    const key = evestx.Seed.encryptSeedPhrase(seed,confirmPass)
+                    const address = evestx.Seed.fromExistingPhrase(seed).address
+                    localStorage.setItem("key",key)
+                    localStorage.setItem("address",address)
+                    localStorage.setItem("connected", true)
+                    localStorage.setItem("login", a)
+                    Swal.fire(
+                        "Success",
+                        "Connected successfully!",
+                        "success"
+                    ).then((a)=>{
+                        document.location.reload(true)
+                    })
+                }else{
+                    $("#loginotherTecnologies").css("z-index", "999")
+                    Swal.fire(
+                        "Error",
+                        "Passwords do not match!",
+                        "error"
+                    )   
+                }
+            }else{
+                $("#loginotherTecnologies").css("z-index", "999")
+                Swal.fire(
+                    "Error",
+                    "Please fill in all required fields to continue.",
+                    "error"
+                )
+            }
+        break;
+        default: 
+          console.log("invalid type")
+    }
+}
+
 function searchPoolOrFarm(i,t,sxz){
     $(sxz).css("display", "none")
     var k = fop[t]
@@ -1000,4 +1230,34 @@ function socialM(){
     }).then((result) => {
         console.log(result)
     })
+}
+
+function selectwithdrawAsset(){
+
+}
+
+function checkChain(i){
+    var addr = $(i).val()
+    if(isEthereum(addr)){
+        $("#eVESTX_WIEVVM div,#erc20_WI div,#bep20_WI div,#polygon_WI div").css("opacity", "1")
+        $("#eVESTX_WIEVVM,#erc20_WI,#bep20_WI,#polygon_WI").css("border-color", "#bf3654")
+        $("#eVESTX_WI div, #eVESTX_WI").css("opacity", "0.5")
+        $("#eVESTX_WI").css("border-color", "#e0e0e0")
+    }else if(isEVESTX(addr)){
+        $("#eVESTX_WIEVVM div,#erc20_WI div,#bep20_WI div,#polygon_WI div").css("opacity", "0.5")
+        $("#eVESTX_WIEVVM,#erc20_WI,#bep20_WI,#polygon_WI").css("border-color", "#e0e0e0")
+        $("#eVESTX_WI div, #eVESTX_WI").css("opacity", "1")
+        $("#eVESTX_WI").css("border-color", "#bf3654")
+    }else{
+        $("#eVESTX_WIEVVM div,#erc20_WI div,#bep20_WI div,#polygon_WI div,#eVESTX_WI div").css("opacity", "0.5")
+        $("#eVESTX_WIEVVM,#erc20_WI,#bep20_WI,#polygon_WI,#eVESTX_WI").css("border-color", "#e0e0e0")
+    }
+}
+
+function isEthereum(address){
+    return (address.length == 42 && address.substring(0,2)=="0x")
+}
+
+function isEVESTX(address){
+    return (address.length == 35 && (address.substring(0,2) == "7J" || address.substring(0,2) == "7H" || address.substring(0,2) == "7h"))
 }

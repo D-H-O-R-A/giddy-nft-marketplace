@@ -6892,6 +6892,18 @@
                 publicKey: keys.public
             };
         },
+        buildKeyPairFromBytes: function (seedBytes){
+            if (!seedBytes || typeof seedBytes !== 'object') {
+                throw new Error('Missing or invalid Uint32Array seed phrase');
+            }
+            var seedBytesF = Uint8Array.from(seedBytes);
+            var seedHash = buildSeedHash(seedBytesF);
+            var keys = axlsign_1.default.generateKeyPair(seedHash);
+            return {
+                privateKey: keys.private,
+                publicKey: keys.public
+            };
+        },
         isValidAddress: function (address) {
             if (!address || typeof address !== 'string') {
                 throw new Error('Missing or invalid address');
