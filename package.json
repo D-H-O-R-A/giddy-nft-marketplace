@@ -1,0 +1,34 @@
+{
+  "name": "giddy-nft-marketplace",
+  "version": "1.0.0",
+  "description": "NFT Marketplace Giddy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --max-http-header-size=3000000 index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/giddyCrypto/marketplace.git"
+  },
+  "keywords": [
+    "crypto",
+    "nft",
+    "marketplace"
+  ],
+  "author": "Diego H. O. R. Antunes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/giddyCrypto/marketplace/issues"
+  },
+  "homepage": "https://github.com/giddyCrypto/marketplace#readme",
+  "dependencies": {
+    "@moralisweb3/common-evm-utils": "^2.8.2",
+    "axios": "^1.2.1",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "http": "^0.0.1-security",
+    "moralis": "^2.8.2",
+    "moralis-v1": "^1.12.0"
+  }
+}
