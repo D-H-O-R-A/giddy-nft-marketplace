@@ -361,6 +361,8 @@
     },{"./libs/bignumber":7}],9:[function(require,module,exports){
     ;(function (globalObject) {
       'use strict';
+
+
     
     /*
      *      bignumber.js v7.0.1
@@ -3170,6 +3172,7 @@
     var Config_1 = require("./config/Config");
     var index_1 = require("./index");
     var dictionary_1 = require("./dictionary");
+
     var Seed = /** @class */ (function () {
         function Seed(phrase) {
             if (phrase.length < Config_1.config.get('minimalSeedLength')) {
@@ -3654,6 +3657,7 @@
     exports.MAINNET_BYTE = 139;
     exports.TESTNET_BYTE = 140;
     exports.ADDRESS_VERSION = 3;
+    exports.PRIVATE_ADDRESS_VERSION = 23;
     exports.ALIAS_VERSION = 2;
     exports.SET_SCRIPT_LANG_VERSION = 1;
     exports.TRANSFER_ATTACHMENT_BYTE_LIMIT = 140;
@@ -6922,6 +6926,18 @@
             }
             return true;
         },
+        toMetamaskChainId: function (chainId) {
+            if(!chainId || typeof chainId !== 'number') {
+                throw new Error('Missing or invalid Chain ID');
+            }
+            return '0x' + (chainId).toString(16);
+        },
+        toChainId: function (chainId) {
+            if(!chainId || typeof chainId !== 'string') {
+                throw new Error('Missing or invalid value');
+            }
+            return (chainId).charCodeAt(0);
+        },
         buildRawAddress: function (publicKeyBytes) {
             if (!publicKeyBytes || publicKeyBytes.length !== constants_1.PUBLIC_KEY_LENGTH || !(publicKeyBytes instanceof Uint8Array)) {
                 throw new Error('Missing or invalid public key');
@@ -6931,6 +6947,16 @@
             var rawAddress = concat_1.concatUint8Arrays(prefix, publicKeyHashPart);
             var addressHash = Uint8Array.from(hashChain(rawAddress).slice(0, 4));
             return base58_1.default.encode(concat_1.concatUint8Arrays(rawAddress, addressHash));
+        },
+        buildPrivateRawAddress: function (publicKeyBytes) {
+            if (!publicKeyBytes || publicKeyBytes.length !== constants_1.PUBLIC_KEY_LENGTH || !(publicKeyBytes instanceof Uint8Array)) {
+                throw new Error('Missing or invalid public key');
+            }
+            var prefix = Uint8Array.from([constants_1.PRIVATE_ADDRESS_VERSION, __1.config.getNetworkByte()]);
+            var publicKeyHashPart = Uint8Array.from(hashChain(publicKeyBytes).slice(0, 20));
+            var rawAddress = concat_1.concatUint8Arrays(prefix, publicKeyHashPart);
+            var addressHash = Uint8Array.from(hashChain(rawAddress).slice(0, 4));
+            return base58_1.default.encode(concat_1.concatUint8Arrays(rawAddress, addressHash)); 
         },
         encryptSeed: function (seed, password, encryptionRounds) {
             if (!seed || typeof seed !== 'string') {
@@ -15296,6 +15322,7 @@
     var constants = require("./constants");
     var config_1 = require("./config");
     var tools_1 = require("./tools");
+    var metamask = require("./evvm/metamask");
     var eVESTXAPI = /** @class */ (function () {
         function eVESTXAPI(initialConfiguration) {
             this.Seed = signature_generator_1.Seed;
@@ -15309,6 +15336,9 @@
                 Node: NodeAPI,
                 Matcher: MatcherAPI
             };
+            this.eVVM = {
+                metamask: metamask,
+            }
             if (this instanceof eVESTXAPI) {
                 this.config.clear();
                 this.config.set(initialConfiguration);
@@ -15331,8 +15361,10 @@
     exports.create = create;
     exports.MAINNET_CONFIG = constants.DEFAULT_MAINNET_CONFIG;
     exports.TESTNET_CONFIG = constants.DEFAULT_TESTNET_CONFIG;
+    exports.METAMASK_MAINNET_CONFIG = constants.DEFAULT_MAINNET_CONFIG_METAMASK
+    exports.METAMASK_TESTNET_CONFIG = constants.DEFAULT_TESTNET_CONFIG_METAMASK;
     
-    },{"./api/matcher/index":84,"./api/node/index":92,"./config":98,"./constants":99,"./tools":103,"./utils/request":105,"@waves/signature-generator":15}],84:[function(require,module,exports){
+    },{"./evvm/metamask":221,"./api/matcher/index":84,"./api/node/index":92,"./config":98,"./constants":99,"./tools":103,"./utils/request":105,"@waves/signature-generator":15}],84:[function(require,module,exports){
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var info_1 = require("./info");
@@ -16268,6 +16300,7 @@
     exports.TRANSFER_TX_NAME = "transfer" /* TRANSFER */;
     exports.REISSUE_TX_NAME = "reissue" /* REISSUE */;
     exports.BURN_TX_NAME = "burn" /* BURN */;
+    exports.BYTES_METAMASK = '0x';
     exports.EXCHANGE_TX_NAME = "exchange" /* EXCHANGE */;
     exports.LEASE_TX_NAME = "lease" /* LEASE */;
     exports.CANCEL_LEASING_TX_NAME = "cancelLeasing" /* CANCEL_LEASING */;
@@ -16294,6 +16327,20 @@
     };
     exports.DEFAULT_MAINNET_CONFIG = __assign({}, exports.DEFAULT_BASIC_CONFIG, { networkByte: exports.MAINNET_BYTE, nodeAddress: 'https://nodes.vestxhybrid.com', matcherAddress: 'https://matcher.vestxhybrid.com/matcher' });
     exports.DEFAULT_TESTNET_CONFIG = __assign({}, exports.DEFAULT_BASIC_CONFIG, { networkByte: exports.TESTNET_BYTE, nodeAddress: 'https://testnet1.vestxhybrid.com', matcherAddress: 'https://testnet1.vestxhybrid.com/matcher' });
+    exports.DEFAULT_MAINNET_CONFIG_METAMASK = {
+        chainId: exports.BYTES_METAMASK + (exports.MAINNET_BYTE).toString(16),
+        chainName: 'eVESTX Mainnet',
+        nativeCurrency: { name: 'eVESTX', symbol: 'eVESTX', decimals: 18 },
+        rpcUrls: ['https://nodes.vestxhybrid.com/eth'],
+        blockExplorerUrls: ['https://vxhexplorer.com/'],
+    };
+    exports.DEFAULT_TESTNET_CONFIG_METAMASK = {
+        chainId: exports.BYTES_METAMASK + (exports.TESTNET_BYTE).toString(16),
+        chainName: 'eVESTX Testnet',
+        nativeCurrency: { name: 'eVESTX', symbol: 'eVESTX', decimals: 18 },
+        rpcUrls: ['https://nodes-testnet.vestxhybrid.com/eth'],
+        blockExplorerUrls: ['https://vxhexplorer.com/testnet'],
+    };
     exports.EVESTX_V1_ISSUE_TX = {
         assetId: exports.EVESTX,
         decimals: 8,
@@ -16425,6 +16472,10 @@
         getAddressFromPublicKey: function (publicKey) {
             var publicKeyBytes = signature_generator_1.libs.base58.decode(publicKey);
             return signature_generator_1.utils.crypto.buildRawAddress(publicKeyBytes);
+        },
+        getPrivateAddressFromPublicKey: function (publicKey) {
+            var publicKeyBytes = signature_generator_1.libs.base58.decode(publicKey);
+            return signature_generator_1.utils.crypto.buildPrivateRawAddress(publicKeyBytes);
         },
         calculateTimeDiff: function (nodeTime, userTime) {
             return nodeTime - userTime;
@@ -16671,5 +16722,92 @@
         });
     };
     
-    },{"../api/node/transactions.x":95,"@waves/signature-generator":15}]},{},[83])(83)
+    },{"../api/node/transactions.x":95,"@waves/signature-generator":15}],221:[function(require, module,exports) {
+        //metamask
+        "use strict";
+
+        //@metamask/detect-provider
+        /**
+        * Returns a Promise that resolves to the value of window.ethereum if it is
+        * set within the given timeout, or null.
+        * The Promise will not reject, but an error will be thrown if invalid options
+        * are provided.
+        *
+        * @param options - Options bag.
+        * @param options.mustBeMetaMask - Whether to only look for MetaMask providers.
+        * Default: false
+        * @param options.silent - Whether to silence console errors. Does not affect
+        * thrown errors. Default: false
+        * @param options.timeout - Milliseconds to wait for 'ethereum#initialized' to
+        * be dispatched. Default: 3000
+        * @returns A Promise that resolves with the Provider if it is detected within
+        * given timeout, otherwise null.
+        */
+         function detectEthereumProvider({ mustBeMetaMask = false, silent = false, timeout = 3000, } = {}) {
+            _validateInputs();
+            let handled = false;
+            return new Promise((resolve) => {
+                if (window.ethereum) {
+                    handleEthereum();
+                }
+                else {
+                    window.addEventListener('ethereum#initialized', handleEthereum, { once: true });
+                    setTimeout(() => {
+                        handleEthereum();
+                    }, timeout);
+                }
+                function handleEthereum() {
+                    if (handled) {
+                        return;
+                    }
+                    handled = true;
+                    window.removeEventListener('ethereum#initialized', handleEthereum);
+                    const { ethereum } = window;
+                    if (ethereum && (!mustBeMetaMask || ethereum.isMetaMask)) {
+                        resolve(ethereum);
+                    }
+                    else {
+                        const message = mustBeMetaMask && ethereum
+                        ? 'Non-MetaMask window.ethereum detected.'
+                        : 'Unable to detect window.ethereum.';
+                    !silent && console.error('@metamask/detect-provider:', message);
+                    resolve(null);
+                }
+            }
+        });
+        function _validateInputs() {
+            if (typeof mustBeMetaMask !== 'boolean') {
+                throw new Error(`@metamask/detect-provider: Expected option 'mustBeMetaMask' to be a boolean.`);
+            }
+            if (typeof silent !== 'boolean') {
+                throw new Error(`@metamask/detect-provider: Expected option 'silent' to be a boolean.`);
+            }
+            if (typeof timeout !== 'number') {
+                throw new Error(`@metamask/detect-provider: Expected option 'timeout' to be a number.`);
+            }
+        }
+        }
+        exports.installed = function() {
+            return typeof window.ethereum !== 'undefined'
+        }
+        exports.state = async function () {
+            return (await detectEthereumProvider())._state
+        }
+        exports.chainId = async function (){
+            return (await detectEthereumProvider()).chainId
+        }
+        exports.request = async function(j) {
+            if (typeof j !== 'object') {
+                throw new Error(`Invalid Method request.`);
+            }
+            const provider = await detectEthereumProvider()
+            if (provider){
+                return await provider.request(j)
+            } else {
+                // if the provider is not detected, detectEthereumProvider resolves to null
+                throw new Error('Please install MetaMask!')
+            }
+        }
+
+    },{}]},{},[83])(83)
     });

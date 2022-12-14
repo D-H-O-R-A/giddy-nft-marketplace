@@ -16,6 +16,7 @@
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="/src/evestx/node.js"></script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/src/evestx/index.js"></script>
@@ -47,7 +48,7 @@
         </center>
     </noscript>
 </head>
-<body>
+<body onselectstart="return false">
 
     <!--light verison-->
 
@@ -189,7 +190,7 @@
                     </div>
                     <img src="/img/eVESTX.png" alt="">
                 </button>
-                <button class="popup__button popup__button_proceed" onclick="warning()" onselect="warning()">
+                <button class="popup__button popup__button_proceed" onclick="login('metamask')" onselect="login('metamask')">
                     <div>
                         Metamask
                     </div>
@@ -618,7 +619,7 @@
                             </div>
                             <div class="css-xy4zc9">
                                 <div class="css-1d3b7oz">eVESTX</div>
-                                <div class="css-16zkae7">Network: eVVM</div>
+                                <div class="css-16zkae7">Network: eVVMC</div>
                             </div>
                         </div>
                         <div style="border-color: #e0e0e0" cursor="pointer" class="css-1xd8nfj" id="erc20_WI">
@@ -2902,9 +2903,9 @@
             <article id="phasesIdoxs">
                 <div s style=" padding: 0px 20px;">
                     <h1 style="color:#bf3654;font-size: 32px;">Phases IDO</h1>
-                    <h3 style="color: #333;font-size: 22px;">Pre IDO 10/31/2022 - 12/05/2022</h3>
-                    <h4 style="color: #333;font-size: 18px;font-weight: 500;">The Pre IDO is the preparation stage for the start of pre-sales and distribution of eVESTX that will start at the end of the above counter. 12/31/2022 eVESTX will be distributed within 1 year after the end of the IDO.</h4>
-                    <h3 style="color: #333;font-size: 22px;">IDO 12/05/2022 - 12/31/2022</h3>
+                    <h3 style="color: #333;font-size: 22px;">Pre IDO 11/16/2022 - 12/16/2022</h3>
+                    <h4 style="color: #333;font-size: 18px;font-weight: 500;">The Pre IDO is the preparation stage for the start of pre-sales and distribution of eVESTX that will start at the end of the above counter. 01/16/2023 eVESTX will be distributed within 1 year after the end of the IDO.</h4>
+                    <h3 style="color: #333;font-size: 22px;">IDO 12/16/2022 - 01/16/2023</h3>
                     <h4 style="color: #333;font-size: 18px;font-weight: 500;">Hurry up to buy eVESTX with USDT, USDC, BUSD, BNB at a starting price of $0.0065 (USDT)</h4>
                 </div>
                 <div s style="padding:20px;">
@@ -3100,316 +3101,402 @@
                 <h1 style="    font-size: 36px;
                 color: #bf3654;">Our Roadmap</h1>
 
-                <div style="flex: 1;display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                            <span style="width: 3px; background: #bf3654; flex: 1;">
+<div style="flex: 1;display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+            <span style="width: 3px; background: #bf3654; flex: 1;">
 
-                            </span>
-                            <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
-                                .
-                            </span>
-                            <span style="width: 3px; background: #bf3654; flex: 1;">
+            </span>
+            <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
+                .
+            </span>
+            <span style="width: 3px; background: #bf3654; flex: 1;">
 
-                            </span>
-                        </div>
-                        <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
-                            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">November, 2021</h1>
-                            <h3 style="text-align: left; color: #333; font-size: 16px;">Organisation and Planning</h3>
-                        </div>
-                    </div>
-                </div>
-                
-                <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                            <span style="width: 3px; background: #bf3654; flex: 1;">
+            </span>
+        </div>
+        <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
+            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">November, 2021</h1>
+            <h3 style="text-align: left; color: #333; font-size: 16px;">Organisation and Planning</h3>
+        </div>
+    </div>
+</div>
 
-                            </span>
-                            <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
-                                .
-                            </span>
-                            <span style="width: 3px; background: #bf3654; flex: 1;">
+<div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+            <span style="width: 3px; background: #bf3654; flex: 1;">
 
-                            </span>
-                        </div>
-                        <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
-                            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">December, 2021</h1>
-                            <h3 style="text-align: left; color: #333; font-size: 16px;">Development of Project Website, Development of White paper, and Development of White paper DEX</h3>
-                        </div>
-                    </div>
-                </div>
+            </span>
+            <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
+                .
+            </span>
+            <span style="width: 3px; background: #bf3654; flex: 1;">
 
-                <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                            <span style="width: 3px; background: #bf3654; flex: 1;">
+            </span>
+        </div>
+        <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
+            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">December, 2021</h1>
+            <h3 style="text-align: left; color: #333; font-size: 16px;">Development of Project Website, Development of White paper, and Development of White paper DEX</h3>
+        </div>
+    </div>
+</div>
 
-                            </span>
-                            <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
-                                .
-                            </span>
-                            <span style="width: 3px; background: #bf3654; flex: 1;">
+<div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+            <span style="width: 3px; background: #bf3654; flex: 1;">
 
-                            </span>
-                        </div>
-                        <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
-                            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">January, 2022</h1>
-                            <h3 style="text-align: left; color: #333; font-size: 16px;">Development of VestXHybrid Blockchain</h3>
-                        </div>
-                    </div>
-                </div>
+            </span>
+            <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
+                .
+            </span>
+            <span style="width: 3px; background: #bf3654; flex: 1;">
 
-                <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                            <span style="width: 3px; background: #bf3654; flex: 1;">
+            </span>
+        </div>
+        <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
+            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">January, 2022</h1>
+            <h3 style="text-align: left; color: #333; font-size: 16px;">Development Planning of VestXHybrid Blockchain</h3>
+        </div>
+    </div>
+</div>
 
-                            </span>
-                            <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
-                                .
-                            </span>
-                            <span style="width: 3px; background: #bf3654; flex: 1;">
+<div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+            <span style="width: 3px; background: #bf3654; flex: 1;">
 
-                            </span>
-                        </div>
-                        <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
-                            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">February, 2022</h1>
-                            <h3 style="text-align: left; color: #333; font-size: 16px;">Mainchain Consensus Test and Revision</h3>
-                        </div>
-                    </div>
-                </div>
+            </span>
+            <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
+                .
+            </span>
+            <span style="width: 3px; background: #bf3654; flex: 1;">
 
-                <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                            <span style="width: 3px; background: #bf3654; flex: 1;">
+            </span>
+        </div>
+        <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
+            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">February, 2022</h1>
+            <pre style="text-align: left; color: #333; font-size: 16px;">
+Mainchain Core Design
+Mainchain Consensus Test and Revision
+Development of Sidechain
+Whitepaper v1
+Whitepaper DEX v1
+            </pre>
+        </div>
+    </div>
+</div>
 
-                            </span>
-                            <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
-                                .
-                            </span>
-                            <span style="width: 3px; background: #bf3654; flex: 1;">
+<div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+            <span style="width: 3px; background: #bf3654; flex: 1;">
 
-                            </span>
-                        </div>
-                        <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
-                            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">February, 2022</h1>
-                            <h3 style="text-align: left; color: #333; font-size: 16px;">Development of Sidechain</h3>
-                        </div>
-                    </div>
-                </div>
+            </span>
+            <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
+                .
+            </span>
+            <span style="width: 3px; background: #bf3654; flex: 1;">
 
-                <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                            <span style="width: 3px; background: #bf3654; flex: 1;">
+            </span>
+        </div>
+        <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
+            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">March, 2022</h1>
+            <h3 style="text-align: left; color: #333; font-size: 16px;">Sidechain and Mainchain Test Performance
+            </h3>
+        </div>
+    </div>
+</div>
 
-                            </span>
-                            <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
-                                .
-                            </span>
-                            <span style="width: 3px; background: #bf3654; flex: 1;">
+<div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+            <span style="width: 3px; background: #bf3654; flex: 1;">
 
-                            </span>
-                        </div>
-                        <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
-                            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">March, 2022</h1>
-                            <h3 style="text-align: left; color: #333; font-size: 16px;">Sidechain and Mainchain Test Performance
-                            </h3>
-                        </div>
-                    </div>
-                </div>
+            </span>
+            <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
+                .
+            </span>
+            <span style="width: 3px; background: #bf3654; flex: 1;">
 
-                <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                            <span style="width: 3px; background: #bf3654; flex: 1;">
+            </span>
+        </div>
+        <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
+            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">May, 2022</h1>
+            <h3 style="text-align: left; color: #333; font-size: 16px;">Sidechain Beta Version
+Mainchain core development redesign
+            </h3>
+        </div>
+    </div>
+</div>
 
-                            </span>
-                            <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
-                                .
-                            </span>
-                            <span style="width: 3px; background: #bf3654; flex: 1;">
+<div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+            <span style="width: 3px; background: #bf3654; flex: 1;">
 
-                            </span>
-                        </div>
-                        <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
-                            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">May, 2022</h1>
-                            <h3 style="text-align: left; color: #333; font-size: 16px;">Sidechain Beta Version
-                            </h3>
-                        </div>
-                    </div>
-                </div>
+            </span>
+            <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
+                .
+            </span>
+            <span style="width: 3px; background: #bf3654; flex: 1;">
 
-                <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                            <span style="width: 3px; background: #e0e0e0; flex: 1;">
+            </span>
+        </div>
+        <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
+            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">Jul, 2022</h1>
+            <pre style="text-align: left; color: #333; font-size: 16px;">Mainchain and Sidechain Development alpha version Completion</pre>
+        </div>
+    </div>
+</div>
 
-                            </span>
-                            <span style="background: #fff; border-radius: 50%; border: 4px solid #e0e0e0; width:27px;color: #fff">
-                                .
-                            </span>
-                            <span style="width: 3px; background: #e0e0e0; flex: 1;">
+<div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+            <span style="width: 3px; background: #bf3654; flex: 1;">
 
-                            </span>
-                        </div>
-                        <div style="flex: 1; border: 1px solid #e0e0e0; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
-                            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">Jul, 2022</h1>
-                            <pre style="text-align: left; color: #333; font-size: 16px;">Mainchain and Sidechain Development Completion</pre>
-                        </div>
-                    </div>
-                </div>
+            </span>
+            <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
+                .
+            </span>
+            <span style="width: 3px; background: #bf3654; flex: 1;">
 
-                <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                            <span style="width: 3px; background: #e0e0e0; flex: 1;">
+            </span>
+        </div>
+        <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
+            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">Jul, 2022</h1>
+            <pre style="text-align: left; color: #333; font-size: 16px;">Vote for switching sidechain to eVVMC (ethereum-vrp virtual machine 
+compatibility)</pre>
+        </div>
+    </div>
+</div>
 
-                            </span>
-                            <span style="background: #fff; border-radius: 50%; border: 4px solid #e0e0e0; width:27px;color: #fff">
-                                .
-                            </span>
-                            <span style="width: 3px; background: #e0e0e0; flex: 1;">
+<div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+            <span style="width: 3px; background: #bf3654; flex: 1;">
 
-                            </span>
-                        </div>
-                        <div style="flex: 1; border: 1px solid #e0e0e0; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
-                            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">Jul, 2022</h1>
-                            <pre style="text-align: left; color: #333; font-size: 16px;">Development of VestXHybrid Wallets
+            </span>
+            <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
+                .
+            </span>
+            <span style="width: 3px; background: #bf3654; flex: 1;">
 
-- Desktop Wallet (Window, Linux & MacOS)
-- Development of Mobile Android Wallet
-- Development of Browser Wallet Extention</pre>
-                        </div>
-                    </div>
-                </div>
+            </span>
+        </div>
+        <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
+            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">Jul, 2022</h1>
+            <pre style="text-align: left; color: #333; font-size: 16px;">eVVMC planning of development</pre>
+        </div>
+    </div>
+</div>
 
-                <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                            <span style="width: 3px; background: #e0e0e0; flex: 1;">
+<div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+            <span style="width: 3px; background: #bf3654; flex: 1;">
 
-                            </span>
-                            <span style="background: #fff; border-radius: 50%; border: 4px solid #e0e0e0; width:27px;color: #fff">
-                                .
-                            </span>
-                            <span style="width: 3px; background: #e0e0e0; flex: 1;">
+            </span>
+            <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
+                .
+            </span>
+            <span style="width: 3px; background: #bf3654; flex: 1;">
 
-                            </span>
-                        </div>
-                        <div style="flex: 1; border: 1px solid #e0e0e0; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
-                            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">Jul, 2022</h1>
-                            <pre style="text-align: left; color: #333; font-size: 16px;">
-Completion of VestXHybrid Decentralized Exchange
-Swap VestXCoin to eVESTX
-Airdrop
-Launch of VestXHybrid DEX
-                            </pre>
-                        </div>
-                    </div>
-                </div>
+            </span>
+        </div>
+        <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
+            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">Aug, 2022</h1>
+            <h3 style="text-align: left; color: #333; font-size: 16px;">Final implementation of eVVMC</h3>
+        </div>
+    </div>
+</div>
 
-                <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                            <span style="width: 3px; background: #e0e0e0; flex: 1;">
+<div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+            <span style="width: 3px; background: #bf3654; flex: 1;">
 
-                            </span>
-                            <span style="background: #fff; border-radius: 50%; border: 4px solid #e0e0e0; width:27px;color: #fff">
-                                .
-                            </span>
-                            <span style="width: 3px; background: #e0e0e0; flex: 1;">
+            </span>
+            <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
+                .
+            </span>
+            <span style="width: 3px; background: #bf3654; flex: 1;">
 
-                            </span>
-                        </div>
-                        <div style="flex: 1; border: 1px solid #e0e0e0; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
-                            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">2nd Quarter, 2022</h1>
-                            <h3 style="text-align: left; color: #333; font-size: 16px;">Development of a VestXHybrid NFT Marketplace</h3>
-                        </div>
-                    </div>
-                </div>
+            </span>
+        </div>
+        <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
+            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">Sep, 2022</h1>
+            <pre style="text-align: left; color: #333; font-size: 16px;">-Implementation and testing of the LPoH consensus
+-Tests on multi nodes
+-LPoH consensus validation test
+-Planning and development to bring compatibility with solidity
+-Review Protobuf structure
+-SDK development planning
+            </pre>
+        </div>
+    </div>
+</div>
 
-                <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                            <span style="width: 3px; background: #e0e0e0; flex: 1;">
+<div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+            <span style="width: 3px; background: #bf3654; flex: 1;">
 
-                            </span>
-                            <span style="background: #fff; border-radius: 50%; border: 4px solid #e0e0e0; width:27px;color: #fff">
-                                .
-                            </span>
-                            <span style="width: 3px; background: #e0e0e0; flex: 1;">
+            </span>
+            <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
+                .
+            </span>
+            <span style="width: 3px; background: #bf3654; flex: 1;">
 
-                            </span>
-                        </div>
-                        <div style="flex: 1; border: 1px solid #e0e0e0; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
-                            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">3rd Quarter, 2022</h1>
-                            <h3 style="text-align: left; color: #333; font-size: 16px;">Development of VestXHybrid Social Apps</h3>
-                        </div>
-                    </div>
-                </div>
+            </span>
+        </div>
+        <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
+            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">Oct, 2022</h1>
+            <pre style="text-align: left; color: #333; font-size: 16px;">-Revision of the LPoH consensus
+-Implementation of language for smart contract Bread
+-Anon encryption algorithm test
+-Test alpha version 1 of private/anonymous transactions
+-Tests to bring portability to solidity as another smart
+ contract language option
+-Golang crypto SDK
+            </pre>
+        </div>
+    </div>
+</div>
 
-                <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                            <span style="width: 3px; background: #e0e0e0; flex: 1;">
+<div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+            <span style="width: 3px; background: #bf3654; flex: 1;">
 
-                            </span>
-                            <span style="background: #fff; border-radius: 50%; border: 4px solid #e0e0e0; width:27px;color: #fff">
-                                .
-                            </span>
-                            <span style="width: 3px; background: #e0e0e0; flex: 1;">
+            </span>
+            <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
+                .
+            </span>
+            <span style="width: 3px; background: #bf3654; flex: 1;">
 
-                            </span>
-                        </div>
-                        <div style="flex: 1; border: 1px solid #e0e0e0; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
-                            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">4th Quarter, 2022</h1>
-                            <h3 style="text-align: left; color: #333; font-size: 16px;">Development of VestXHybrid Play2Earn Games</h3>
-                        </div>
-                    </div>
-                </div>
+            </span>
+        </div>
+        <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
+            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">Nov, 2022</h1>
+            <pre style="text-align: left; color: #333; font-size: 16px;">
+-Testing and reviewing private/anonymous transactions against
+ the LPoH consensus
+-Changed anon algorithm mode from zk-snarks to bulletproofs
+-Fixed wallet govrp encryption bugs
+-Implementation of vAddress
+-LPoH Consensus Review
+-Interaction in DEX layouts
+-Alpha version of javascript crypto SDK tests
+            </pre>
+        </div>
+    </div>
+</div>
 
-                <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                            <span style="width: 3px; background: #e0e0e0; flex: 1;">
+<div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+            <span style="width: 3px; background: #e0e0e0; flex: 1;">
 
-                            </span>
-                            <span style="background: #fff; border-radius: 50%; border: 4px solid #e0e0e0; width:27px;color: #fff">
-                                .
-                            </span>
-                            <span style="width: 3px; background: #e0e0e0; flex: 1;">
+            </span>
+            <span style="background: #fff; border-radius: 50%; border: 4px solid #e0e0e0; width:27px;color: #fff">
+                .
+            </span>
+            <span style="width: 3px; background: #e0e0e0; flex: 1;">
 
-                            </span>
-                        </div>
-                        <div style="flex: 1; border: 1px solid #e0e0e0; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
-                            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">1st Quarter, 2023</h1>
-                            <h3 style="text-align: left; color: #333; font-size: 16px;">VestXHybrid Skill Acquisition & Empowerment Platforms - Phase A</h3>
-                        </div>
-                    </div>
-                </div>
+            </span>
+        </div>
+        <div style="flex: 1; border: 1px solid #e0e0e0; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
+            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">Dez, 2022</h1>
+            <pre style="text-align: left; color: #333; font-size: 16px;">
+-Beta version of the chain being tested
+-Activation of validators
+-Genesis block creation
+-Creation and implementation of smart contracts
+-Official version of the LPoH consensus
+-Optimization of communication between validators and nodes
+-Official javascript sdk version
+-eVESTX Keeper
+-Blockchain implementation in DEX, explorer and IDE.
+-Chain official production version
+-IDO initialization
+        </pre>
+        </div>
+    </div>
+</div>
 
-                <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                            <span style="width: 3px; background: #e0e0e0; flex: 1;">
+<div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+            <span style="width: 3px; background: #e0e0e0; flex: 1;">
 
-                            </span>
-                            <span style="background: #fff; border-radius: 50%; border: 4px solid #e0e0e0; width:27px;color: #fff">
-                                .
-                            </span>
-                            <span style="width: 3px; background: #e0e0e0; flex: 1;">
+            </span>
+            <span style="background: #fff; border-radius: 50%; border: 4px solid #e0e0e0; width:27px;color: #fff">
+                .
+            </span>
+            <span style="width: 3px; background: #e0e0e0; flex: 1;">
 
-                            </span>
-                        </div>
-                        <div style="flex: 1; border: 1px solid #e0e0e0; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
-                            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">2nd Quarter, 2023</h1>
-                            <h3 style="text-align: left; color: #333; font-size: 16px;">VestXHybrid Skill Acquisition & Empowerment Platforms - Phase B</h3>
-                        </div>
-                    </div>
-                </div>
+            </span>
+        </div>
+        <div style="flex: 1; border: 1px solid #e0e0e0; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
+            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">Jan, 2023</h1>
+            <pre style="text-align: left; color: #333; font-size: 16px;">
+-Desktop and Mobile Wallets
+-Private/anonymous transactions in production mode
+-Full Docs page
+-Finalization of other SDKs
+-LPoH Consensus Optimization
+-Finalization of the IDO
+        </pre>
+        </div>
+    </div>
+</div>
+
+<div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+            <span style="width: 3px; background: #e0e0e0; flex: 1;">
+
+            </span>
+            <span style="background: #fff; border-radius: 50%; border: 4px solid #e0e0e0; width:27px;color: #fff">
+                .
+            </span>
+            <span style="width: 3px; background: #e0e0e0; flex: 1;">
+
+            </span>
+        </div>
+        <div style="flex: 1; border: 1px solid #e0e0e0; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
+            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">1st Quarter, 2023</h1>
+            <pre style="text-align: left; color: #333; font-size: 16px;">
+-eVESTX NFT Marketplace
+-Development of VestXHybrid Social Apps
+-Development of VestXHybrid Play2Earn Games
+-VestXHybrid Skill Acquisition & Empowerment Platform - Phase A
+        </pre>
+        </div>
+    </div>
+</div>
+<div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+    <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+        <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+            <span style="width: 3px; background: #e0e0e0; flex: 1;">
+
+            </span>
+            <span style="background: #fff; border-radius: 50%; border: 4px solid #e0e0e0; width:27px;color: #fff">
+                .
+            </span>
+            <span style="width: 3px; background: #e0e0e0; flex: 1;">
+
+            </span>
+        </div>
+        <div style="flex: 1; border: 1px solid #e0e0e0; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #e0e0e0;">
+            <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;">2st Quarter, 2023</h1>
+            <pre style="text-align: left; color: #333; font-size: 16px;">
+-VestXHybrid Skill Acquisition & Empowerment Platform - Phase B
+        </pre>
+        </div>
+    </div>
+</div>
 
                 <!-- <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
                     <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
@@ -3576,12 +3663,12 @@ Launch of VestXHybrid DEX
                             <div style="display: flex; width: 300px; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between; margin-right: 50px;">
                                 <p>Start</p>
                                 <div style="flex: 1; border: 0px; border-bottom: 3px solid #333333; border-style: dotted; height: 19px; margin: 0px 5px;"></div>
-                                <p>12/05/2022</p>
+                                <p>12/16/2022</p>
                             </div>
                             <div style="display: flex; width: 300px; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between; margin-right: 50px;">
                                 <p>End</p>
                                 <div style="flex: 1; border: 0px; border-bottom: 3px solid #333333; border-style: dotted; height: 19px; margin: 0px 5px;"></div>
-                                <p>12/31/2022</p>
+                                <p>01/16/2023</p>
                             </div>
                         </div>
                     </div>
@@ -3607,12 +3694,12 @@ Launch of VestXHybrid DEX
                             <div  style="display: flex; width: 300px; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between; margin-right: 50px;">
                                 <p>Start</p>
                                 <div style="flex: 1; border: 0px; border-bottom: 3px solid #333333; border-style: dotted; height: 19px; margin: 0px 5px;"></div>
-                                <p>08/31/2022</p>
+                                <p>01/16/2023</p>
                             </div>
                             <div style="display: flex; width: 300px; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between; margin-right: 50px;">
                                 <p>End</p>
                                 <div style="flex: 1; border: 0px; border-bottom: 3px solid #333333; border-style: dotted; height: 19px; margin: 0px 5px;"></div>
-                                <p>08/31/2023</p>
+                                <p>01/16/2024</p>
                             </div>
                         </div>
                     </div>
@@ -3777,6 +3864,8 @@ Launch of VestXHybrid DEX
                 <li><a style="color: rgb(244, 238, 255); font-size: 16px; line-height: 1.5;display: flex; -webkit-box-align: center; align-items: center; width: fit-content;font-size: 18px;color: #333;" href="#Earn" onclick="ach(this,'Earn', 'farms')">Farms</a></li>
                 <li><a style="color: rgb(244, 238, 255); font-size: 16px; line-height: 1.5;display: flex; -webkit-box-align: center; align-items: center; width: fit-content;font-size: 18px;color: #333;" href="#Account" onclick="ach(this,'Account', 'deposit_withdraw')" onselect="ach(this,'Account', 'deposit_withdraw')">Bridges</a></li>
                 <li><a style="color: rgb(244, 238, 255); font-size: 16px; line-height: 1.5;display: flex; -webkit-box-align: center; align-items: center; width: fit-content;font-size: 18px;color: #333;" onclick="createAddress()" onselect="createAddress()">Create an Address</a></li>
+                <li><a style="color: rgb(244, 238, 255); font-size: 16px; line-height: 1.5;display: flex; -webkit-box-align: center; align-items: center; width: fit-content;font-size: 18px;color: #333;" onclick="convertAddress()" onselect="convertAddress()">Convert Address to eVVMC</a></li>
+
             </ul>
         </div>
     </footer>
@@ -3941,7 +4030,7 @@ Launch of VestXHybrid DEX
                         </div>
                         <img src="/img/eVESTX.png" alt="">
                     </button>
-                    <button style="box-shadow: 5px 5px 5px 0px #181a1e;" class="popup__button popup__button_proceed" onclick="warning()" onselect="warning()">
+                    <button style="box-shadow: 5px 5px 5px 0px #181a1e;" class="popup__button popup__button_proceed" onclick="login('metamask')" onselect="login('metamask')">
                         <div style="color: #fff">
                             Metamask
                         </div>
@@ -4370,7 +4459,7 @@ Launch of VestXHybrid DEX
                                 </div>
                                 <div class="css-xy4zc9">
                                     <div class="css-1d3b7oz">eVESTX</div>
-                                    <div class="css-16zkae7">Network: eVVM</div>
+                                    <div class="css-16zkae7">Network: eVVMC</div>
                                 </div>
                             </div>
                             <div style="border-color: #e0e0e0" cursor="pointer" class="css-1xd8nfj">
@@ -6690,9 +6779,9 @@ Launch of VestXHybrid DEX
                 <article id="phasesIdoxs">
                     <div s style=" padding: 0px 20px;">
                         <h1 style="color:#bf3654;font-size: 32px;">Phases IDO</h1>
-                        <h3 style="color: #fff;font-size: 22px;">Pre IDO 10/31/2022 - 12/05/2022</h3>
-                        <h4 style="color: #fff;font-size: 18px;font-weight: 500;">The Pre IDO is the preparation stage for the start of pre-sales and distribution of eVESTX that will start at the end of the above counter. 12/31/2022 eVESTX will be distributed within 1 year after the end of the IDO.</h4>
-                        <h3 style="color: #fff;font-size: 22px;">IDO 12/05/2022 - 12/31/2022</h3>
+                        <h3 style="color: #fff;font-size: 22px;">Pre IDO 11/16/2022 - 12/16/2022</h3>
+                        <h4 style="color: #fff;font-size: 18px;font-weight: 500;">The Pre IDO is the preparation stage for the start of pre-sales and distribution of eVESTX that will start at the end of the above counter. 01/16/2023 eVESTX will be distributed within 1 year after the end of the IDO.</h4>
+                        <h3 style="color: #fff;font-size: 22px;">IDO 12/16/2022 - 01/16/2023</h3>
                         <h4 style="color: #fff;font-size: 18px;font-weight: 500;">Hurry up to buy eVESTX with USDT, USDC, BUSD, BNB at a starting price of $0.0065 (USDT)</h4>
                     </div>
                     <div s style="padding:20px;">
@@ -6888,316 +6977,402 @@ Launch of VestXHybrid DEX
                     <h1 style="    font-size: 36px;
                     color: #bf3654;">Our Roadmap</h1>
     
-                    <div style="flex: 1;display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                                <span style="width: 3px; background: #bf3654; flex: 1;">
+    <div style="flex: 1;display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+                <span style="width: 3px; background: #bf3654; flex: 1;">
+
+                </span>
+                <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
+                    .
+                </span>
+                <span style="width: 3px; background: #bf3654; flex: 1;">
+
+                </span>
+            </div>
+            <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: 0px;">
+                <h1 style="color:#bf3654;text-align: left; font-size: 22px; margin-bottom: 10px;">November, 2021</h1>
+                <h3 style="text-align: left; color: #fff; font-size: 16px;">Organisation and Planning</h3>
+            </div>
+        </div>
+    </div>
     
-                                </span>
-                                <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
-                                    .
-                                </span>
-                                <span style="width: 3px; background: #bf3654; flex: 1;">
-    
-                                </span>
-                            </div>
-                            <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #181a1e;">
-                                <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;color: #bf3654">November, 2021</h1>
-                                <h3 style="text-align: left; color: #fff; font-size: 16px;">Organisation and Planning</h3>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                                <span style="width: 3px; background: #bf3654; flex: 1;">
-    
-                                </span>
-                                <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
-                                    .
-                                </span>
-                                <span style="width: 3px; background: #bf3654; flex: 1;">
-    
-                                </span>
-                            </div>
-                            <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #181a1e;">
-                                <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;color: #bf3654">December, 2021</h1>
-                                <h3 style="text-align: left; color: #fff; font-size: 16px;">Development of Project Website, Development of White paper, and Development of White paper DEX</h3>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                                <span style="width: 3px; background: #bf3654; flex: 1;">
-    
-                                </span>
-                                <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
-                                    .
-                                </span>
-                                <span style="width: 3px; background: #bf3654; flex: 1;">
-    
-                                </span>
-                            </div>
-                            <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #181a1e;">
-                                <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;color: #bf3654">January, 2022</h1>
-                                <h3 style="text-align: left; color: #fff; font-size: 16px;">Development of VestXHybrid Blockchain</h3>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                                <span style="width: 3px; background: #bf3654; flex: 1;">
-    
-                                </span>
-                                <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
-                                    .
-                                </span>
-                                <span style="width: 3px; background: #bf3654; flex: 1;">
-    
-                                </span>
-                            </div>
-                            <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #181a1e;">
-                                <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;color: #bf3654">February, 2022</h1>
-                                <h3 style="text-align: left; color: #fff; font-size: 16px;">Mainchain Consensus Test and Revision</h3>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                                <span style="width: 3px; background: #bf3654; flex: 1;">
-    
-                                </span>
-                                <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
-                                    .
-                                </span>
-                                <span style="width: 3px; background: #bf3654; flex: 1;">
-    
-                                </span>
-                            </div>
-                            <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #181a1e;">
-                                <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;color: #bf3654">February, 2022</h1>
-                                <h3 style="text-align: left; color: #fff; font-size: 16px;">Development of Sidechain</h3>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                                <span style="width: 3px; background: #bf3654; flex: 1;">
-    
-                                </span>
-                                <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
-                                    .
-                                </span>
-                                <span style="width: 3px; background: #bf3654; flex: 1;">
-    
-                                </span>
-                            </div>
-                            <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #181a1e;">
-                                <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;color: #bf3654">March, 2022</h1>
-                                <h3 style="text-align: left; color: #fff; font-size: 16px;">Sidechain and Mainchain Test Performance
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                                <span style="width: 3px; background: #bf3654; flex: 1;">
-    
-                                </span>
-                                <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
-                                    .
-                                </span>
-                                <span style="width: 3px; background: #bf3654; flex: 1;">
-    
-                                </span>
-                            </div>
-                            <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #181a1e;">
-                                <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;color: #bf3654">May, 2022</h1>
-                                <h3 style="text-align: left; color: #fff; font-size: 16px;">Sidechain Beta Version
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                                <span style="width: 3px; background: #e0e0e0; flex: 1;">
-    
-                                </span>
-                                <span style="background: #fff; border-radius: 50%; border: 4px solid #e0e0e0; width:27px;color: #fff">
-                                    .
-                                </span>
-                                <span style="width: 3px; background: #e0e0e0; flex: 1;">
-    
-                                </span>
-                            </div>
-                            <div style="flex: 1; border: 1px solid #e0e0e0; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #181a1e;">
-                                <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;color: #bf3654">Jul, 2022</h1>
-                                <pre style="text-align: left; color: #fff; font-size: 16px;">Mainchain and Sidechain Development Completion</pre>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                                <span style="width: 3px; background: #e0e0e0; flex: 1;">
-    
-                                </span>
-                                <span style="background: #fff; border-radius: 50%; border: 4px solid #e0e0e0; width:27px;color: #fff">
-                                    .
-                                </span>
-                                <span style="width: 3px; background: #e0e0e0; flex: 1;">
-    
-                                </span>
-                            </div>
-                            <div style="flex: 1; border: 1px solid #e0e0e0; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #181a1e;">
-                                <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;color: #bf3654">Jul, 2022</h1>
-                                <pre style="text-align: left; color: #fff; font-size: 16px;">Development of VestXHybrid Wallets
-    
-    - Desktop Wallet (Window, Linux & MacOS)
-    - Development of Mobile Android Wallet
-    - Development of Browser Wallet Extention</pre>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                                <span style="width: 3px; background: #e0e0e0; flex: 1;">
-    
-                                </span>
-                                <span style="background: #fff; border-radius: 50%; border: 4px solid #e0e0e0; width:27px;color: #fff">
-                                    .
-                                </span>
-                                <span style="width: 3px; background: #e0e0e0; flex: 1;">
-    
-                                </span>
-                            </div>
-                            <div style="flex: 1; border: 1px solid #e0e0e0; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #181a1e;">
-                                <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;color: #bf3654">Jul, 2022</h1>
-                                <pre style="text-align: left; color: #fff; font-size: 16px;">
-    Completion of VestXHybrid Decentralized Exchange
-    Swap VestXCoin to eVESTX
-    Airdrop
-    Launch of VestXHybrid DEX
-                                </pre>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                                <span style="width: 3px; background: #e0e0e0; flex: 1;">
-    
-                                </span>
-                                <span style="background: #fff; border-radius: 50%; border: 4px solid #e0e0e0; width:27px;color: #fff">
-                                    .
-                                </span>
-                                <span style="width: 3px; background: #e0e0e0; flex: 1;">
-    
-                                </span>
-                            </div>
-                            <div style="flex: 1; border: 1px solid #e0e0e0; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #181a1e;">
-                                <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;color: #bf3654">2nd Quarter, 2022</h1>
-                                <h3 style="text-align: left; color: #fff; font-size: 16px;">Development of a VestXHybrid NFT Marketplace</h3>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                                <span style="width: 3px; background: #e0e0e0; flex: 1;">
-    
-                                </span>
-                                <span style="background: #fff; border-radius: 50%; border: 4px solid #e0e0e0; width:27px;color: #fff">
-                                    .
-                                </span>
-                                <span style="width: 3px; background: #e0e0e0; flex: 1;">
-    
-                                </span>
-                            </div>
-                            <div style="flex: 1; border: 1px solid #e0e0e0; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #181a1e;">
-                                <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;color: #bf3654">3rd Quarter, 2022</h1>
-                                <h3 style="text-align: left; color: #fff; font-size: 16px;">Development of VestXHybrid Social Apps</h3>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                                <span style="width: 3px; background: #e0e0e0; flex: 1;">
-    
-                                </span>
-                                <span style="background: #fff; border-radius: 50%; border: 4px solid #e0e0e0; width:27px;color: #fff">
-                                    .
-                                </span>
-                                <span style="width: 3px; background: #e0e0e0; flex: 1;">
-    
-                                </span>
-                            </div>
-                            <div style="flex: 1; border: 1px solid #e0e0e0; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #181a1e;">
-                                <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;color: #bf3654">4th Quarter, 2022</h1>
-                                <h3 style="text-align: left; color: #fff; font-size: 16px;">Development of VestXHybrid Play2Earn Games</h3>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                                <span style="width: 3px; background: #e0e0e0; flex: 1;">
-    
-                                </span>
-                                <span style="background: #fff; border-radius: 50%; border: 4px solid #e0e0e0; width:27px;color: #fff">
-                                    .
-                                </span>
-                                <span style="width: 3px; background: #e0e0e0; flex: 1;">
-    
-                                </span>
-                            </div>
-                            <div style="flex: 1; border: 1px solid #e0e0e0; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #181a1e;">
-                                <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;color: #bf3654">1st Quarter, 2023</h1>
-                                <h3 style="text-align: left; color: #fff; font-size: 16px;">VestXHybrid Skill Acquisition & Empowerment Platforms - Phase A</h3>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
-                        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
-                            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
-                                <span style="width: 3px; background: #e0e0e0; flex: 1;">
-    
-                                </span>
-                                <span style="background: #fff; border-radius: 50%; border: 4px solid #e0e0e0; width:27px;color: #fff">
-                                    .
-                                </span>
-                                <span style="width: 3px; background: #e0e0e0; flex: 1;">
-    
-                                </span>
-                            </div>
-                            <div style="flex: 1; border: 1px solid #e0e0e0; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: -4px 4px 15px 0px #181a1e;">
-                                <h1 style="text-align: left; font-size: 22px; margin-bottom: 10px;color: #bf3654">2nd Quarter, 2023</h1>
-                                <h3 style="text-align: left; color: #fff; font-size: 16px;">VestXHybrid Skill Acquisition & Empowerment Platforms - Phase B</h3>
-                            </div>
-                        </div>
-                    </div>
+    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+                <span style="width: 3px; background: #bf3654; flex: 1;">
+
+                </span>
+                <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
+                    .
+                </span>
+                <span style="width: 3px; background: #bf3654; flex: 1;">
+
+                </span>
+            </div>
+            <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: 0px;">
+                <h1 style="color:#bf3654;text-align: left; font-size: 22px; margin-bottom: 10px;">December, 2021</h1>
+                <h3 style="text-align: left; color: #fff; font-size: 16px;">Development of Project Website, Development of White paper, and Development of White paper DEX</h3>
+            </div>
+        </div>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+                <span style="width: 3px; background: #bf3654; flex: 1;">
+
+                </span>
+                <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
+                    .
+                </span>
+                <span style="width: 3px; background: #bf3654; flex: 1;">
+
+                </span>
+            </div>
+            <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: 0px;">
+                <h1 style="color:#bf3654;text-align: left; font-size: 22px; margin-bottom: 10px;">January, 2022</h1>
+                <h3 style="text-align: left; color: #fff; font-size: 16px;">Development Planning of VestXHybrid Blockchain</h3>
+            </div>
+        </div>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+                <span style="width: 3px; background: #bf3654; flex: 1;">
+
+                </span>
+                <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
+                    .
+                </span>
+                <span style="width: 3px; background: #bf3654; flex: 1;">
+
+                </span>
+            </div>
+            <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: 0px;">
+                <h1 style="color:#bf3654;text-align: left; font-size: 22px; margin-bottom: 10px;">February, 2022</h1>
+                <pre style="text-align: left; color: #fff; font-size: 16px;">
+Mainchain Core Design
+Mainchain Consensus Test and Revision
+Development of Sidechain
+Whitepaper v1
+Whitepaper DEX v1
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+                <span style="width: 3px; background: #bf3654; flex: 1;">
+
+                </span>
+                <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
+                    .
+                </span>
+                <span style="width: 3px; background: #bf3654; flex: 1;">
+
+                </span>
+            </div>
+            <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: 0px;">
+                <h1 style="color:#bf3654;text-align: left; font-size: 22px; margin-bottom: 10px;">March, 2022</h1>
+                <h3 style="text-align: left; color: #fff; font-size: 16px;">Sidechain and Mainchain Test Performance
+                </h3>
+            </div>
+        </div>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+                <span style="width: 3px; background: #bf3654; flex: 1;">
+
+                </span>
+                <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
+                    .
+                </span>
+                <span style="width: 3px; background: #bf3654; flex: 1;">
+
+                </span>
+            </div>
+            <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: 0px;">
+                <h1 style="color:#bf3654;text-align: left; font-size: 22px; margin-bottom: 10px;">May, 2022</h1>
+                <h3 style="text-align: left; color: #fff; font-size: 16px;">Sidechain Beta Version
+Mainchain core development redesign
+                </h3>
+            </div>
+        </div>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+                <span style="width: 3px; background: #bf3654; flex: 1;">
+
+                </span>
+                <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
+                    .
+                </span>
+                <span style="width: 3px; background: #bf3654; flex: 1;">
+
+                </span>
+            </div>
+            <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: 0px;">
+                <h1 style="color:#bf3654;text-align: left; font-size: 22px; margin-bottom: 10px;">Jul, 2022</h1>
+                <pre style="text-align: left; color: #fff; font-size: 16px;">Mainchain and Sidechain Development alpha version Completion</pre>
+            </div>
+        </div>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+                <span style="width: 3px; background: #bf3654; flex: 1;">
+
+                </span>
+                <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
+                    .
+                </span>
+                <span style="width: 3px; background: #bf3654; flex: 1;">
+
+                </span>
+            </div>
+            <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: 0px;">
+                <h1 style="color:#bf3654;text-align: left; font-size: 22px; margin-bottom: 10px;">Jul, 2022</h1>
+                <pre style="text-align: left; color: #fff; font-size: 16px;">Vote for switching sidechain to eVVMC (ethereum-vrp virtual machine 
+compatibility)</pre>
+            </div>
+        </div>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+                <span style="width: 3px; background: #bf3654; flex: 1;">
+
+                </span>
+                <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
+                    .
+                </span>
+                <span style="width: 3px; background: #bf3654; flex: 1;">
+
+                </span>
+            </div>
+            <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: 0px;">
+                <h1 style="color:#bf3654;text-align: left; font-size: 22px; margin-bottom: 10px;">Jul, 2022</h1>
+                <pre style="text-align: left; color: #fff; font-size: 16px;">eVVMC planning of development</pre>
+            </div>
+        </div>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+                <span style="width: 3px; background: #bf3654; flex: 1;">
+
+                </span>
+                <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
+                    .
+                </span>
+                <span style="width: 3px; background: #bf3654; flex: 1;">
+
+                </span>
+            </div>
+            <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: 0px;">
+                <h1 style="color:#bf3654;text-align: left; font-size: 22px; margin-bottom: 10px;">Aug, 2022</h1>
+                <h3 style="text-align: left; color: #fff; font-size: 16px;">Final implementation of eVVMC</h3>
+            </div>
+        </div>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+                <span style="width: 3px; background: #bf3654; flex: 1;">
+
+                </span>
+                <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
+                    .
+                </span>
+                <span style="width: 3px; background: #bf3654; flex: 1;">
+
+                </span>
+            </div>
+            <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: 0px;">
+                <h1 style="color:#bf3654;text-align: left; font-size: 22px; margin-bottom: 10px;">Sep, 2022</h1>
+                <pre style="text-align: left; color: #fff; font-size: 16px;">-Implementation and testing of the LPoH consensus
+-Tests on multi nodes
+-LPoH consensus validation test
+-Planning and development to bring compatibility with solidity
+-Review Protobuf structure
+-SDK development planning
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+                <span style="width: 3px; background: #bf3654; flex: 1;">
+
+                </span>
+                <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
+                    .
+                </span>
+                <span style="width: 3px; background: #bf3654; flex: 1;">
+
+                </span>
+            </div>
+            <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: 0px;">
+                <h1 style="color:#bf3654;text-align: left; font-size: 22px; margin-bottom: 10px;">Oct, 2022</h1>
+                <pre style="text-align: left; color: #fff; font-size: 16px;">-Revision of the LPoH consensus
+-Implementation of language for smart contract Bread
+-Anon encryption algorithm test
+-Test alpha version 1 of private/anonymous transactions
+-Tests to bring portability to solidity as another smart contract 
+language option
+-Golang crypto SDK
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+                <span style="width: 3px; background: #bf3654; flex: 1;">
+
+                </span>
+                <span style="background: #fff; border-radius: 50%; border: 4px solid #bf3654; width:27px;color: #fff">
+                    .
+                </span>
+                <span style="width: 3px; background: #bf3654; flex: 1;">
+
+                </span>
+            </div>
+            <div style="flex: 1; border: 1px solid #bf3654; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: 0px;">
+                <h1 style="color:#bf3654;text-align: left; font-size: 22px; margin-bottom: 10px;">Nov, 2022</h1>
+                <pre style="text-align: left; color: #fff; font-size: 16px;">
+-Testing and reviewing private/anonymous transactions 
+against the LPoH consensus
+-Changed anon algorithm mode from zk-snarks to bulletproofs
+-Fixed wallet govrp encryption bugs
+-Implementation of vAddress
+-LPoH Consensus Review
+-Interaction in DEX layouts
+-Alpha version of javascript crypto SDK tests
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+                <span style="width: 3px; background: #e0e0e0; flex: 1;">
+
+                </span>
+                <span style="background: #fff; border-radius: 50%; border: 4px solid #e0e0e0; width:27px;color: #fff">
+                    .
+                </span>
+                <span style="width: 3px; background: #e0e0e0; flex: 1;">
+
+                </span>
+            </div>
+            <div style="flex: 1; border: 1px solid #e0e0e0; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: 0px;">
+                <h1 style="color:#bf3654;text-align: left; font-size: 22px; margin-bottom: 10px;">Dez, 2022</h1>
+                <pre style="text-align: left; color: #fff; font-size: 16px;">
+-Beta version of the chain being tested
+-Activation of validators
+-Genesis block creation
+-Creation and implementation of smart contracts
+-Official version of the LPoH consensus
+-Optimization of communication between validators and nodes
+-Official javascript sdk version
+-eVESTX Keeper
+-Blockchain implementation in DEX, explorer and IDE.
+-Chain official production version
+-IDO initialization
+            </pre>
+            </div>
+        </div>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+                <span style="width: 3px; background: #e0e0e0; flex: 1;">
+
+                </span>
+                <span style="background: #fff; border-radius: 50%; border: 4px solid #e0e0e0; width:27px;color: #fff">
+                    .
+                </span>
+                <span style="width: 3px; background: #e0e0e0; flex: 1;">
+
+                </span>
+            </div>
+            <div style="flex: 1; border: 1px solid #e0e0e0; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: 0px;">
+                <h1 style="color:#bf3654;text-align: left; font-size: 22px; margin-bottom: 10px;">Jan, 2023</h1>
+                <pre style="text-align: left; color: #fff; font-size: 16px;">
+-Desktop and Mobile Wallets
+-Private/anonymous transactions in production mode
+-Full Docs page
+-Finalization of other SDKs
+-LPoH Consensus Optimization
+-Finalization of the IDO
+            </pre>
+            </div>
+        </div>
+    </div>
+
+    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+                <span style="width: 3px; background: #e0e0e0; flex: 1;">
+
+                </span>
+                <span style="background: #fff; border-radius: 50%; border: 4px solid #e0e0e0; width:27px;color: #fff">
+                    .
+                </span>
+                <span style="width: 3px; background: #e0e0e0; flex: 1;">
+
+                </span>
+            </div>
+            <div style="flex: 1; border: 1px solid #e0e0e0; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: 0px;">
+                <h1 style="color:#bf3654;text-align: left; font-size: 22px; margin-bottom: 10px;">1st Quarter, 2023</h1>
+                <pre style="text-align: left; color: #fff; font-size: 16px;">
+-eVESTX NFT Marketplace
+-Development of VestXHybrid Social Apps
+-Development of VestXHybrid Play2Earn Games
+-VestXHybrid Skill Acquisition & Empowerment Platform - Phase A
+            </pre>
+            </div>
+        </div>
+    </div>
+    <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
+        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
+            <div style="display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; justify-content: center; width: 45px;">
+                <span style="width: 3px; background: #e0e0e0; flex: 1;">
+
+                </span>
+                <span style="background: #fff; border-radius: 50%; border: 4px solid #e0e0e0; width:27px;color: #fff">
+                    .
+                </span>
+                <span style="width: 3px; background: #e0e0e0; flex: 1;">
+
+                </span>
+            </div>
+            <div style="flex: 1; border: 1px solid #e0e0e0; padding: 20px; border-radius: 20px;margin: 20px 0px;box-shadow: 0px;">
+                <h1 style="color:#bf3654;text-align: left; font-size: 22px; margin-bottom: 10px;">2st Quarter, 2023</h1>
+                <pre style="text-align: left; color: #fff; font-size: 16px;">
+-VestXHybrid Skill Acquisition & Empowerment Platform - Phase B
+            </pre>
+            </div>
+        </div>
+    </div>
     
                     <!-- <div style="flex: 1; display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 0px; width: 100%;">
                         <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: stretch; justify-content: center; width: 100%;">
@@ -7369,7 +7544,7 @@ Launch of VestXHybrid DEX
                                 <div style="display: flex; width: 300px; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between; margin-right: 50px;">
                                     <p style="color: #fff">End</p>
                                     <div style="flex: 1; border: 0px; border-bottom: 3px solid #fff; border-style: dotted; height: 19px; margin: 0px 5px;"></div>
-                                    <p style="color: #fff">08/31/2022</p>
+                                    <p style="color: #fff">01/16/2023</p>
                                 </div>
                             </div>
                         </div>
@@ -7395,12 +7570,12 @@ Launch of VestXHybrid DEX
                                 <div  style="display: flex; width: 300px; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between; margin-right: 50px;">
                                     <p style="color: #fff">Start</p>
                                     <div style="flex: 1; border: 0px; border-bottom: 3px solid #fff; border-style: dotted; height: 19px; margin: 0px 5px;"></div>
-                                    <p style="color: #fff">08/31/2022</p>
+                                    <p style="color: #fff">01/16/2023</p>
                                 </div>
                                 <div style="display: flex; width: 300px; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: space-between; margin-right: 50px;">
                                     <p style="color: #fff">End</p>
                                     <div style="flex: 1; border: 0px; border-bottom: 3px solid #fff; border-style: dotted; height: 19px; margin: 0px 5px;"></div>
-                                    <p style="color: #fff">08/31/2023</p>
+                                    <p style="color: #fff">01/16/2024</p>
                                 </div>
                             </div>
                         </div>
@@ -7565,6 +7740,7 @@ Launch of VestXHybrid DEX
                     <li><a style="color: rgb(244, 238, 255); font-size: 16px; line-height: 1.5;display: flex; -webkit-box-align: center; align-items: center; width: fit-content;font-size: 18px;color: #fff;" href="#Earn" onclick="ach(this,'Earn', 'farms')">Farms</a></li>
                     <li><a style="color: rgb(244, 238, 255); font-size: 16px; line-height: 1.5;display: flex; -webkit-box-align: center; align-items: center; width: fit-content;font-size: 18px;color: #fff;" href="#Account" onclick="ach(this,'Account', 'deposit_withdraw')" onselect="ach(this,'Account', 'deposit_withdraw')">Bridges</a></li>
                     <li><a style="color: rgb(244, 238, 255); font-size: 16px; line-height: 1.5;display: flex; -webkit-box-align: center; align-items: center; width: fit-content;font-size: 18px;color: #fff;" onclick="createAddress()" onselect="createAddress()">Create an Address</a></li>
+                    <li><a style="color: rgb(244, 238, 255); font-size: 16px; line-height: 1.5;display: flex; -webkit-box-align: center; align-items: center; width: fit-content;font-size: 18px;color: #fff;" onclick="convertAddress()" onselect="convertAddress()">Convert Address to eVVMC</a></li>
                 </ul>
             </div>
         </footer>

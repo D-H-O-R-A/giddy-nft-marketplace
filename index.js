@@ -19,23 +19,101 @@ const Toast = Swal.mixin({
     }
 })
 
-function invalidA(address, seed){
-    for(let i =0;address.length>i;i++){
-        if(address.substring(0,2) != "7J")
-        {
-            var newAddress = evestx.Seed.create()
-            invalidA(newAddress.address, newAddress.phrase)
-        }
-        else
-        {
-            return seed
-        }
+
+function selectTF(i) {
+    if($("#addressOrID").val() == "") {
+        return Swal.fire("Error", "Fill in the required field before carrying out the conversion", "error").then((r) => {convertAddress()})
+    }
+    $("option[selected]").removeAttr("selected")
+    switch(i){
+        case "addressfrom":
+            $('[value="addressfrom"],[value="addressto"]').attr("selected", "")
+        break;
+        case "assetfrom":
+            $('[value="assetfrom"],[value="assetto"]').attr("selected", "")
+        break;
+        case "privateAddressto":
+            $('[value="addressfrom"],[value="privateAddressto"]').attr("selected", "")
+        break;
+        default:
+            console.log(i)
+            selectTF(i.replace("to", "from"))
+    }
+}
+
+function convertAddress(){
+    Swal.fire({
+        title: "Convert to eVVMC",
+        text: "Convert Address, Asset ID or TxId to standard eVVMC (Ethereum-VRP Virtual Machine Compatibility)",
+        html: `
+        <p style="color:#333;font-size:18px;text-align:left;margin-bottom:10px">Convert Address, Asset ID or TxId to standard eVVMC (Ethereum-VRP Virtual Machine Compatibility)</p>
+        <div id="convertEVM">
+         <div class="convertAddress">
+           <p>From:</p>
+           <select name="typeconvfrom" id="typeconvfrom"> 
+            <option value="addressfrom" selected>Address</option>
+            <option value="assetfrom">Asset ID</option> 
+           </select>
+         </div>
+         <div>
+          <p>To:</p>
+          <select name="typeconvto" id="typeconvto"> 
+           <option value="addressto">Address (eVVMC)</option>
+           <option value="privateAddressto" selected>Priavte Address</option> 
+           <option value="assetto">Asset ID (eVVMC)</option> 
+          </select>
+         </div>
+         <div>
+          <input placeholder="0x..., 7J..., 83bz..., 3BxY..., Pv..." id="addressOrID">
+         </div>
+         <div>
+          <button onclick="convertT()" onselect="convertT()">Convert</button>
+         </div>
+         <div class="mostadA">
+          <p>Address to Address (eVVMC)</p>
+          <p>From: </p>
+          <p>To: </p>
+         </div>
+        </div>`,
+        showCancelButton: false,
+        showConfirmButton: false
+    })
+    $('select').bind('change', function() {
+        console.log(this.value)
+        selectTF(this.value)
+    });
+}
+
+function convertT(){
+    var i = $("#addressOrID").val()
+    var a = $("#typeconvfrom [selected]").attr("value")
+    var b = $("#typeconvto [selected]").attr("value")
+    switch(a){
+        case "addressfrom":
+            if(b != "privateAddressto"){
+               if(i.length <= 35 &&( i.substring(0,2) == "7J" || i.substring(0,2) == "7H")){
+                    return $(".mostadA").css("display", "flex"),$(".mostadA p:nth-child(2)").text("To: "+i),$(".mostadA p:nth-child(3)").text("From: "+nodeApi.evestxAddress2eth(i))
+               }else {
+                    return Swal.fire("Error", "Invalid Address.", "error").then((r) => {convertAddress()})
+               }
+            }
+            if(i.length <= 35 &&( i.substring(0,2) == "7J" || i.substring(0,2) == "7H")){
+                return Swal.fire("Error", "Use your publicKey to convert private/anonymous addresses", "error").then((r) => {convertAddress()})
+            } else if(i.length == 44){
+                return $(".mostadA").css("display", "flex"),$(".mostadA p:nth-child(2)").text("To: "+i),$(".mostadA p:nth-child(3)").text("From: "+evestx.tools.getPrivateAddressFromPublicKey(i))
+            } else {
+                return Swal.fire("Error", "Invalid PublicKey length.", "error").then((r) => {convertAddress()})
+            }
+        break;
+        case "assetfrom":
+            return $(".mostadA").css("display", "flex"),$(".mostadA p:nth-child(2)").text("To: "+i),$(".mostadA p:nth-child(3)").text("From: "+nodeApi.evestxAsset2Eth(i))
+        break;
     }
 }
 
 function createAddress(){
     var newC = evestx.Seed.create()
-    var newAddress = evestx.Seed.fromExistingPhrase(invalidA(newC.address,newC.phrase))
+    var newAddress = evestx.Seed.fromExistingPhrase(newC.phrase)
 
     Swal.fire({
         title: "Your eVESTX address",
@@ -97,7 +175,7 @@ function selectToken(s) {
 
 function contadorStart(){
     var startDate = new Date(Date.now())
-    var finalDate = new Date(Date.UTC(2022, 11,05,23, 59, 59))
+    var finalDate = new Date(Date.UTC(2022, 11,16,23, 59, 59))
     var days, hours, minutes, seconds,mili;
     var dateDiff;
     var $day = $('#daytime');
@@ -1118,7 +1196,7 @@ function liveorfinished(k,l,b,c){
     }
 }
 
-function login(a){
+async function login(a){
     switch(a){
         case "seed":
             let seed = $("#seedandkey").val()
@@ -1155,6 +1233,144 @@ function login(a){
                     "Please fill in all required fields to continue.",
                     "error"
                 )
+            }
+        break;
+        case "metamask":
+            if(evestx.eVVM.metamask.installed()){
+                var state = await evestx.eVVM.metamask.state()
+                if(!state.initialized){
+                    return Toast.fire("Error", "The metamask has not yet been initialized.", "error")
+                }
+                if(state.isPermanentlyDisconnected){
+                    return Toast.fire("Error", "The metamask is permanently disconnected on our website, to perform the connection unblock our website on your metamask.", "error")
+                }
+                if((await evestx.eVVM.metamask.state()).isConnected && evestx.eVVM.metamask.chainId() == evestx.crypto.toMetamaskChainId(140)){
+                    await evestx.eVVM.metamask
+                    .request({ method: "eth_requestAccounts" })
+                    .then((accounts) => {
+                       const account = accounts[0]
+          
+                       localStorage.setItem("address",nodeApi.ethAddress2evestx(account,evestx.constants.MAINNET_BYTE))
+                       localStorage.setItem("connected", true)
+                       localStorage.setItem("login", a)
+          
+                       // Stop loader when connected
+                       document.location.reload(true)
+                   }).catch((error) => {
+                    connectWalletChamada()
+                     // Handle error
+                     console.log(error, error.code);
+          
+                     // Stop loader if error occured
+                     // For example, when user cancelled request 
+                     // and closed plugin
+                     switch(error.code){
+                      case 4001:
+                          Swal.fire(
+                              "Connection Rejected",
+                              error.code + ":The request was rejected by the user",
+                              "error"
+                          ).then(()=>{
+                              document.location.reload(true)
+                          })
+                      break;
+                      case -32602:
+                          Swal.fire(
+                              "Invalid parameters",
+                              error.code + ":"+error.message,
+                              "error"
+                          ).then(()=>{
+                              document.location.reload(true)
+                          })
+                      break;
+                      case -32603:
+                          Swal.fire(
+                              "Internal Error",
+                              error.code + ":"+error.message,
+                              "error"
+                          ).then(()=>{
+                              document.location.reload(true)
+                          })
+                      break;
+                      case -32002:
+                          console.log("Waiting..")
+                      break;
+                      default:
+                          Swal.fire(
+                              "Error",
+                              error.code + ":"+error.message,
+                              "error"
+                          ).then(()=>{
+                              document.location.reload(true)
+                          })
+                     }
+          
+          
+                     // 4001 - The request was rejected by the user
+                     // -32602 - The parameters were invalid
+                     // -32603- Internal error
+                   });   
+                }else{
+                    await evestx.eVVM.metamask.request({method: 'wallet_addEthereumChain',params:[evestx.constants.DEFAULT_MAINNET_CONFIG_METAMASK]})
+                    .then((b) => {
+                        console.log(b)
+                        login(a)
+                    })
+                    .catch((error) => {
+                        console.log(error, error.code);
+                        connectWalletChamada()
+                        // Stop loader if error occured
+                        // For example, when user cancelled request 
+                        // and closed plugin
+                        switch(error.code){
+                         case 4001:
+                             Swal.fire(
+                                 "Connection Rejected",
+                                 error.code + ":The request was rejected by the user",
+                                 "error"
+                             ).then(()=>{
+                                 document.location.reload(true)
+                             })
+                         break;
+                         case -32602:
+                             Swal.fire(
+                                 "Invalid parameters",
+                                 error.code + ":"+error.message,
+                                 "error"
+                             ).then(()=>{
+                                 document.location.reload(true)
+                             })
+                         break;
+                         case -32603:
+                             Swal.fire(
+                                 "Internal Error",
+                                 error.code + ":"+error.message,
+                                 "error"
+                             ).then(()=>{
+                                 document.location.reload(true)
+                             })
+                         break;
+                         case -32002:
+                             console.log("Waiting..")
+                         break;
+                         default:
+                             Swal.fire(
+                                 "Error",
+                                 error.code + ":"+error.message,
+                                 "error"
+                             ).then(()=>{
+                                 document.location.reload(true)
+                             })
+                        }
+             
+             
+                        // 4001 - The request was rejected by the user
+                        // -32602 - The parameters were invalid
+                        // -32603- Internal error
+                    })   
+                } 
+            }else{
+                Toast.fire("Error", "Install the metamask to use it as a wallet on the DEX.", "error")
             }
         break;
         default: 

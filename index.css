@@ -4505,3 +4505,100 @@ section{
     padding: 10px 0px;
     border-radius: 10px;
 }
+#convertEVM{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 0px 10px;
+}
+
+#convertEVM div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0px;
+}
+
+#convertEVM div p{
+    width: 47px;
+    text-align: left;
+    font-size: 16px;
+
+}
+
+#convertEVM div select{
+    margin-left: 10px;
+    flex:1;
+    border-radius: 10px;
+    padding: 10px 14px;
+    border: 1px solid #e0e0e0;
+    background-color: #fff;
+}
+
+select {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+#convertEVM div select {
+    position: relative;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  #convertEVM div select::after {
+    content: "▼";
+    font-size: 1rem;
+    top: 6px;
+    right: 10px;
+    position: absolute;
+  }
+
+#convertEVM div input{
+    border: 1px solid #e0e0e0;
+    flex: 1;
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 16px;
+    color: #333;
+}
+
+
+#convertEVM div button {
+    padding: 10px 14px;
+    border: 1px solid #bf3654;
+    background-color: #bf3654;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 10px;
+    margin-right: auto;
+}
+
+#convertEVM div:last-child{
+
+    display: none;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    width: 100%;
+}
+
+#convertEVM div:last-child p{
+    font-size: 16px;
+    color: #333;
+    padding-bottom: 10px;
+    flex: 1;
+    width: 100%;
+}
+
+#convertEVM div:last-child p:nth-child(1){
+    font-size: 18px;
+    color: #000;
+    padding-bottom: 10px;
+}
