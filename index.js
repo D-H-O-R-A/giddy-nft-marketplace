@@ -25,12 +25,14 @@ function selectTF(i) {
         return Swal.fire("Error", "Fill in the required field before carrying out the conversion", "error").then((r) => {convertAddress()})
     }
     $("option[selected]").removeAttr("selected")
+    $("#coneradwvt").css("display", "flex")
     switch(i){
         case "addressfrom":
             $('[value="addressfrom"],[value="addressto"]').attr("selected", "")
         break;
         case "assetfrom":
             $('[value="assetfrom"],[value="assetto"]').attr("selected", "")
+            $("#coneradwvt").css("display", "none")
         break;
         case "privateAddressto":
             $('[value="addressfrom"],[value="privateAddressto"]').attr("selected", "")
@@ -66,13 +68,20 @@ function convertAddress(){
          <div>
           <input placeholder="0x..., 7J..., 83bz..., 3BxY..., Pv..." id="addressOrID">
          </div>
+         <div id="coneradwvt">
+         <input style="flex:0" type="checkbox">
+         <p style="flex:1;margin-left:10px">Invert conversion</p>
+         </div>
          <div>
           <button onclick="convertT()" onselect="convertT()">Convert</button>
          </div>
          <div class="mostadA">
           <p>Address to Address (eVVMC)</p>
           <p>From: </p>
-          <p>To: </p>
+          <p id="ttOT">To: </p>
+          <div style="display:flex">
+           <button onclick="copy($('#ttOT').text(),true)" onselect="copy($('#ttOT').text(),true)">Copy</button>
+          </div>
          </div>
         </div>`,
         showCancelButton: false,
@@ -84,29 +93,57 @@ function convertAddress(){
     });
 }
 
+
+function copy(i,j){
+    navigator.clipboard.writeText(j?i.replaceAll("To:","").replaceAll(" ", ""):i);
+    Swal.fire(
+        "Copied to clipboard",
+        "",
+        "success"
+    ).then((k)=>{convertAddress()})
+}
+
 function convertT(){
+    var cias = $('#coneradwvt input[type="checkbox"]:checked').map(function() { return $(this).val().toString(); } ).get().join(",");
     var i = $("#addressOrID").val()
     var a = $("#typeconvfrom [selected]").attr("value")
     var b = $("#typeconvto [selected]").attr("value")
     switch(a){
         case "addressfrom":
-            if(b != "privateAddressto"){
-               if(i.length <= 35 &&( i.substring(0,2) == "7J" || i.substring(0,2) == "7H")){
-                    return $(".mostadA").css("display", "flex"),$(".mostadA p:nth-child(2)").text("To: "+i),$(".mostadA p:nth-child(3)").text("From: "+nodeApi.evestxAddress2eth(i))
-               }else {
-                    return Swal.fire("Error", "Invalid Address.", "error").then((r) => {convertAddress()})
-               }
-            }
-            if(i.length <= 35 &&( i.substring(0,2) == "7J" || i.substring(0,2) == "7H")){
-                return Swal.fire("Error", "Use your publicKey to convert private/anonymous addresses", "error").then((r) => {convertAddress()})
-            } else if(i.length == 44){
-                return $(".mostadA").css("display", "flex"),$(".mostadA p:nth-child(2)").text("To: "+i),$(".mostadA p:nth-child(3)").text("From: "+evestx.tools.getPrivateAddressFromPublicKey(i))
-            } else {
-                return Swal.fire("Error", "Invalid PublicKey length.", "error").then((r) => {convertAddress()})
+            if(cias == ""){
+                if(b != "privateAddressto"){
+                    if(i.length <= 35 &&( i.substring(0,2) == "7J" || i.substring(0,2) == "7H")){
+                         return $(".mostadA").css("display", "flex"),$(".mostadA p:nth-child(2)").text("From: "+i),$(".mostadA p:nth-child(3)").text("To: "+nodeApi.evestxAddress2eth(i))
+                    }else {
+                         return Swal.fire("Error", "Invalid Address.", "error").then((r) => {convertAddress()})
+                    }
+                 }
+                 if(i.length <= 35 &&( i.substring(0,2) == "7J" || i.substring(0,2) == "7H")){
+                     return Swal.fire("Error", "Use your publicKey to convert private/anonymous addresses", "error").then((r) => {convertAddress()})
+                 } else if(i.length == 44){
+                     return $(".mostadA").css("display", "flex"),$(".mostadA p:nth-child(2)").text("From: "+i),$(".mostadA p:nth-child(3)").text("To: "+evestx.tools.getPrivateAddressFromPublicKey(i))
+                 } else {
+                     return Swal.fire("Error", "Invalid PublicKey length.", "error").then((r) => {convertAddress()})
+                 }
+            }else{
+                if(b != "privateAddressto"){
+                    if(i.substring(0,2) == "0x"){
+                         return $(".mostadA").css("display", "flex"),$(".mostadA p:nth-child(2)").text("From: "+i),$(".mostadA p:nth-child(3)").text("To: "+nodeApi.ethAddress2evestx(i,evestx.constants.MAINNET_BYTE))
+                    }else {
+                         return Swal.fire("Error", "Invalid Ethereum Address.", "error").then((r) => {convertAddress()})
+                    }
+                 }
+                 if(( i.substring(0,2) == "7J" || i.substring(0,2) == "7H" || i.substring(0,2) == "0x")){
+                     return Swal.fire("Error", "Use your publicKey to convert private/anonymous addresses", "error").then((r) => {convertAddress()})
+                 } else if(i.length == 44){
+                     return $(".mostadA").css("display", "flex"),$(".mostadA p:nth-child(2)").text("From: "+i),$(".mostadA p:nth-child(3)").text("To: "+evestx.tools.getAddressFromPublicKey(i))
+                 } else {
+                     return Swal.fire("Error", "Invalid PublicKey length.", "error").then((r) => {convertAddress()})
+                 }
             }
         break;
         case "assetfrom":
-            return $(".mostadA").css("display", "flex"),$(".mostadA p:nth-child(2)").text("To: "+i),$(".mostadA p:nth-child(3)").text("From: "+nodeApi.evestxAsset2Eth(i))
+            return $(".mostadA").css("display", "flex"),$(".mostadA p:nth-child(2)").text("From: "+i),$(".mostadA p:nth-child(3)").text("To: "+nodeApi.evestxAsset2Eth(i))
         break;
     }
 }
