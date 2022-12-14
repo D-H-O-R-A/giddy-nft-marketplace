@@ -59,7 +59,7 @@ function convertAddress(){
           <p>To:</p>
           <select name="typeconvto" id="typeconvto"> 
            <option value="addressto">Address (eVVMC)</option>
-           <option value="privateAddressto" selected>Priavte Address</option> 
+           <option value="privateAddressto" selected>Private Address</option> 
            <option value="assetto">Asset ID (eVVMC)</option> 
           </select>
          </div>
