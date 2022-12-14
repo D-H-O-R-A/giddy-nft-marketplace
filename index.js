@@ -8,8 +8,7 @@ const axios = require("axios")
 
 const moralisApi = "c8GRwXOdF3IPJsTLWHGfRVx7HI0XoQIyVsUn9hs5iUO3lnT321XXRGT91wVJjAx4"
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const port = process.env.PORT || 5000
 
 ///chain 
 const chainId = "0x13881"
@@ -94,7 +93,7 @@ function readHTML(end){
     return fs.readFileSync(__dirname+end,{encoding:'utf8', flag:'r'});
 }
   
-app.listen(port, hostname, () => {
+app.listen(port, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
 });
 
