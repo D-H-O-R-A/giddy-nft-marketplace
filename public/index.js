@@ -13,7 +13,7 @@ const nName = "Mumbai Testnet"
 
 const cCymbol = "MATIC"
 
-const explorer = "https://polygonscan.com/"
+const explorer = "https://mumbai.polygonscan.com/"
 
 const nftMintContract = "0xa051cdbfA384463Ad12fF45796F3AA420aca6bD3"
 
@@ -41,6 +41,7 @@ const Toast = Swal.mixin({
 
 
 async function setNFT(t){
+    console.log(stateN&&!t)
     if(stateN&&!t){
         var content = "";
         var nftA = await getNFTsFromAccont(localStorage.getItem("address"))
@@ -574,174 +575,101 @@ function signOut(){
 }
 
 async function connectWallet(k){
+    var provider = await detectEthereumProvider()
     if(localStorage.getItem("address") == undefined){
-    switch(k){
-        case 'metamask':
-      // Start loader while connecting
-      $(".connectWallet article .metamask div #loading").css("display", "flex")
-
-      if (typeof window.ethereum !== "undefined") {
-        if(window.ethereum.chainId != chainId){
-            await ethereum.request({
-                method: 'wallet_addEthereumChain',
-                params: [{
-                chainId: chainId,
-                chainName: nName,
-                nativeCurrency: {
-                    name: 'Polygon',
-                    symbol: cCymbol,
-                    decimals: 18
-                },
-                rpcUrls: [rpcUrl],
-                blockExplorerUrls: [explorer]
-                }]
-                })
-                .then((b) => {
-                    console.log(b)
-                    connectWallet(k)
-                })
-                .catch((error) => {
-                    console.log(error, error.code);
-  
-                    // Stop loader if error occured
-                    // For example, when user cancelled request 
-                    // and closed plugin
-                    switch(error.code){
-                     case 4001:
-                         Swal.fire(
-                             "Connection Rejected",
-                             error.code + ":The request was rejected by the user",
-                             "error"
-                         ).then(()=>{
-                             document.location.reload(true)
-                         })
-                     break;
-                     case -32602:
-                         Swal.fire(
-                             "Invalid parameters",
-                             error.code + ":"+error.message,
-                             "error"
-                         ).then(()=>{
-                             document.location.reload(true)
-                         })
-                     break;
-                     case -32603:
-                         Swal.fire(
-                             "Internal Error",
-                             error.code + ":"+error.message,
-                             "error"
-                         ).then(()=>{
-                             document.location.reload(true)
-                         })
-                     break;
-                     case -32002:
-                         console.log("Waiting..")
-                     break;
-                     default:
-                         Swal.fire(
-                             "Error",
-                             error.code + ":"+error.message,
-                             "error"
-                         ).then(()=>{
-                             document.location.reload(true)
-                         })
-                    }
-         
-         
-                    // 4001 - The request was rejected by the user
-                    // -32602 - The parameters were invalid
-                    // -32603- Internal error
-                }) 
+        if(provider){
+            $(".connectWallet article .metamask div #loading").css("display", "flex")
+            var isUnlocked = await web3.currentProvider._metamask.isUnlocked()
+            var isDisconnected = await web3.currentProvider._state.isPermanentlyDisconnected
+            $(".connectWallet article .metamask div #loading p").text(isDisconnected ? "Unlock the marketplace in your metamask to proceed with the connection." : (!isUnlocked ? "Click on your metamask, unlock and connect to the marketplace to continue." : "Connect your metamask to continue."))    
+            if(window.ethereum.chainId != chainId){
+                switchChain()
+            }else{
+                ethereum
+                .request({ method: "eth_requestAccounts" })
+                .then((accounts) => {
+                   const account = accounts[0]
+      
+                   localStorage.setItem("address", account)
+      
+                   // Stop loader when connected
+                   document.location.reload(true)
+               }).catch((error) => {
+                 // Handle error
+                 console.log(error, error.code);
+      
+                 // Stop loader if error occured
+                 // For example, when user cancelled request 
+                 // and closed plugin
+                 switch(error.code){
+                  case 4001:
+                      Swal.fire(
+                          "Connection Rejected",
+                          error.code + ":The request was rejected by the user",
+                          "error"
+                      ).then(()=>{
+                          document.location.reload(true)
+                      })
+                  break;
+                  case -32602:
+                      Swal.fire(
+                          "Invalid parameters",
+                          error.code + ":"+error.message,
+                          "error"
+                      ).then(()=>{
+                          document.location.reload(true)
+                      })
+                  break;
+                  case -32603:
+                      Swal.fire(
+                          "Internal Error",
+                          error.code + ":"+error.message,
+                          "error"
+                      ).then(()=>{
+                          document.location.reload(true)
+                      })
+                  break;
+                  case -32002:
+                      console.log("Waiting..")
+                  break;
+                  default:
+                      Swal.fire(
+                          "Error",
+                          error.code + ":"+error.message,
+                          "error"
+                      ).then(()=>{
+                          document.location.reload(true)
+                      })
+                 }
+      
+      
+                 // 4001 - The request was rejected by the user
+                 // -32602 - The parameters were invalid
+                 // -32603- Internal error
+               });   
+            }
         }else{
-            ethereum
-            .request({ method: "eth_requestAccounts" })
-            .then((accounts) => {
-               const account = accounts[0]
-  
-               localStorage.setItem("address", account)
-  
-               // Stop loader when connected
-               document.location.reload(true)
-           }).catch((error) => {
-             // Handle error
-             console.log(error, error.code);
-  
-             // Stop loader if error occured
-             // For example, when user cancelled request 
-             // and closed plugin
-             switch(error.code){
-              case 4001:
-                  Swal.fire(
-                      "Connection Rejected",
-                      error.code + ":The request was rejected by the user",
-                      "error"
-                  ).then(()=>{
-                      document.location.reload(true)
-                  })
-              break;
-              case -32602:
-                  Swal.fire(
-                      "Invalid parameters",
-                      error.code + ":"+error.message,
-                      "error"
-                  ).then(()=>{
-                      document.location.reload(true)
-                  })
-              break;
-              case -32603:
-                  Swal.fire(
-                      "Internal Error",
-                      error.code + ":"+error.message,
-                      "error"
-                  ).then(()=>{
-                      document.location.reload(true)
-                  })
-              break;
-              case -32002:
-                  console.log("Waiting..")
-              break;
-              default:
-                  Swal.fire(
-                      "Error",
-                      error.code + ":"+error.message,
-                      "error"
-                  ).then(()=>{
-                      document.location.reload(true)
-                  })
-             }
-  
-  
-             // 4001 - The request was rejected by the user
-             // -32602 - The parameters were invalid
-             // -32603- Internal error
-           });   
-        }
-      } else { 
-          // Find the function which checks if device is mobile
-          // at my github repo or anywhere
-         if (mobileCheck()) {
-            Swal.fire(
-                "Error",
-                "If you are on a mobile phone, please use MetaMask application's browser to connect.",
-                "error"
-               ).then(()=>{
-                document.location.reload(true)
-               })
-         } else {
-           window.open("https://metamask.io/download/", "_blank");
+            if (mobileCheck()) {
+                Swal.fire(
+                    "Error",
+                    "If you are on a mobile phone, please use MetaMask application's browser to connect.",
+                    "error"
+                   ).then(()=>{
+                    document.location.reload(true)
+                   })
+             } else {
+                window.open("https://metamask.io/download/", "_blank");
 
-           // Show 'Reload page' warning to user
-           Swal.fire(
-            "Warning",
-            "Please refresh your browser after installing the Metamask plugin",
-            "error"
-           ).then(()=>{
-            document.location.reload(true)
-           })
-         }
-      }
-        break;
-    }
+                // Show 'Reload page' warning to user
+                Swal.fire(
+                 "Warning",
+                 "Please refresh your browser after installing the Metamask plugin",
+                 "error"
+                ).then(()=>{
+                 document.location.reload(true)
+                })
+              }
+        }
     }
 }
 
@@ -749,7 +677,7 @@ window.mobileCheck = function() {
     let check = false;
     (function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))) check = true;})(navigator.userAgent||navigator.vendor||window.opera);
     return check;
-  };
+};
 
 
 function viewNav(i){
@@ -809,9 +737,26 @@ async function createNFT(){
     if(fieldsNft()){
         try {
             $("#aLoader").css("display", "flex")
+            var cont = []
+            if($('#properties [i="content"]').length == 1  && ($($('#properties [i="content"]')[0]).children("input:nth-child(3)").val() !="" || $($('#properties [i="content"]')[0]).children("input:nth-child(2)").val() !="")){
+                if($($('#properties [i="content"]')[0]).children("input:nth-child(3)").val() == "" || $($('#properties [i="content"]')[0]).children("input:nth-child(2)").val() =="" ){
+                    return Toast.fire("Error", "Please fill in all required fields to create your NFT", "error"),$("#aLoader").css("display", "none")
+                }else{
+                    cont.push({"trait_type": $($('#properties [i="content"]')[0]).children("input:nth-child(2)").val(), "value": $($('#properties [i="content"]')[0]).children("input:nth-child(3)").val()})
+                }
+            }else if($('#properties [i="content"]').length != 1){
+                for(let i = 0; i<$('#properties [i="content"]').length; i++){
+                    var xc = $($('#properties [i="content"]')[i])
+                    if(xc.children("input:nth-child(2)").val() == "" || xc.children("input:nth-child(3)").val() == ""){
+                        return Toast.fire("Error", "Please fill in all required fields to create your NFT", "error"),$("#aLoader").css("display", "none")
+                    }else{
+                        cont.push({"trait_type": xc.children("input:nth-child(2)").val(), "value": xc.children("input:nth-child(3)").val()})
+                    }
+                }
+            }
             const abi = [
                 {
-                    path: `${$("#collNFT").val()}/${$("#nameNFT").val()}.${$("#createNFT .content .select img").attr("src").split(';')[0].split('/')[1]}`,
+                    path: `${$("#nameNFT").val()}/${$("#nameNFT").val()}.${$("#createNFT .content .select img").attr("src").split(';')[0].split('/')[1]}`,
                     content: $("#createNFT .content .select img").attr("src"),
                 },
             ];
@@ -825,7 +770,9 @@ async function createNFT(){
                         name: $("#nameNFT").val(),
                         description: $("#descNFT").val(),
                         image:img,
-                        attributes: []
+                        attributes: cont,
+                        collection: $("#collNFT").val(),
+                        link: $("#externalLinkNFT").val()
                     },
                 },
             ]
@@ -847,13 +794,16 @@ async function createNFT(){
                 data: encodedFunction
             }
             $("#aLoader p").text("Open your metamask and confirm the transaction to create your NFT.")
+            if(window.ethereum.chainId != chainId){
+                switchChain()
+            }
             await ethereum
             .request({
                 method: "eth_sendTransaction",
                 params: [txP]
             })
             .then((d) => {
-                Toast.fire("Success!", "NFT Transaction sent to blockchain.", "success")
+                Toast.fire("Transaction send", "NFT Transaction sent to blockchain.", "info")
                 $("#aLoader").css("display", "none")
                 realodField()
             }).catch(er => {
@@ -873,8 +823,18 @@ async function createNFT(){
 function realodField(){
     $("#aLoader").css("display", "none")
     $("#aLoader p").text("Sending image to IPFS...")
-    $("#descNFT,#nameNFT").val("")
+    $("#descNFT,#nameNFT,#collNFT,#externalLinkNFT").val("")
     $('label[for="imagees"] img').attr("src","data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAADl0lEQVRoge2YTWhdRRTHf2fmfszN93ewBosgLVpMELQBpRBRo8+CFQtuXbjtphXEgLgXQXfu3LpQQVqpUhMoVMXvRRYKVkEqRDfNZ3lJSN6710XSpL335r25776PKO+3evfcmTnnP3POzJ0Hbdq0adMmB5JmfPvq/Jgue+9B9CzQ3eSY4txCmA3LvPH69EO/x18mBOwE784DA00Jz54lJXr8wlPHF+40qnirnZk/dMEDDISU340bEwJ20+ZwEpGILUVAy3O+Er1xQ5qA/xROqwMQEYb6++jp7ARgtVhkcXmFKIqs+rdcwGB/HwO9PfvPu79vLi1b9W95CvXuzvxdtq6k7SDqKsB1HFynuYtaNwFKBGMMxhiUsh92tVhM2NZuJW0HUbfpMoFBZOdgN8awvr5u1W9xeQXYT6XVYpHFlRVrv3UR4Houjt4fytEaz/XY2t6q2jeKIm4uLVsXbZzcKaSUYHw/Yfd9L1Mq1ew/V2+BwARIyketiBAYk2t4G3IJ8F0PrfWB77XWeL6X+q63u5u+7q487oEcNaCUwktJnTi+61PaLhOG5T1b4PuMDvaDwNZ2ifXNzVrDqHEFBIIgSL8NxZsKdARmr62jNUdGhxERBOGekSGcCqtYjZoE+J6PzlCgSil8z08N2NGae0eG97bgrGQWoLXG99LzuhKe5zE6PEhHSmEb4zM6NJh5TMgoIM/O0hH4Fb9xers6ayrqTAJMjXu75zj0dHVUbTcyNJC6QpWw3oUcrXFdu9T54K1zqfY33/+wYr/bNXJj4R9K5XLFtrexmk4RwQSNP5Qge1FbCTC+QUnzrg5ZitoqhTY2N9io/azZ47c/b+QfJEbLb2R5aQtoNf9LAWtNj8Ke1bghuQsJc0S8ZDvi/NXPuf7TV1ZtP35n5q7nY4+dYmLqeVtXgMzGLYkVkEhmgEXbIcenChw98UiGIHYYO/4w41OFLF2WlA5n4saEgNeefvC6Ej2B8BEW6SQiPPrcWUaOPmAdyfDY/Uyefjn1KprCGsgnSkeTF5488UfCv7XXKkwWCj2E7jWQiSpNf3Gd0qmvL1+u7W+IGHUTAPDEMy8cKSv5NoL7UhtELJTC8PGf5z77q14+67qNfjN76e9IUQDSZnctEnW6nsFDA86B77+4+GsYRS8Cd349bQmc/eHKp/P19teQg+zHLy9dE+QVIAQiJHr1uysX5xrhq6GcnD5z/uT0mfOtjuNQ8y8NzLpnRiZmEwAAAABJRU5ErkJggg==")
+    $("#properties").attr("data", "0")
+    for(let i = 0; i<$('#properties [i="content"]').length; i++){
+        var xc = $($('#properties [i="content"]')[i])
+        if(xc.attr("id") == "a0"){
+            xc.children("input:nth-child(2)").val("")
+            xc.children("input:nth-child(3)").val("")
+        }else{
+            xc.remove()
+        }
+    }
 }
 
 async function getNFTsFromAccont(address) {
@@ -888,5 +848,105 @@ async function getNFTsFromAccont(address) {
 }
 
 function fieldsNft(){
-    return !($("#descNFT").val() == "" || $("#nameNFT").val() == "" || $('label[for="imagees"] img').attr("src") == "" || $('label[for="imagees"] img').attr("src") == "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAADl0lEQVRoge2YTWhdRRTHf2fmfszN93ewBosgLVpMELQBpRBRo8+CFQtuXbjtphXEgLgXQXfu3LpQQVqpUhMoVMXvRRYKVkEqRDfNZ3lJSN6710XSpL335r25776PKO+3evfcmTnnP3POzJ0Hbdq0adMmB5JmfPvq/Jgue+9B9CzQ3eSY4txCmA3LvPH69EO/x18mBOwE784DA00Jz54lJXr8wlPHF+40qnirnZk/dMEDDISU340bEwJ20+ZwEpGILUVAy3O+Er1xQ5qA/xROqwMQEYb6++jp7ARgtVhkcXmFKIqs+rdcwGB/HwO9PfvPu79vLi1b9W95CvXuzvxdtq6k7SDqKsB1HFynuYtaNwFKBGMMxhiUsh92tVhM2NZuJW0HUbfpMoFBZOdgN8awvr5u1W9xeQXYT6XVYpHFlRVrv3UR4Houjt4fytEaz/XY2t6q2jeKIm4uLVsXbZzcKaSUYHw/Yfd9L1Mq1ew/V2+BwARIyketiBAYk2t4G3IJ8F0PrfWB77XWeL6X+q63u5u+7q487oEcNaCUwktJnTi+61PaLhOG5T1b4PuMDvaDwNZ2ifXNzVrDqHEFBIIgSL8NxZsKdARmr62jNUdGhxERBOGekSGcCqtYjZoE+J6PzlCgSil8z08N2NGae0eG97bgrGQWoLXG99LzuhKe5zE6PEhHSmEb4zM6NJh5TMgoIM/O0hH4Fb9xers6ayrqTAJMjXu75zj0dHVUbTcyNJC6QpWw3oUcrXFdu9T54K1zqfY33/+wYr/bNXJj4R9K5XLFtrexmk4RwQSNP5Qge1FbCTC+QUnzrg5ZitoqhTY2N9io/azZ47c/b+QfJEbLb2R5aQtoNf9LAWtNj8Ke1bghuQsJc0S8ZDvi/NXPuf7TV1ZtP35n5q7nY4+dYmLqeVtXgMzGLYkVkEhmgEXbIcenChw98UiGIHYYO/4w41OFLF2WlA5n4saEgNeefvC6Ej2B8BEW6SQiPPrcWUaOPmAdyfDY/Uyefjn1KprCGsgnSkeTF5488UfCv7XXKkwWCj2E7jWQiSpNf3Gd0qmvL1+u7W+IGHUTAPDEMy8cKSv5NoL7UhtELJTC8PGf5z77q14+67qNfjN76e9IUQDSZnctEnW6nsFDA86B77+4+GsYRS8Cd349bQmc/eHKp/P19teQg+zHLy9dE+QVIAQiJHr1uysX5xrhq6GcnD5z/uT0mfOtjuNQ8y8NzLpnRiZmEwAAAABJRU5ErkJggg==")
+    return !($("#descNFT").val() == "" || $("#collNFT").val() == "" || $("#nameNFT").val() == "" || $('label[for="imagees"] img').attr("src") == "" || $('label[for="imagees"] img').attr("src") == "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAADl0lEQVRoge2YTWhdRRTHf2fmfszN93ewBosgLVpMELQBpRBRo8+CFQtuXbjtphXEgLgXQXfu3LpQQVqpUhMoVMXvRRYKVkEqRDfNZ3lJSN6710XSpL335r25776PKO+3evfcmTnnP3POzJ0Hbdq0adMmB5JmfPvq/Jgue+9B9CzQ3eSY4txCmA3LvPH69EO/x18mBOwE784DA00Jz54lJXr8wlPHF+40qnirnZk/dMEDDISU340bEwJ20+ZwEpGILUVAy3O+Er1xQ5qA/xROqwMQEYb6++jp7ARgtVhkcXmFKIqs+rdcwGB/HwO9PfvPu79vLi1b9W95CvXuzvxdtq6k7SDqKsB1HFynuYtaNwFKBGMMxhiUsh92tVhM2NZuJW0HUbfpMoFBZOdgN8awvr5u1W9xeQXYT6XVYpHFlRVrv3UR4Houjt4fytEaz/XY2t6q2jeKIm4uLVsXbZzcKaSUYHw/Yfd9L1Mq1ew/V2+BwARIyketiBAYk2t4G3IJ8F0PrfWB77XWeL6X+q63u5u+7q487oEcNaCUwktJnTi+61PaLhOG5T1b4PuMDvaDwNZ2ifXNzVrDqHEFBIIgSL8NxZsKdARmr62jNUdGhxERBOGekSGcCqtYjZoE+J6PzlCgSil8z08N2NGae0eG97bgrGQWoLXG99LzuhKe5zE6PEhHSmEb4zM6NJh5TMgoIM/O0hH4Fb9xers6ayrqTAJMjXu75zj0dHVUbTcyNJC6QpWw3oUcrXFdu9T54K1zqfY33/+wYr/bNXJj4R9K5XLFtrexmk4RwQSNP5Qge1FbCTC+QUnzrg5ZitoqhTY2N9io/azZ47c/b+QfJEbLb2R5aQtoNf9LAWtNj8Ke1bghuQsJc0S8ZDvi/NXPuf7TV1ZtP35n5q7nY4+dYmLqeVtXgMzGLYkVkEhmgEXbIcenChw98UiGIHYYO/4w41OFLF2WlA5n4saEgNeefvC6Ej2B8BEW6SQiPPrcWUaOPmAdyfDY/Uyefjn1KprCGsgnSkeTF5488UfCv7XXKkwWCj2E7jWQiSpNf3Gd0qmvL1+u7W+IGHUTAPDEMy8cKSv5NoL7UhtELJTC8PGf5z77q14+67qNfjN76e9IUQDSZnctEnW6nsFDA86B77+4+GsYRS8Cd349bQmc/eHKp/P19teQg+zHLy9dE+QVIAQiJHr1uysX5xrhq6GcnD5z/uT0mfOtjuNQ8y8NzLpnRiZmEwAAAABJRU5ErkJggg==")
+}
+
+function addmoreType(){
+    var letd = parseInt($("#properties").attr("data"))+1
+    var div = `
+    <div id="a${letd}" i="content">
+        <button onclick="removeAddmoreType(this)" onselect="removeAddmoreType(this)">
+          <img src="/img/add.png" alt="">
+        </button>
+        <input type="text" id="character_${letd}" placeholder="e.g. Character">
+        <input type="text" id="details_${letd}" placeholder="e.g. Male">
+    </div>
+    `
+    $("#properties").html($("#properties").html().replaceAll('<div><button onclick="addmoreType()" onselect="addmoreType()">Add more</button></div>', ''))
+    $("#properties").append(div)
+    $("#properties").attr("data", letd)
+    $("#properties").append('<div><button onclick="addmoreType()" onselect="addmoreType()">Add more</button></div>')
+}
+
+function removeAddmoreType(i){
+    if($(i).parent().attr("id") == "a0"){
+        $(i).parent().children("input:nth-child(2)").val("")
+        $(i).parent().children("input:nth-child(3)").val("")
+    }else{
+        $(i).parent().remove()
+        $("#properties").attr("data", parseInt($("#properties").attr("data"))-1)
+    }
+}
+
+async function switchChain(){
+    await ethereum.request({
+        method: 'wallet_addEthereumChain',
+        params: [{
+        chainId: chainId,
+        chainName: nName,
+        nativeCurrency: {
+            name: 'Polygon',
+            symbol: cCymbol,
+            decimals: 18
+        },
+        rpcUrls: [rpcUrl],
+        blockExplorerUrls: [explorer]
+        }]
+        })
+        .then((b) => {
+            console.log(b)
+            connectWallet()
+        })
+        .catch((error) => {
+            console.log(error, error.code);
+
+            // Stop loader if error occured
+            // For example, when user cancelled request 
+            // and closed plugin
+            switch(error.code){
+             case 4001:
+                 Swal.fire(
+                     "Connection Rejected",
+                     error.code + ":The request was rejected by the user",
+                     "error"
+                 ).then(()=>{
+                     document.location.reload(true)
+                 })
+             break;
+             case -32602:
+                 Swal.fire(
+                     "Invalid parameters",
+                     error.code + ":"+error.message,
+                     "error"
+                 ).then(()=>{
+                     document.location.reload(true)
+                 })
+             break;
+             case -32603:
+                 Swal.fire(
+                     "Internal Error",
+                     error.code + ":"+error.message,
+                     "error"
+                 ).then(()=>{
+                     document.location.reload(true)
+                 })
+             break;
+             case -32002:
+                 console.log("Waiting..")
+             break;
+             default:
+                 Swal.fire(
+                     "Error",
+                     error.code + ":"+error.message,
+                     "error"
+                 ).then(()=>{
+                     document.location.reload(true)
+                 })
+            }
+ 
+ 
+            // 4001 - The request was rejected by the user
+            // -32602 - The parameters were invalid
+            // -32603- Internal error
+        }) 
 }

@@ -37,7 +37,6 @@
     <!--script-->
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://www.jsdelivr.com/package/npm/ipfs-http-client" integrity="sha384-5bXRcW9kyxxnSMbOoHzraqa7Z0PQWIao+cgeg327zit1hz5LZCEbIMx/LWKPReuB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
@@ -45,6 +44,7 @@
     <script src="http://code.dappbench.com/browser-solc.min.js" type="text/javascript"></script>
     <script src="https://unpkg.com/moralis@1.11.0/dist/moralis.js"></script>
     <script src="https://unpkg.com/web3@latest/dist/web3.min.js"></script>
+    <script src="https://unpkg.com/@metamask/detect-provider/dist/detect-provider.min.js"></script>
     <script src="/index.js" defer></script>
 </head>
 <body>
@@ -90,84 +90,6 @@
             </button>
         </div>
     </nav>
-
-    <!--wallet-->
-    <!--<div class="popup-container auth-popup">
-        <div class="popup-content auth-popup-content">
-            <div class="close-popup" onclick="openConnectWallet()" onselect="openConnectWallet()"></div>
-            <div class="popup-header">Connect wallet</div>
-            <div class="popup-header-info">Select one of the options below to continue.</div>
-            <div class="popup-actions">
-                < !-- <button class="popup__button popup__button_proceed exchange-mail">
-                    <div class="recommended-badge">Recommended</div>
-                    <div class="popup__button_proceed_wrapper">
-                        <span>Waves Exchange</span>
-                        <span class="popup__button_proceed_title">Email
-                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 6.75021L8.667 12.2661C8.766 12.3392 8.883 12.3752 9 12.3752C9.117 12.3752 9.234 12.3392 9.333 12.2661L18 6.75021L9.3375 0.112707C9.13725 -0.036918 8.86275 -0.036918 8.6625 0.112707L0 6.75021Z" fill="#EA6938"></path>
-                                <path d="M14.625 0H3.375C2.75512 0 2.25 0.505125 2.25 1.125V13.5C2.25 13.8105 2.502 14.0625 2.8125 14.0625H15.1875C15.498 14.0625 15.75 13.8105 15.75 13.5V1.125C15.75 0.505125 15.246 0 14.625 0Z" fill="#E5E5E5"></path>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9 7L14 12H4L9 7Z" fill="#5A81EA"></path>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9 7L14 2H4L9 7Z" fill="#E14B51"></path>
-                                <path d="M9.333 12.2659C9.234 12.339 9.117 12.375 9 12.375C8.883 12.375 8.766 12.339 8.667 12.2659L0 6.75V16.875C0 17.496 0.504 18 1.125 18H16.875C17.496 18 18 17.496 18 16.875V6.75L9.333 12.2659Z" fill="#FFA654"></path>
-                                <path d="M16.875 18H1.125C0.493875 18 0 17.5061 0 16.875C0 16.6961 0.0855 16.5274 0.2295 16.4216L8.667 10.7966C8.766 10.7235 8.883 10.6875 9 10.6875C9.117 10.6875 9.234 10.7235 9.333 10.7966L17.7705 16.4216C17.9145 16.5274 18 16.6961 18 16.875C18 17.5061 17.5061 18 16.875 18Z" fill="#FFC650"></path>
-                            </svg>
-                        </span>
-                    </div>
-                </button> -- >
-                <button onclick="connectWallet('exchange')" onselect="connectWallet('exchange')" class="popup__button popup__button_proceed">
-                    <div class="popup__button_proceed_wrapper">
-                        <span>Waves Exchange</span>
-                        <span class="popup__button_proceed_title">
-                            <span>Email</span>
-                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 6.75021L8.667 12.2661C8.766 12.3392 8.883 12.3752 9 12.3752C9.117 12.3752 9.234 12.3392 9.333 12.2661L18 6.75021L9.3375 0.112707C9.13725 -0.036918 8.86275 -0.036918 8.6625 0.112707L0 6.75021Z" fill="#EA6938"></path><path d="M14.625 0H3.375C2.75512 0 2.25 0.505125 2.25 1.125V13.5C2.25 13.8105 2.502 14.0625 2.8125 14.0625H15.1875C15.498 14.0625 15.75 13.8105 15.75 13.5V1.125C15.75 0.505125 15.246 0 14.625 0Z" fill="#E5E5E5"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M9 7L14 12H4L9 7Z" fill="#5A81EA"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M9 7L14 2H4L9 7Z" fill="#E14B51"></path><path d="M9.333 12.2659C9.234 12.339 9.117 12.375 9 12.375C8.883 12.375 8.766 12.339 8.667 12.2659L0 6.75V16.875C0 17.496 0.504 18 1.125 18H16.875C17.496 18 18 17.496 18 16.875V6.75L9.333 12.2659Z" fill="#FFA654"></path><path d="M16.875 18H1.125C0.493875 18 0 17.5061 0 16.875C0 16.6961 0.0855 16.5274 0.2295 16.4216L8.667 10.7966C8.766 10.7235 8.883 10.6875 9 10.6875C9.117 10.6875 9.234 10.7235 9.333 10.7966L17.7705 16.4216C17.9145 16.5274 18 16.6961 18 16.875C18 17.5061 17.5061 18 16.875 18Z" fill="#FFC650"></path></svg>
-                        </span>
-                    </div>
-                </button>
-                <button onclick="connectWallet('seedexchange')" onselect="connectWallet('seedexchange')" class="popup__button popup__button_proceed">
-                    <div class="popup__button_proceed_wrapper">
-                        <span>Waves Exchange</span>
-                        <span class="popup__button_proceed_title">
-                            <span>Seed</span>
-                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M18.0001 4.9152V17.4727C18.0001 17.7638 17.7639 18 17.4728 18H2.63086C2.33977 18 2.10352 17.7638 2.10352 17.4727V0.527344C2.10352 0.23625 2.33977 0 2.63086 0H13.0216C13.1602 0 13.293 0.0544922 13.3918 0.151875L17.843 4.53937C17.9435 4.63852 18.0001 4.77387 18.0001 4.9152Z" fill="#F4F1F1"></path>
-                                <path d="M17.8439 4.53937L13.3928 0.151875C13.294 0.0544922 13.1611 0 13.0226 0H10.0527V18H17.4737C17.7648 18 18.001 17.7638 18.001 17.4727V4.9152C18.001 4.77387 17.9444 4.63852 17.8439 4.53937Z" fill="#ECEAE7"></path>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M10 9L15 14H5L10 9Z" fill="#5A81EA"></path>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M10 9L15 4H5L10 9Z" fill="#E14B51"></path>
-                                <path d="M18 4.9152V5.44254H14.0758C13.2036 5.44254 12.4941 4.73273 12.4941 3.86051V0H13.0215C13.16 0 13.2929 0.0544922 13.3917 0.151875L17.8428 4.53937C17.9434 4.63852 18 4.77387 18 4.9152Z" fill="#C5B9B7"></path>
-                                <path d="M8 11.0052V14.9971C8 16.1027 7.10044 17.0023 5.9948 17.0023H2.0052C0.899563 17.0023 0 16.1027 0 14.9971V11.0052C0 9.89956 0.899563 9 2.0052 9H5.9948C7.10044 9 8 9.89956 8 11.0052Z" fill="#686868"></path>
-                                <path d="M3.03599 14.8069C2.93869 14.8069 2.84138 14.7698 2.76716 14.6955L1.34183 13.2702C1.19335 13.1217 1.19335 12.881 1.34183 12.7325L2.76716 11.3072C2.91562 11.1587 3.15637 11.1587 3.30485 11.3072C3.45333 11.4556 3.45333 11.6964 3.30485 11.8448L2.14837 13.0013L3.30485 14.1578C3.45333 14.3063 3.45333 14.547 3.30485 14.6955C3.23058 14.7697 3.13328 14.8069 3.03599 14.8069Z" fill="white"></path>
-                                <path d="M4.96027 14.8068C4.86296 14.8068 4.76566 14.7697 4.69144 14.6955C4.54296 14.547 4.54296 14.3063 4.69144 14.1578L5.84792 13.0013L4.69144 11.8448C4.54296 11.6964 4.54296 11.4556 4.69144 11.3072C4.8399 11.1587 5.08064 11.1587 5.22912 11.3072L6.65446 12.7325C6.80294 12.881 6.80294 13.1217 6.65446 13.2702L5.22912 14.6955C5.15486 14.7697 5.05755 14.8068 4.96027 14.8068Z" fill="white"></path>
-                            </svg>
-                        </span>
-                    </div>
-                </button>
-                <button style="display: none" class="popup__button popup__button_proceed">
-                    <div class="popup__button_proceed_wrapper">
-                        <span>Ledger Waves</span>
-                        <span class="popup__button_proceed_title">
-                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0 3C0 1.34315 1.34315 0 3 0H4.5V4.5H0V3ZM0 6.75V11.25H4.5V6.75H0ZM6.75 6.75V11.25H11.25H13.5H18V3C18 1.34315 16.6569 0 15 0H6.75V4.5V6.75ZM0 13.5H4.5V18H3C1.34315 18 0 16.6569 0 15V13.5ZM11.25 13.5H6.75V18H11.25V13.5ZM13.5 18V13.5H18V15C18 16.6569 16.6569 18 15 18H13.5Z" fill="#0B2535"></path>
-                            </svg>
-                        </span>
-                    </div>
-                </button>
-                <button class="popup__button popup__button_proceed keeper" onclick="connectWallet('keeper')" onselect="connectWallet('keeper')">Waves Keeper
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9.9999 0.399902L19.5999 9.9999L9.9999 19.5999L0.399902 9.9999L9.9999 0.399902Z" fill="#0055FF"></path>
-                    </svg>
-                </button>
-                <a href="/swap/docs/guide#connect" target="_blank" rel="noopener noreferrer" class="popup__link">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="popup__documentation_icon">
-                        <path d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                        <path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                        <path d="M16 13H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                        <path d="M16 17H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                        <path d="M10 9H9H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>How to connect wallet
-                </a>
-            </div>
-        </div>
-    </div>-->
 
     <!--sidebar-->
     <div class="sidebar">
@@ -348,14 +270,17 @@
                 </svg>
             </button>
             <p>Connect Wallet to Continue</p>
-            <div class="metamask" onclick="connectWallet('metamask')" onselect="connectWallet('metamask')">
+            <div class="metamask" onclick="connectWallet()" onselect="connectWallet()">
                 <div>
                     <img src="/img/metamask.png" alt="">
                 </div>
                 <div>
-                    <span id="loading">
-                        <span>•</span><span>•</span><span>•</span> 
-                    </span>
+                    <div id="loading">
+                        <div>
+                            <span>•</span><span>•</span><span>•</span> 
+                        </div>
+                        <p></p>
+                    </div>
                     <p>MetaMask</p>
                 </div>
             </div>
@@ -425,15 +350,35 @@
                     </label>
                     <p>Name <span class="X">*</span></p>
                     <input type="text" name="" id="nameNFT">
-                    <!-- <p>External link </p>
+                    <p>External link </p>
                     <span>You are welcome to link to your own webpage with more details.</span>
-                    <input type="text" name="" id="externalLinkNFT"> -->
+                    <input type="text" name="" id="externalLinkNFT">
                     <p>Description <span class="X">*</span></p>
                     <span>The description will be included on the item's detail page underneath its image. Markdown syntax is supported.</span>
                     <input type="text" name="" id="descNFT">
-                    <!-- <p>Collection <span class="X">*</span></p>
+                    <p>Collection <span class="X">*</span></p>
                     <span>This is the collection where your item will appear.</span>
-                    <input type="text" name="" id="collNFT"> -->
+                    <input type="text" name="" id="collNFT">
+                    <p>Add Properties</p>
+                    <span>Properties show up underneath your item, are clickable, and can be filtered in your collection's sidebar.</span>
+                    <div id="properties" data="0">
+                        <div class="infoFP">
+                            <div>
+                                <p>Type</p>
+                            </div>
+                            <div>
+                                <p>Name</p>
+                            </div>
+                        </div>
+                        <div id="a0" i="content">
+                            <button onclick="removeAddmoreType(this)" onselect="removeAddmoreType(this)">
+                                <img src="/img/add.png" alt="">
+                            </button>
+                            <input type="text" id="character_0" placeholder="e.g. Character">
+                            <input type="text" id="details_0" placeholder="e.g. Male">
+                        </div>
+                        <div><button onclick="addmoreType()" onselect="addmoreType()">Add more</button></div>
+                    </div>
                     <div id="aLoader">
                         <div class="loader"></div>
                         <p>Sending image to IPFS....</p>
