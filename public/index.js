@@ -803,9 +803,7 @@ async function createNFT(){
                 params: [txP]
             })
             .then((d) => {
-                Toast.fire("Transaction send", "NFT Transaction sent to blockchain.", "info")
-                $("#aLoader").css("display", "none")
-                realodField()
+                window.location.href = window.location.origin +"/#me"
             }).catch(er => {
                 Toast.fire("Error", JSON.stringify(er), "error")
                 realodField()
