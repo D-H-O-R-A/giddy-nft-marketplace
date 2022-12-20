@@ -6,8 +6,6 @@ const { ppid } = require('process');
 var app = express();
 const Moralis = require("moralis").default;
 const axios = require("axios")
-// const { EvmChain } = require("@moralisweb3/common-evm-utils")
-
 const moralisApi = "c8GRwXOdF3IPJsTLWHGfRVx7HI0XoQIyVsUn9hs5iUO3lnT321XXRGT91wVJjAx4"
 
 const port = process.env.PORT || 80
@@ -22,36 +20,44 @@ Moralis.start({
     formatEvmChainId: 'decimal',
 });
 
-// app.use(express.static(__dirname + '/public'))
-
-// app.get('/', function(req, res){
-//     res.status(200).send(readHTML("/public/index.html"))
-// });
+app.get('/api', function(req, res){
+    res.status(200).send("api run ok.")
+});
 
 app.get('/api/getAddressBalance/:address', async function(req, res){
     const addr = req.params.address
-    console.log("Address: ", addr)
-    const response = await Moralis.EvmApi.balance.getNativeBalance({
+    try{
+      const response = await Moralis.EvmApi.balance.getNativeBalance({
         address:addr,
         chain:chainId,
-      });    
-    res.status(200).send(response.toJSON())
+      }); 
+      res.status(200).send(response.toJSON())   
+    }catch(e){
+      res.status(200).send(e) 
+    }
 });
 
 app.get('/api/uploadToIPFS/:base58', async function(req, res){
     const abi = JSON.parse(atob(req.params.base58))
-    const response = await Moralis.EvmApi.ipfs.uploadFolder({ abi });
-    console.log(response)
-    res.status(200).send(response.toJSON())
+    try{
+      const response = await Moralis.EvmApi.ipfs.uploadFolder({ abi });
+      res.status(200).send(response.toJSON())
+    }catch(e){
+      res.status(200).send(e) 
+    }
 })
 
 app.get("/api/getAccountNFT/:address", async function(req,res){
     const addr = req.params.address
-    const response = await Moralis.EvmApi.nft.getWalletNFTs({
+    try{
+      const response = await Moralis.EvmApi.nft.getWalletNFTs({
         address:addr,
         chain:chainId,
     });
     res.status(200).send(response.toJSON())
+  }catch(e){
+    res.status(200).send(e) 
+  }
 })
 
 app.get("/api/allNft", async (req, res) => {
@@ -79,11 +85,7 @@ app.get("/api/allNft", async (req, res) => {
   
       return res.status(200).json({ result });
     } catch (e) {
-  
-      console.log(e);
-      console.log("something went wrong");
-      return res.status(400).json();
-  
+      return res.status(400).json(e);
     }
   });
 
@@ -94,9 +96,5 @@ app.get('*', function(req, res){
 // function readHTML(end){
 //     return fs.readFileSync(__dirname+end,{encoding:'utf8', flag:'r'});
 // }
-  
-app.listen(port, () => {
-    console.log(`Server running at port ${port}/`);
-});
 
 module.exports = app;
