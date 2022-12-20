@@ -19,7 +19,7 @@ const nftMintContract = "0xa051cdbfA384463Ad12fF45796F3AA420aca6bD3"
 
 const chainId = "0x13881"
 
-const serverAPI = window.location.href.includes("127.0.0.1") || window.location.href.includes("localhost") ? "https://127.0.0.1:80/api" : "https://giddy-api-d-h-o-r-a.vercel.app/api"
+const serverAPI = window.location.href.includes("127.0.0.1") || window.location.href.includes("localhost") ? "https://127.0.0.1:80/api" : "https://giddy-nft-marketplace.vercel.app/api"
 
 var stateN = true;
 
