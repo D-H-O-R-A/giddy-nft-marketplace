@@ -2,10 +2,10 @@
   "name": "giddy-nft-marketplace",
   "version": "1.0.0",
   "description": "NFT Marketplace Giddy",
-  "main": "index.js",
+  "main": "api/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --max-http-header-size=3000000 index.js"
+    "start": "node --max-http-header-size=3000000 api/index.js"
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,6 @@
 'use strict';
 
-var express = require('express')();
+var express = require('express');
 var fs =  require("fs");
 const { ppid } = require('process');
 var app = express();
