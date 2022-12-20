@@ -19,6 +19,8 @@ const nftMintContract = "0xa051cdbfA384463Ad12fF45796F3AA420aca6bD3"
 
 const chainId = "0x13881"
 
+const serverAPI = window.location.href.includes("127.0.0.1") || window.location.href.includes("localhost") ? "https://127.0.0.1:80/api" : "https://giddy-api-d-h-o-r-a.vercel.app/api"
+
 var stateN = true;
 
 
@@ -169,7 +171,7 @@ $(window).on("load", ()=>{
 
 async function getBalance(address){
         try {
-          const resBalanceData = await fetch(`/getAddressBalance/${address}`);
+          const resBalanceData = await fetch(serverAPI+`/getAddressBalance/${address}`);
           const resBalance = await resBalanceData.json();
           const content = [{
             status: "success",
@@ -760,7 +762,7 @@ async function createNFT(){
                     content: $("#createNFT .content .select img").attr("src"),
                 },
             ];
-            const resBalanceData = await fetch(`/uploadToIPFS/${btoa(JSON.stringify(abi))}`);
+            const resBalanceData = await fetch(serverAPI+`/uploadToIPFS/${btoa(JSON.stringify(abi))}`);
             const content = await resBalanceData.json();
             var img = (await content[0].path)
             const abia = [
@@ -776,7 +778,7 @@ async function createNFT(){
                     },
                 },
             ]
-            const resBalanceDataa = await fetch(`/uploadToIPFS/${btoa(JSON.stringify(abia))}`);
+            const resBalanceDataa = await fetch(serverAPI+`/uploadToIPFS/${btoa(JSON.stringify(abia))}`);
             const content1 = await resBalanceDataa.json();
             var uri = (await content1[0].path)
             console.log(uri)
@@ -837,7 +839,7 @@ function realodField(){
 
 async function getNFTsFromAccont(address) {
     try {
-        const resBalanceData = await fetch(`/getAccountNFT/${address}`);
+        const resBalanceData = await fetch(serverAPI+`/getAccountNFT/${address}`);
         const resBalance = await resBalanceData.json();
         return resBalance;
       } catch (err) {

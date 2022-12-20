@@ -8,7 +8,7 @@ const axios = require("axios")
 
 const moralisApi = "c8GRwXOdF3IPJsTLWHGfRVx7HI0XoQIyVsUn9hs5iUO3lnT321XXRGT91wVJjAx4"
 
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 80
 
 ///chain 
 const chainId = "0x13881"
@@ -20,13 +20,13 @@ Moralis.start({
     formatEvmChainId: 'decimal',
 });
 
-app.use(express.static(__dirname + '/public'))
+// app.use(express.static(__dirname + '/public'))
 
-app.get('/', function(req, res){
-    res.status(200).send(readHTML("/public/index.html"))
-});
+// app.get('/', function(req, res){
+//     res.status(200).send(readHTML("/public/index.html"))
+// });
 
-app.get('/getAddressBalance/:address', async function(req, res){
+app.get('/api/getAddressBalance/:address', async function(req, res){
     const addr = req.params.address
     console.log("Address: ", addr)
     const response = await Moralis.EvmApi.balance.getNativeBalance({
@@ -36,14 +36,14 @@ app.get('/getAddressBalance/:address', async function(req, res){
     res.status(200).send(response.toJSON())
 });
 
-app.get('/uploadToIPFS/:base58', async function(req, res){
+app.get('/api/uploadToIPFS/:base58', async function(req, res){
     const abi = JSON.parse(atob(req.params.base58))
     const response = await Moralis.EvmApi.ipfs.uploadFolder({ abi });
     console.log(response)
     res.status(200).send(response.toJSON())
 })
 
-app.get("/getAccountNFT/:address", async function(req,res){
+app.get("/api/getAccountNFT/:address", async function(req,res){
     const addr = req.params.address
     const response = await Moralis.EvmApi.nft.getWalletNFTs({
         address:addr,
@@ -52,7 +52,7 @@ app.get("/getAccountNFT/:address", async function(req,res){
     res.status(200).send(response.toJSON())
 })
 
-app.get("/allNft", async (req, res) => {
+app.get("/api/allNft", async (req, res) => {
     try {
       const { query } = req;
   
@@ -86,12 +86,12 @@ app.get("/allNft", async (req, res) => {
   });
 
 app.get('*', function(req, res){
-    res.status(404).send(readHTML("/public/404.html"));
+    res.status(404).send("404 api error.");
 });
 
-function readHTML(end){
-    return fs.readFileSync(__dirname+end,{encoding:'utf8', flag:'r'});
-}
+// function readHTML(end){
+//     return fs.readFileSync(__dirname+end,{encoding:'utf8', flag:'r'});
+// }
   
 app.listen(port, () => {
     console.log(`Server running at port ${port}/`);
