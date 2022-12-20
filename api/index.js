@@ -1,4 +1,6 @@
-var express = require('express');
+'use strict';
+
+var express = require('express')();
 var fs =  require("fs");
 const { ppid } = require('process');
 var app = express();
@@ -97,3 +99,4 @@ app.listen(port, () => {
     console.log(`Server running at port ${port}/`);
 });
 
+module.exports = app;
