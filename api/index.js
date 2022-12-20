@@ -1,11 +1,10 @@
-'use strict';
-
 var express = require('express');
 var fs =  require("fs");
 const { ppid } = require('process');
 var app = express();
 const Moralis = require("moralis").default;
 const axios = require("axios")
+
 const moralisApi = "c8GRwXOdF3IPJsTLWHGfRVx7HI0XoQIyVsUn9hs5iUO3lnT321XXRGT91wVJjAx4"
 
 const port = process.env.PORT || 80
@@ -19,6 +18,8 @@ Moralis.start({
     formatEvmAddress: 'checksum',
     formatEvmChainId: 'decimal',
 });
+
+// app.use(express.static(__dirname + '/public'))
 
 app.get('/api', function(req, res){
     res.status(200).send("api run ok.")
@@ -96,5 +97,7 @@ app.get('*', function(req, res){
 // function readHTML(end){
 //     return fs.readFileSync(__dirname+end,{encoding:'utf8', flag:'r'});
 // }
-
-module.exports = app;
+  
+app.listen(port, () => {
+    console.log(`Server running at port ${port}/`);
+});
