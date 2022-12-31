@@ -3265,7 +3265,7 @@
         };
     })();
     Object.defineProperty(exports, "__esModule", { value: true });
-    var data_entities_1 = require("@waves/data-entities");
+    var data_entities_1 = require("@evestx/data-entities");
     var base64_js_1 = require("base64-js");
     var base58_1 = require("../libs/base58");
     var convert_1 = require("../utils/convert");
@@ -3617,7 +3617,7 @@
     }(ByteProcessor));
     exports.DataEntries = DataEntries;
     
-    },{"..":15,"../constants":13,"../libs/base58":17,"../utils/concat":23,"../utils/convert":24,"@waves/data-entities":6,"base64-js":26}],12:[function(require,module,exports){
+    },{"..":15,"../constants":13,"../libs/base58":17,"../utils/concat":23,"../utils/convert":24,"@evestx/data-entities":6,"base64-js":26}],12:[function(require,module,exports){
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var __1 = require("../");
@@ -6721,7 +6721,7 @@
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var converters_1 = require("../libs/converters");
-    var data_entities_1 = require("@waves/data-entities");
+    var data_entities_1 = require("@evestx/data-entities");
     function performBitwiseAnd(a, b) {
         var sa = a.toString(2).split('.')[0];
         var sb = b.toString(2).split('.')[0];
@@ -6799,7 +6799,7 @@
         }
     };
     
-    },{"../libs/converters":19,"@waves/data-entities":6}],25:[function(require,module,exports){
+    },{"../libs/converters":19,"@evestx/data-entities":6}],25:[function(require,module,exports){
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var CryptoJS = require("crypto-js");
@@ -15315,7 +15315,7 @@
     },{"./filters":78,"./utils":81}],83:[function(require,module,exports){
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var signature_generator_1 = require("@waves/signature-generator");
+    var signature_generator_1 = require("@evestx/signature-generator");
     var request = require("./utils/request");
     var NodeAPI = require("./api/node/index");
     var MatcherAPI = require("./api/matcher/index");
@@ -15364,7 +15364,7 @@
     exports.METAMASK_MAINNET_CONFIG = constants.DEFAULT_MAINNET_CONFIG_METAMASK
     exports.METAMASK_TESTNET_CONFIG = constants.DEFAULT_TESTNET_CONFIG_METAMASK;
     
-    },{"./evvm/metamask":221,"./api/matcher/index":84,"./api/node/index":92,"./config":98,"./constants":99,"./tools":103,"./utils/request":105,"@waves/signature-generator":15}],84:[function(require,module,exports){
+    },{"./evvm/metamask":221,"./api/matcher/index":84,"./api/node/index":92,"./config":98,"./constants":99,"./tools":103,"./utils/request":105,"@evestx/signature-generator":15}],84:[function(require,module,exports){
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var info_1 = require("./info");
@@ -15400,7 +15400,7 @@
         return t;
     };
     Object.defineProperty(exports, "__esModule", { value: true });
-    var signature_generator_1 = require("@waves/signature-generator");
+    var signature_generator_1 = require("@evestx/signature-generator");
     var request_1 = require("../../utils/request");
     var remap_1 = require("../../utils/remap");
     var request_2 = require("../../utils/request");
@@ -15479,7 +15479,7 @@
         deleteOrder: generateCancelLikeRequest('delete')
     };
     
-    },{"../../utils/remap":104,"../../utils/request":105,"./orderbooks.x":87,"@waves/signature-generator":15}],87:[function(require,module,exports){
+    },{"../../utils/remap":104,"../../utils/request":105,"./orderbooks.x":87,"@evestx/signature-generator":15}],87:[function(require,module,exports){
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var ts_api_validator_1 = require("ts-api-validator");
@@ -15728,7 +15728,7 @@
     })();
     Object.defineProperty(exports, "__esModule", { value: true });
     var ts_api_validator_1 = require("ts-api-validator");
-    var signature_generator_1 = require("@waves/signature-generator");
+    var signature_generator_1 = require("@evestx/signature-generator");
     var schemaFields_1 = require("../schemaFields");
     var remap_1 = require("../../utils/remap");
     var request_1 = require("../../utils/request");
@@ -16107,7 +16107,7 @@
         return fetch(constants.BROADCAST_PATH, postParams);
     }, true);
     
-    },{"../../config":98,"../../constants":99,"../../utils/remap":104,"../../utils/request":105,"../schemaFields":97,"@waves/signature-generator":15,"ts-api-validator":62}],96:[function(require,module,exports){
+    },{"../../config":98,"../../constants":99,"../../utils/remap":104,"../../utils/request":105,"../schemaFields":97,"@evestx/signature-generator":15,"ts-api-validator":62}],96:[function(require,module,exports){
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var request_1 = require("../../utils/request");
@@ -16186,7 +16186,7 @@
         return t;
     };
     Object.defineProperty(exports, "__esModule", { value: true });
-    var signature_generator_1 = require("@waves/signature-generator");
+    var signature_generator_1 = require("@evestx/signature-generator");
     var constants_1 = require("./constants");
     var request_1 = require("./utils/request");
     var config = Object.create(null);
@@ -16255,7 +16255,7 @@
         }
     };
     
-    },{"./constants":99,"./utils/request":105,"@waves/signature-generator":15}],99:[function(require,module,exports){
+    },{"./constants":99,"./utils/request":105,"@evestx/signature-generator":15}],99:[function(require,module,exports){
     "use strict";
     var __assign = (this && this.__assign) || Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -16465,7 +16465,7 @@
     },{"node-fetch":undefined}],103:[function(require,module,exports){
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var signature_generator_1 = require("@waves/signature-generator");
+    var signature_generator_1 = require("@evestx/signature-generator");
     var constants_1 = require("./constants");
     var transactions_1 = require("./utils/transactions"); // TODO : fix this issue with interface
     exports.default = {
@@ -16496,7 +16496,7 @@
         createTransaction: transactions_1.createTransaction
     };
     
-    },{"./constants":99,"./utils/transactions":106,"@waves/signature-generator":15}],104:[function(require,module,exports){
+    },{"./constants":99,"./utils/transactions":106,"@evestx/signature-generator":15}],104:[function(require,module,exports){
     "use strict";
     var __assign = (this && this.__assign) || Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -16507,7 +16507,7 @@
         return t;
     };
     Object.defineProperty(exports, "__esModule", { value: true });
-    var signature_generator_1 = require("@waves/signature-generator");
+    var signature_generator_1 = require("@evestx/signature-generator");
     var constants_1 = require("../constants");
     var config_1 = require("../config");
     function normalizeAssetId(original) {
@@ -16591,7 +16591,7 @@
     }
     exports.createRemapper = createRemapper;
     
-    },{"../config":98,"../constants":99,"@waves/signature-generator":15}],105:[function(require,module,exports){
+    },{"../config":98,"../constants":99,"@evestx/signature-generator":15}],105:[function(require,module,exports){
     "use strict";
     var __assign = (this && this.__assign) || Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -16682,7 +16682,7 @@
         return t;
     };
     Object.defineProperty(exports, "__esModule", { value: true });
-    var signature_generator_1 = require("@waves/signature-generator");
+    var signature_generator_1 = require("@evestx/signature-generator");
     var txHelpers = require("../api/node/transactions.x");
     // TODO : refactor this module and ugly dependency injections through names (like preIssue, postReissue, etc)
     var capitalize = function (name) { return name.slice(0, 1).toUpperCase() + name.slice(1); };
@@ -16722,7 +16722,7 @@
         });
     };
     
-    },{"../api/node/transactions.x":95,"@waves/signature-generator":15}],221:[function(require, module,exports) {
+    },{"../api/node/transactions.x":95,"@evestx/signature-generator":15}],221:[function(require, module,exports) {
         //metamask
         "use strict";
 

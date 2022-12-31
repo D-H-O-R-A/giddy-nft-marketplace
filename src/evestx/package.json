@@ -1,0 +1,28 @@
+{
+  "name": "evestx-api",
+  "version": "0.0.1",
+  "description": "eVESTX full API library for Node.js and browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eVESTXCOIN/eVESTX-API.git"
+  },
+  "keywords": [
+    "crypto",
+    "node",
+    "api",
+    "evestx",
+    "nodejs",
+    "js",
+    "web3"
+  ],
+  "author": "Diego H O R Antunes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eVESTXCOIN/eVESTX-API/issues"
+  },
+  "homepage": "https://github.com/eVESTXCOIN/eVESTX-API#readme"
+}
