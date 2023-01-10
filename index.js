@@ -19,6 +19,7 @@ const Toast = Swal.mixin({
     }
 })
 
+var listMobile;
 
 function selectTF(i) {
     if($("#addressOrID").val() == "") {
@@ -212,7 +213,7 @@ function selectToken(s) {
 
 function contadorStart(){
     var startDate = new Date(Date.now())
-    var finalDate = new Date(Date.UTC(2022, 12,01,23, 59, 59))
+    var finalDate = new Date(Date.UTC(2022, 12,11,23, 59, 59))
     var days, hours, minutes, seconds,mili;
     var dateDiff;
     var $day = $('#daytime');
@@ -520,6 +521,10 @@ $(document).ready(() => {
         $('div#Trading.all #esc #a1 div[s] button[onclick="connectWalletChamada()"]').attr("onselect", "SwapInvest()")
         $('div#Trading.all #esc #a1 div[s] button[onclick="connectWalletChamada()"]').attr("onclick", "SwapInvest()")
     }
+    move()
+    listMobile = document.querySelectorAll('.smartTablets .navigation ul li');
+    listMobile.forEach((item) =>
+    item.addEventListener('click',activeLink))
 })
 
 function SwapInvest(){
@@ -832,7 +837,6 @@ function verifiDarkMode(mdark){
     }
     $('[onclick="selectMBar(this)"]li').attr("class", "list")
     $(`[onclick="ach(this, 'IDO')"]li`).attr("class", "list")
-    move()
 }
 
 function isHidden(){
@@ -1458,14 +1462,14 @@ function poolSecInf(t){
     $(t).attr("select", "")
 }
 
-const list = document.querySelectorAll('.list');
+
+
 function activeLink(){
-    list.forEach((item) =>
+    console.log("mud")
+    listMobile.forEach((item) =>
     item.classList.remove('active'));
     this.classList.add('active');
 }
-list.forEach((item) =>
-item.addEventListener('click',activeLink))
 
 function selectMBar(i){
     $(".celAcS").css("display", "flex")

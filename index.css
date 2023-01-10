@@ -20,7 +20,7 @@
     --vh: 173.75px;
     --delay:2s;
     --color_warning: #ffb237;
-    --color_destaque: #fff;
+    --color_destaque: var(--color_warning);
     --color_background_hidden: #fff0;
     --bf: #bf3654;
     --color_text_hidden: rgb(209, 214, 216);
