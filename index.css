@@ -2702,7 +2702,7 @@ nav a[href="#Home"] p span:nth-child(2){
     font-size: 14px;
 }
 
-nav a[href="#IDO"]{
+nav a[href="#IDO"], nav a[href="#NFT"]{
     background-color: var(--p);
     color: var(--w);
     border-radius: 10px;
@@ -4328,7 +4328,7 @@ section{
     line-height: 140%;
     text-align: left;
 }
-.menuAccount button[s] svg{
+.menuAccount button[s] svg,.menuAccount button[s] img{
     width: 20px;
     height: 20px;
 }
@@ -4431,7 +4431,7 @@ section{
     font-size: 16px;
 }
 
-.menuAccount button[s] svg{
+.menuAccount button[s] svg, .menuAccount button[s] img{
     margin: 0px 10px;
 }
 

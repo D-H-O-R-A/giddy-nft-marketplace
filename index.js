@@ -213,7 +213,7 @@ function selectToken(s) {
 
 function contadorStart(){
     var startDate = new Date(Date.now())
-    var finalDate = new Date(Date.UTC(2022, 12,11,23, 59, 59))
+    var finalDate = new Date(Date.UTC(2022, 12,28,23, 59, 59))
     var days, hours, minutes, seconds,mili;
     var dateDiff;
     var $day = $('#daytime');
@@ -434,12 +434,25 @@ function ach(k,kk, xy){
             $("#" + aw).css("display", "flex");
             window.location.search = "";
         break;
+        case 'NFT':
+            Toast.fire(
+                "Check the Roadmap",
+                "The NFT marketplace is under development",
+                "info"
+            )
+            console.log(aw)
+            $("div.all").css("display", "none");
+            $("#Home").css("display", "flex");
+            $("footer").css("margin-top", "0px")
+            window.location.search = "";
+            window.location.hash="";
         default:
             console.log(aw)
             $("div.all").css("display", "none");
             $("#Home").css("display", "flex");
             $("footer").css("margin-top", "0px")
             window.location.search = "";
+            window.location.hash="";
     }
 }
 var r = document.querySelector(':root');
@@ -593,7 +606,19 @@ function viewInfoAccount(){
             </div>
         </div>
         <button s onclick="signOut()" onselect="signOut()">
-            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" color="#333" height="16" width="16" xmlns="http://www.w3.org/2000/svg" style="color: #333"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 9.375C10.9518 9.375 13.75 8.1158 13.75 6.5625C13.75 5.0092 10.9518 3.75 7.5 3.75C4.04822 3.75 1.25 5.0092 1.25 6.5625C1.25 8.1158 4.04822 9.375 7.5 9.375Z" stroke="#333" stroke-linecap="round" stroke-linejoin="round"></path><path d="M1.25 6.5625V9.6875C1.25 11.2422 4.04687 12.5 7.5 12.5C10.9531 12.5 13.75 11.2422 13.75 9.6875V6.5625" stroke="#333" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5 9.14062V12.2656" stroke="#333" stroke-linecap="round" stroke-linejoin="round"></path><path d="M13.75 7.55469C16.6016 7.82031 18.75 8.95313 18.75 10.3125C18.75 11.8672 15.9531 13.125 12.5 13.125C10.9687 13.125 9.5625 12.875 8.47656 12.4688" stroke="#333" stroke-linecap="round" stroke-linejoin="round"></path><path d="M6.25 12.4453V13.4375C6.25 14.9922 9.04687 16.25 12.5 16.25C15.9531 16.25 18.75 14.9922 18.75 13.4375V10.3125" stroke="#333" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15 12.8906V16.0156" stroke="#333" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10 9.14062V16.0156" stroke="#333" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <p>Portfolio</p>
+        </button>
+        <button s onclick="signOut()" onselect="signOut()">
+            <img style="width:20px;height:20px" src="/img/transactions.png">
+            <p>Transactions</p>
+        </button>
+        <button s onclick="signOut()" onselect="signOut()">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" color="#333" size="16"><path d="M2.5 13.75L10 18.125L17.5 13.75" stroke="#333" stroke-linecap="round" stroke-linejoin="round"></path><path d="M2.5 10L10 14.375L17.5 10" stroke="#333" stroke-linecap="round" stroke-linejoin="round"></path><path d="M2.5 6.25L10 10.625L17.5 6.25L10 1.875L2.5 6.25Z" stroke="#333" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            <p>My Items</p>
+        </button>
+        <button s onclick="signOut()" onselect="signOut()">
+        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" color="#333" height="16" width="16" xmlns="http://www.w3.org/2000/svg" style="color: #333"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
             <p>Sign Out</p>
         </button>
             </div>`
