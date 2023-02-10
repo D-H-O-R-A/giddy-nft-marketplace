@@ -213,7 +213,7 @@ function selectToken(s) {
 
 function contadorStart(){
     var startDate = new Date(Date.now())
-    var finalDate = new Date(Date.UTC(2022, 12,28,23, 59, 59))
+    var finalDate = new Date(Date.UTC(2023, 01,10,23, 59, 59))
     var days, hours, minutes, seconds,mili;
     var dateDiff;
     var $day = $('#daytime');
